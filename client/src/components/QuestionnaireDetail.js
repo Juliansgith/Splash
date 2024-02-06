@@ -8,7 +8,7 @@ function QuestionnaireDetail() {
   const [questionnaire, setQuestionnaire] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/${id}`) // Adjust endpoint if necessary
+    axios.get(`http://localhost:5000/${id}`)
       .then(response => {
         setQuestionnaire(response.data);
       })
@@ -20,7 +20,6 @@ function QuestionnaireDetail() {
     const formData = new FormData(event.target);
     const answers = {};
     for (let [key, value] of formData.entries()) {
-      // Assuming your inputs' names are like "question-0", "question-1", etc.
       const questionIndex = key.split('-')[1];
       answers[questionIndex] = value;
     }
@@ -35,7 +34,7 @@ function QuestionnaireDetail() {
     }
   };
 
-  if (!questionnaire) return <div>Loading...</div>;
+  if (!questionnaire) return <div>Aan het laden...</div>;
 
   return (
     <div>
