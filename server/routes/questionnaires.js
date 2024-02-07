@@ -1,5 +1,6 @@
 const express = require('express');
 const Questionnaire = require('../models/Questionnaire');
+const InactiveQuestionnaire = require('../models/InactiveQuestionnaire')
 const router = express.Router();
 const mongoose = require('mongoose');
 
@@ -36,6 +37,24 @@ router.get('/all', async (req, res) => {
     }
   });
   
+  router.post('/move-to-inactive/:id', async (req, res) => {
+    try {
+      const questionnaire = await Questionnaire.findById(req.params.id);
+      if (!questionnaire) {
+        return res.status(404).send('Questionnaire not found');
+      }
+  
+      const inactiveQuestionnaire = new InactiveQuestionnaire(questionnaire.toObject());
+      await inactiveQuestionnaire.save();
+  
+      await Questionnaire.findByIdAndDelete(req.params.id);
+  
+      res.send({ message: 'Questionnaire moved to inactive successfully and deleted from active questionnaires.' });
+    } catch (error) {
+      res.status(500).send(error.toString());
+    }
+  });
+  
 
   router.get('/:id', async (req, res) => {
     try {
@@ -61,7 +80,6 @@ router.get('/all', async (req, res) => {
       const questionnaire = await Questionnaire.findById(id);
       if (!questionnaire) return res.status(404).send('Questionnaire not found');
   
-      // Process each answer
       Object.entries(answers).forEach(([questionIndex, optionText]) => {
         const question = questionnaire.questions[parseInt(questionIndex)];
         if (!question) {
@@ -77,7 +95,7 @@ router.get('/all', async (req, res) => {
       await questionnaire.save();
       res.status(200).send(questionnaire);
     } catch (error) {
-      console.error(error); // Log the error for debugging
+      console.error(error); 
       res.status(400).send(error.message);
     }
   });

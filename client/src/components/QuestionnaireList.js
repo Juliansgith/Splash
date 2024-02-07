@@ -6,6 +6,14 @@ function QuestionnaireList() {
   const navigate = useNavigate();
   const [questionnaires, setQuestionnaires] = useState([]);
 
+  const moveToInactive = (id) => {
+    axios.post(`http://localhost:5000/move-to-inactive/${id}`)
+      .then(() => {
+        alert('Questionnaire moved to inactive');
+      })
+      .catch(error => console.error('Error moving questionnaire to inactive:', error));
+  };
+
   useEffect(() => {
     axios.get('http://localhost:5000/all') 
       .then(response => {
@@ -21,6 +29,7 @@ function QuestionnaireList() {
         <div key={questionnaire._id}>
           <h3>{questionnaire.title}</h3>
           <button onClick={() => navigate(`/questionnaire/${questionnaire._id}`)}>Open</button>
+          <button onClick={() => moveToInactive(questionnaire._id)}>Move to Inactive</button>
         </div>
       ))}
     </div>
