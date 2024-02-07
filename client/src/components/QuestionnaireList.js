@@ -18,17 +18,13 @@ function QuestionnaireList() {
   };
 
   useEffect(() => {
-    axios.get('http://localhost:5000/all', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-      data: { userId },
-    }) 
+    axios.get(`http://localhost:5000/all?userId=${userId}`)
       .then(response => {
         setQuestionnaires(response.data);
       })
       .catch(error => console.log(error));
   }, []);
+  
 
   return (
     <div>
