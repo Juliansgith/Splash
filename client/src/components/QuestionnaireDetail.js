@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { jwtDecode as jwt_decode } from 'jwt-decode';
 
 function QuestionnaireDetail() {
   const { id } = useParams();
@@ -25,7 +26,11 @@ function QuestionnaireDetail() {
     }
   
     try {
-      await axios.post(`http://localhost:5000/answer/${id}`, { answers });
+      const token = localStorage.getItem('token'); 
+      const decodedToken = jwt_decode(token);
+      const userId = decodedToken.userId;
+
+      await axios.post(`http://localhost:5000/answer/${id}`, { answers, userId });
       alert('Answers submitted successfully');
       navigate('/'); 
     } catch (error) {

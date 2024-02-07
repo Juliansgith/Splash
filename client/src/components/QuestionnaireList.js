@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { jwtDecode as jwt_decode } from 'jwt-decode';
 
 function QuestionnaireList() {
   const navigate = useNavigate();
   const [questionnaires, setQuestionnaires] = useState([]);
+  const token = localStorage.getItem('token');
+  const userId = token ? jwt_decode(token).userId : null;
 
   const moveToInactive = (id) => {
     axios.post(`http://localhost:5000/move-to-inactive/${id}`)
@@ -15,7 +18,12 @@ function QuestionnaireList() {
   };
 
   useEffect(() => {
-    axios.get('http://localhost:5000/all') 
+    axios.get('http://localhost:5000/all', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+      data: { userId },
+    }) 
       .then(response => {
         setQuestionnaires(response.data);
       })
