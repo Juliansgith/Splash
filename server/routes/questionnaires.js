@@ -61,7 +61,6 @@ router.get('/all', async (req, res) => {
       const questionnaire = await Questionnaire.findById(id);
       if (!questionnaire) return res.status(404).send('Questionnaire not found');
   
-      // Process each answer
       Object.entries(answers).forEach(([questionIndex, optionText]) => {
         const question = questionnaire.questions[parseInt(questionIndex)];
         if (!question) {
@@ -77,7 +76,7 @@ router.get('/all', async (req, res) => {
       await questionnaire.save();
       res.status(200).send(questionnaire);
     } catch (error) {
-      console.error(error); // Log the error for debugging
+      console.error(error); 
       res.status(400).send(error.message);
     }
   });

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import QuestionnaireList from './components/QuestionnaireList';
 import CreateQuestionnaire from './components/CreateQuestionnaire';
-import QuestionnaireDetail from './components/QuestionnaireDetail'; // Ensure this component is correctly exported
+import QuestionnaireDetail from './components/QuestionnaireDetail'; 
 
 import { Link } from 'react-router-dom';
 
