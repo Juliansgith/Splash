@@ -5,16 +5,19 @@ const optionSchema = new mongoose.Schema({
   count: { type: Number, default: 0 },
 });
 
+
 const questionSchema = new mongoose.Schema({
   questionText: String,
   options: [optionSchema],
 });
 
-const questionnaireSchema = new mongoose.Schema({
+const inactiveQuestionnaireSchema = new mongoose.Schema({
   title: { type: String, required: true },
   questions: [questionSchema],
+  isActive: { type: Boolean, default: false },
+  archivedDate: { type: Date, default: Date.now },
 });
 
-const Questionnaire = mongoose.model('Questionnaire', questionnaireSchema);
+const InactiveQuestionnaire = mongoose.model('InactiveQuestionnaire', inactiveQuestionnaireSchema);
 
-module.exports = Questionnaire;
+module.exports = InactiveQuestionnaire;
