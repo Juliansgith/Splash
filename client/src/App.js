@@ -5,7 +5,6 @@ import QuestionnaireList from './components/QuestionnaireList';
 import CreateQuestionnaire from './components/CreateQuestionnaire';
 import QuestionnaireDetail from './components/QuestionnaireDetail'; 
 import LoginRegisterPopup from './components/LoginRegisterPopup';
-import { Link } from 'react-router-dom';
 
 function App() {
   const [userRole, setUserRole] = useState(null);
