@@ -5,6 +5,7 @@ import QuestionnaireList from './components/QuestionnaireList';
 import CreateQuestionnaire from './components/CreateQuestionnaire';
 import QuestionnaireDetail from './components/QuestionnaireDetail'; 
 import LoginRegisterPopup from './components/LoginRegisterPopup';
+import Answers from './components/Answers';
 
 function App() {
   const [userRole, setUserRole] = useState(null);
@@ -16,7 +17,7 @@ function App() {
       setUserRole(decoded.role);
     }
   }, []);
-
+  
   return (
     <Router>
       <div className="App">
@@ -25,11 +26,13 @@ function App() {
           <LoginRegisterPopup setUserRole={setUserRole} />
           <Link to="/">Home</Link>
           {userRole === 'admin' && <span> | <Link to="/create">Create New Questionnaire</Link></span>} 
+          {userRole === 'admin' && <span> | <Link to="/answers">Answers</Link></span>} 
         </nav>
         <Routes>
           <Route path="/" element={<QuestionnaireList />} />
           {userRole === 'admin' && <Route path="/create" element={<CreateQuestionnaire />} />} 
           <Route path="/questionnaire/:id" element={<QuestionnaireDetail />} />
+          {userRole === 'admin' && <Route path="/answers" element={<Answers />} />}
         </Routes>
       </div>
     </Router>

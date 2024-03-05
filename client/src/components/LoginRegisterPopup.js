@@ -1,18 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
-import { jwtDecode as jwt_decode } from 'jwt-decode';
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
+import { jwtDecode as jwt_decode } from 'jwt-decode';
 
 Modal.setAppElement('#root');
 
@@ -100,34 +90,34 @@ function LoginRegisterPopup({ setUserRole }) {
   };
 
   return (
-    <div>
+    <div className="container"> {/* Add this container for extra styling if needed */}
       {localStorage.getItem('token') ? (
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={handleLogout} className="logout-button">Logout</button>
       ) : (
-        <button onClick={openModal}>{isLogin ? 'Login/Register' : 'Register/Login'}</button>
+        <button onClick={openModal} className="form-button">{isLogin ? 'Login/Register' : 'Register/Login'}</button>
       )}
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className="modal-content">
         <h2>{isLogin ? 'Login' : 'Register'}</h2>
         <form onSubmit={handleSubmit}>
           {!isLogin && (
             <>
-              <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required={!isLogin} />
-              <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} required={!isLogin} />
-              <input type="text" name="postcode" placeholder="Postcode" value={formData.postcode} onChange={handleChange} required={!isLogin} />
+              <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required={!isLogin} className="form-input" />
+              <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} required={!isLogin} className="form-input" />
+              <input type="text" name="postcode" placeholder="Postcode" value={formData.postcode} onChange={handleChange} required={!isLogin} className="form-input" />
             </>
           )}
-          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-          <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
-          <button type="submit">{isLogin ? 'Login' : 'Register'}</button>
-        </form>
+          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required className="form-input" />
+          <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required className="form-input" />
+          <button type="submit" className="form-button">{isLogin ? 'Login' : 'Register'}</button>
+          </form>
         {isLogin ? (
-          <p style={{color: 'blue', cursor: 'pointer'}} onClick={toggleForm}>Nog geen account? Registreer hier</p>
+          <p className="toggle-form-text" onClick={toggleForm}>Nog geen account? Registreer hier</p>
         ) : (
-          <p style={{color: 'blue', cursor: 'pointer'}} onClick={toggleForm}>Already have an account? Login here</p>
+          <p className="toggle-form-text" onClick={toggleForm}>Already have an account? Login here</p>
         )}
       </Modal>
     </div>
   );
-        }  
+}  
 
 export default LoginRegisterPopup;

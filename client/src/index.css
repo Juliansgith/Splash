@@ -1,13 +1,80 @@
-body {
+body, html {
+  height: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f2f5;
+  font-family: 'Arial', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px; /* Adjust based on your preference */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  outline: none; /* Removes the focus outline */
+}
+
+/* Form and form elements styling */
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Makes sure padding does not affect the overall width */
+}
+
+.form-input:focus {
+  border-color: #4A90E2;
+  outline: none;
+}
+
+.form-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.form-button:hover {
+  background-color: #357ABD;
+}
+
+/* Toggle form link styling */
+.toggle-form-text {
+  color: #4A90E2;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.toggle-form-text:hover {
+  text-decoration: underline;
+}
+
+/* Logout button styling */
+.logout-button {
+  background-color: transparent;
+  color: #4A90E2;
+  border: 2px solid #4A90E2;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #4A90E2;
+  color: white;
 }
