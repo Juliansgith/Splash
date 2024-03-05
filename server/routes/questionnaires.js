@@ -1,6 +1,5 @@
 const express = require('express');
 const Questionnaire = require('../models/Questionnaire');
-const InactiveQuestionnaire = require('../models/InactiveQuestionnaire')
 const User = require('../models/User');
 const router = express.Router();
 const mongoose = require('mongoose');
@@ -49,27 +48,8 @@ const mongoose = require('mongoose');
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
-
-  router.post('/move-to-inactive/:id', async (req, res) => {
-    try {
-      const questionnaire = await Questionnaire.findById(req.params.id);
-      if (!questionnaire) {
-        return res.status(404).send('Questionnaire not found');
-      }
   
-      const inactiveQuestionnaire = new InactiveQuestionnaire(questionnaire.toObject());
-      await inactiveQuestionnaire.save();
-  
-      await Questionnaire.findByIdAndDelete(req.params.id);
-  
-      res.send({ message: 'Questionnaire moved to inactive successfully and deleted from active questionnaires.' });
-    } catch (error) {
-      res.status(500).send(error.toString());
-    }
-  });
-  
-
-  router.get('/:id', async (req, res) => {
+  router.get('/user/:id', async (req, res) => {
     try {
       const questionnaire = await Questionnaire.findById(req.params.id);
       if (!questionnaire) {
@@ -115,6 +95,18 @@ const mongoose = require('mongoose');
       res.status(400).send(error.message);
     }
   });
-  
+
+  router.get('/getall', async (req, res) => {
+    try {
+        const questionnaires = await Questionnaire.find();
+        if (questionnaires.length === 0) {
+            return res.status(404).json({ error: 'No questionnaires found' });
+        }
+        res.json(questionnaires);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 module.exports = router;

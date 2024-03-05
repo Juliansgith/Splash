@@ -8,9 +8,11 @@ app.use(express.json());
 
 const questionnaireRoutes = require('./routes/questionnaires');
 const authRoutes = require('./routes/AuthRoutes');
+const answersRouter = require('./routes/answers');
 
 app.use('/', questionnaireRoutes);
 app.use('/', authRoutes);
+app.use('/', answersRouter);
 
 require("./db/conn");
 

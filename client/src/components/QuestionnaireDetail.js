@@ -9,7 +9,7 @@ function QuestionnaireDetail() {
   const [questionnaire, setQuestionnaire] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/${id}`)
+    axios.get(`http://localhost:5000/user/${id}`)
       .then(response => {
         setQuestionnaire(response.data);
       })
