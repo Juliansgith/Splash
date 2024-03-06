@@ -28,14 +28,14 @@ function App() {
           <NavBar userRole={userRole} />
         </header>
         <div className="main-content">
-          <Routes>
-            <Route path="/" element={<QuestionnaireList />} />
-            <Route path="/answers" element={<Answers />} />
-            {userRole === 'admin' && <Route path="/create" element={<CreateQuestionnaire />} />}
-            <Route path="/questionnaire/:id" element={<QuestionnaireDetail />} />
-            <Route path="/answers/:id" element={<QuestionnaireDetails />} />
-            <Route path="/login" element={<LoginRegisterPopup setUserRole={setUserRole} />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<QuestionnaireList />} />
+          <Route path="/answers" element={<Answers />} />
+          {userRole === 'admin' && <Route path="/create" element={<CreateQuestionnaire />} />}
+          <Route path="/questionnaire/:id" element={<QuestionnaireDetail />} />
+          <Route path="/answers/:id" element={<QuestionnaireDetails />} />
+          <Route path="/login" element={<LoginRegisterPopup setUserRole={setUserRole} />} />
+        </Routes>
         </div>
       </div>
     </Router>

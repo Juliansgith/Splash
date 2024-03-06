@@ -170,7 +170,7 @@ body, html {
 
 .create-form {
   overflow-y: auto; /* Enable vertical scrolling within the form */
-  max-height: 55vh; /* Limit the form's height to ensure it doesn't overflow the viewport */
+  max-height: 65vh; /* Limit the form's height to ensure it doesn't overflow the viewport */
   width: auto; /* Ensure the form width adjusts based on content */
   max-width: 600px; /* Maximum width to maintain design integrity */
   background-color: #ffffff;
