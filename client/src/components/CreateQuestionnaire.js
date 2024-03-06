@@ -46,11 +46,12 @@ function CreateQuestionnaire() {
   };
 
   return (
-    <div>
+    <div className="create-questionnaire-container">
       <h2>Create New Questionnaire</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="create-form">
         <input
           type="text"
+          className="create-input"
           value={questionnaireTitle}
           onChange={(e) => setQuestionnaireTitle(e.target.value)}
           placeholder="Questionnaire Title"
@@ -59,6 +60,7 @@ function CreateQuestionnaire() {
           <div key={qIndex}>
             <input
               type="text"
+              className="create-input"
               value={question.questionText}
               onChange={(e) => handleQuestionTextChange(qIndex, e.target.value)}
               placeholder="Question Text"
@@ -67,18 +69,19 @@ function CreateQuestionnaire() {
               <input
                 key={oIndex}
                 type="text"
+                className="option-input"
                 value={option.text}
                 onChange={(e) => handleOptionTextChange(qIndex, oIndex, e.target.value)}
                 placeholder="Option Text"
               />
             ))}
-            <button type="button" onClick={() => addOption(qIndex)}>Add Option</button>
+            <button type="button" onClick={() => addOption(qIndex)} className="add-button">Add Option</button>
           </div>
         ))}
-        <button type="button" onClick={addQuestion}>Add Question</button>
-        <button type="submit">Submit Questionnaire</button>
+        <button type="button" onClick={addQuestion} className="add-button">Add Question</button>
+        <button type="submit" className="submit-button">Submit Questionnaire</button>
       </form>
-      {creationStatus && <p>{creationStatus}</p>}
+      {creationStatus && <p className="status-message">{creationStatus}</p>}
     </div>
   );
 }

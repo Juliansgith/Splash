@@ -17,16 +17,17 @@ function QuestionnaireList() {
       .catch(error => console.log(error));
   }, []);
   
-
   return (
-    <div>
+    <div className="questionnaire-container">
       <h2>In te vullen Questionnaires</h2>
-      {questionnaires.map((questionnaire) => (
-        <div key={questionnaire._id}>
-          <h3>{questionnaire.title}</h3>
-          <button onClick={() => navigate(`/questionnaire/${questionnaire._id}`)}>Open</button>
-        </div>
-      ))}
+      <div className="questionnaire-list">
+        {questionnaires.map((questionnaire) => (
+          <div key={questionnaire._id} className="questionnaire-item">
+            <h3 className="questionnaire-title">{questionnaire.title}</h3>
+            <button onClick={() => navigate(`/questionnaire/${questionnaire._id}`)} className="open-button">Open</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

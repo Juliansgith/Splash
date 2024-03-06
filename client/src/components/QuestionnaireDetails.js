@@ -22,22 +22,22 @@ function QuestionnaireDetails() {
   return (
     <div>
       {questionnaire ? (
-        <div>
+        <div className="details-container">
           <h2>{questionnaire.title}</h2>
           <h3>Questions:</h3>
           {questionnaire.questions.map((question, index) => (
-            <div key={index}>
-              <p>{question.questionText}</p>
-              <ul>
+            <div key={index} className="question">
+              <p className="question-text">{question.questionText}</p>
+              <ul className="option-list">
                 {question.options.map((option, index) => (
-                  <li key={index}>
+                  <li key={index} className="option-item">
                     {option.text}: {option.count}
                   </li>
                 ))}
               </ul>
-            </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
       ) : (
         <div>
           <h2>No questionnaire selected.</h2>

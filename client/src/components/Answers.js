@@ -1,3 +1,4 @@
+// Answers component with applied CSS classes for styling
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -19,13 +20,13 @@ function Answers() {
   };
 
   return (
-    <div>
+    <div className="answers-container">
       <h2>Answers:</h2>
       {questionnaires.map((questionnaire) => (
-        <div key={questionnaire._id}>
-          <h3>{questionnaire.title}</h3>
-          <Link to={`/answers/${questionnaire._id}`}>
-            <button>Open</button>
+        <div key={questionnaire._id} className="questionnaire-item">
+          <h3 className="questionnaire-title">{questionnaire.title}</h3>
+          <Link to={`/answers/${questionnaire._id}`} className="open-link">
+            <button className="open-button">Open</button>
           </Link>
         </div>
       ))}
