@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
-
-import { jwtDecode as jwt_decode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 Modal.setAppElement('#root');
 
@@ -16,6 +15,14 @@ function LoginRegisterPopup({ setUserRole }) {
     city: '',
     postcode: '',
   });
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
+
+  useEffect(() => {
+    setPasswordsMatch(formData.password === passwordConfirmation);
+  }, [formData.password, passwordConfirmation]);
+
+  const navigate = useNavigate(); // Get the navigate function
 
   function openModal() {
     setIsOpen(true);
@@ -58,23 +65,23 @@ function LoginRegisterPopup({ setUserRole }) {
     };
 
     if (!isLogin && !validateDutchPostcode(formData.postcode)) {
-      alert('Please enter a valid Dutch postcode.');
+      alert('Vul alstjeblieft een NL postcode in.');
       return;
     }
-  
+
     axios.post(`${apiUrl}${endpoint}`, data)
       .then(response => {
         if (isLogin) {
           if (response.data.token) {
             localStorage.setItem('token', response.data.token);
-            window.location.reload();
             console.log('Login successful, token saved.');
+            navigate('/'); // Redirect to the homepage
           } else {
             console.log('Login successful, no token received.');
           }
         } else {
-          alert('Registration successful!');
-          setIsLogin(true); // Optionally switch to login form
+          alert('Registratie successvol!');
+          setIsLogin(true);
         }
         closeModal();
       })
@@ -83,14 +90,14 @@ function LoginRegisterPopup({ setUserRole }) {
       });
   }
 
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        setUserRole(null); 
-        window.location.reload(); 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setUserRole(null);
+    window.location.reload();
   };
 
   return (
-    <div className="container"> {/* Add this container for extra styling if needed */}
+    <div className="container">
       {localStorage.getItem('token') ? (
         <button onClick={handleLogout} className="logout-button">Logout</button>
       ) : (
@@ -108,16 +115,22 @@ function LoginRegisterPopup({ setUserRole }) {
           )}
           <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required className="form-input" />
           <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required className="form-input" />
+          {!isLogin && (
+            <>
+              <input type="password" name="passwordConfirmation" placeholder="Confirm Password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} required={!isLogin} className={`form-input ${!passwordsMatch ? 'input-error' : ''}`} />
+              {!passwordsMatch && <p className="error-message">Passwords do not match.</p>}
+            </>
+          )}
           <button type="submit" className="form-button">{isLogin ? 'Login' : 'Register'}</button>
-          </form>
+        </form>
         {isLogin ? (
           <p className="toggle-form-text" onClick={toggleForm}>Nog geen account? Registreer hier</p>
         ) : (
-          <p className="toggle-form-text" onClick={toggleForm}>Already have an account? Login here</p>
+          <p className="toggle-form-text" onClick={toggleForm}>Heb je al een account? Log hier in</p>
         )}
       </Modal>
     </div>
   );
-}  
+}
 
 export default LoginRegisterPopup;
