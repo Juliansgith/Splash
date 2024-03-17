@@ -65,7 +65,7 @@ function LoginRegisterPopup({ setUserRole }) {
     };
 
     if (!isLogin && !validateDutchPostcode(formData.postcode)) {
-      alert('Vul alstjeblieft een NL postcode in.');
+      alert('Please fill in a valid postal code');
       return;
     }
 
@@ -80,7 +80,7 @@ function LoginRegisterPopup({ setUserRole }) {
             console.log('Login successful, no token received.');
           }
         } else {
-          alert('Registratie successvol!');
+          alert('Registration successful!');
           setIsLogin(true);
         }
         closeModal();
@@ -124,9 +124,9 @@ function LoginRegisterPopup({ setUserRole }) {
           <button type="submit" className="form-button">{isLogin ? 'Login' : 'Register'}</button>
         </form>
         {isLogin ? (
-          <p className="toggle-form-text" onClick={toggleForm}>Nog geen account? Registreer hier</p>
+          <p className="toggle-form-text" onClick={toggleForm}>No account? Create one here</p>
         ) : (
-          <p className="toggle-form-text" onClick={toggleForm}>Heb je al een account? Log hier in</p>
+          <p className="toggle-form-text" onClick={toggleForm}>Already have an account? Log in here</p>
         )}
       </Modal>
     </div>

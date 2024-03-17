@@ -8,15 +8,16 @@ const mongoose = require('mongoose');
       console.log("Received request body:", req.body);
 
       const documentToInsert = {
-          title: req.body.title,
-          questions: req.body.questions.map(question => ({
-              questionText: question.questionText,
-              options: question.options.map(option => ({
-                  text: option.text,
-                  count: 0 
-              }))
-          }))
-      };
+        title: req.body.title,
+        questions: req.body.questions.map(question => ({
+            questionText: question.questionText,
+            options: question.options.map(option => ({
+                text: option.text,
+                count: 0 
+            }))
+        })),
+        points: req.body.points 
+    };
 
       try {
           const result = await mongoose.connection.collection('questionnaires').insertOne(documentToInsert);

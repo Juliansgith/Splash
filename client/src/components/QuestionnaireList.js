@@ -19,7 +19,7 @@ function QuestionnaireList() {
   
   return (
     <div className="questionnaire-container">
-      <h2>In te vullen Questionnaires</h2>
+      <h2>Open questionnaires</h2>
       <div className="questionnaire-list">
         {questionnaires.map((questionnaire) => (
           <div key={questionnaire._id} className="questionnaire-item">

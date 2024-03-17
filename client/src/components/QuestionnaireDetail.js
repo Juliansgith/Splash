@@ -39,7 +39,7 @@ function QuestionnaireDetail() {
     }
   };
 
-  if (!questionnaire) return <div>Aan het laden...</div>;
+  if (!questionnaire) return <div>Loading...</div>;
 
   return (
     <div className="questionnaire-detail-container">

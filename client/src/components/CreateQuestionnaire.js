@@ -7,6 +7,7 @@ function CreateQuestionnaire() {
   const [questions, setQuestions] = useState([
     { questionText: "", options: [{ text: "" }] },
   ]);
+  const [points, setPoints] = useState('');
 
   const handleQuestionTextChange = (index, text) => {
     const newQuestions = [...questions];
@@ -32,7 +33,7 @@ function CreateQuestionnaire() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const newQuestionnaire = { title: questionnaireTitle, questions };
+    const newQuestionnaire = { title: questionnaireTitle, questions, points };
 
     try {
       await axios.post('http://localhost:5000/create', newQuestionnaire);
@@ -79,6 +80,13 @@ function CreateQuestionnaire() {
           </div>
         ))}
         <button type="button" onClick={addQuestion} className="add-button">Add Question</button>
+        <input
+        type="number"
+        className="create-input"
+        value={points}
+        onChange={(e) => setPoints(e.target.value)}
+        placeholder="Points"
+      />
         <button type="submit" className="submit-button">Submit Questionnaire</button>
       </form>
       {creationStatus && <p className="status-message">{creationStatus}</p>}
