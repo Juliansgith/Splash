@@ -22,7 +22,8 @@ function NavBar() {
       {isLoggedIn() && <>
         <span> | </span><Link to="/create" className="nav-link">Create New Questionnaire</Link>
         <span> | </span><Link to="/answers" className="nav-link">Answers</Link>
-        <span> | </span><button onClick={handleLogout} className="nav-link">Logout</button>
+        <span> | </span><Link to="/account" className="nav-link">Account</Link>
+        <span> | </span><button onClick={handleLogout} className="logoutbutton">Logout</button>
       </>}
       {!isLoggedIn() && <Link to="/login" className="nav-link">Login</Link>}
     </nav>
