@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { jwtDecode as jwt_decode } from 'jwt-decode';
-import NavBar from './components/NavBar'; // Make sure this path matches your file structure
+import NavBar from './components/NavBar'; 
 import QuestionnaireList from './components/QuestionnaireList';
 import QuestionnaireDetails from './components/QuestionnaireDetails';
 import CreateQuestionnaire from './components/CreateQuestionnaire';
