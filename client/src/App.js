@@ -8,6 +8,7 @@ import CreateQuestionnaire from './components/CreateQuestionnaire';
 import QuestionnaireDetail from './components/QuestionnaireDetail'; 
 import LoginRegisterPopup from './components/LoginRegisterPopup';
 import Answers from './components/Answers';
+import Account from './components/accounts'
 
 function App() {
   const [userRole, setUserRole] = useState(null);
@@ -18,7 +19,7 @@ function App() {
       const decoded = jwt_decode(token);
       setUserRole(decoded.role);
     }
-  }, []);
+  }, []); 
   
   return (
     <Router>
@@ -31,6 +32,7 @@ function App() {
         <Routes>
           <Route path="/" element={<QuestionnaireList />} />
           <Route path="/answers" element={<Answers />} />
+          <Route path="/account" element={<Account />} />
           {userRole === 'admin' && <Route path="/create" element={<CreateQuestionnaire />} />}
           <Route path="/questionnaire/:id" element={<QuestionnaireDetail />} />
           <Route path="/answers/:id" element={<QuestionnaireDetails />} />
