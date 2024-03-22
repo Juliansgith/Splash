@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Button, TextField, Box, Typography } from '@mui/material';
 
 function CreateQuestionnaire() {
   const [questionnaireTitle, setQuestionnaireTitle] = useState("");
@@ -47,50 +48,90 @@ function CreateQuestionnaire() {
   };
 
   return (
-    <div className="create-questionnaire-container">
-      <h2>Create New Questionnaire</h2>
-      <form onSubmit={handleSubmit} className="create-form">
-        <input
-          type="text"
-          className="create-input"
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        p: 2,
+      }}
+    >
+      <Typography variant="h4" gutterBottom>Create New Questionnaire</Typography>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{
+          overflowY: 'auto',
+          maxHeight: '60vh',
+          width: '50vh',
+          maxWidth: '50vh',
+          bgcolor: '#ffffff',
+          borderRadius: '8px',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          p: '20px',
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+        }}
+      >
+        <TextField
+          fullWidth
+          label="Questionnaire Title"
           value={questionnaireTitle}
           onChange={(e) => setQuestionnaireTitle(e.target.value)}
-          placeholder="Questionnaire Title"
+          variant="outlined"
+          margin="normal"
         />
         {questions.map((question, qIndex) => (
-          <div key={qIndex}>
-            <input
-              type="text"
-              className="create-input"
+          <Box key={qIndex} sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+            <TextField
+              fullWidth
+              label="Question Text"
+              variant="outlined"
               value={question.questionText}
               onChange={(e) => handleQuestionTextChange(qIndex, e.target.value)}
-              placeholder="Question Text"
+              margin="normal"
             />
             {question.options.map((option, oIndex) => (
-              <input
+              <TextField
                 key={oIndex}
-                type="text"
-                className="option-input"
+                fullWidth
+                label="Option Text"
+                variant="outlined"
                 value={option.text}
                 onChange={(e) => handleOptionTextChange(qIndex, oIndex, e.target.value)}
-                placeholder="Option Text"
+                margin="normal"
               />
             ))}
-            <button type="button" onClick={() => addOption(qIndex)} className="add-button">Add Option</button>
-          </div>
+            <Button variant="outlined" onClick={() => addOption(qIndex)} sx={{ mt: 1, mb: 1 }}>
+              Add Option
+            </Button>
+          </Box>
         ))}
-        <button type="button" onClick={addQuestion} className="add-button">Add Question</button>
-        <input
-        type="number"
-        className="create-input"
-        value={points}
-        onChange={(e) => setPoints(e.target.value)}
-        placeholder="Points"
-      />
-        <button type="submit" className="submit-button">Submit Questionnaire</button>
-      </form>
-      {creationStatus && <p className="status-message">{creationStatus}</p>}
-    </div>
+        <Button variant="outlined" onClick={addQuestion} sx={{ mt: 1, mb: 1 }}>
+          Add Question
+        </Button>
+        <TextField
+          type="number"
+          fullWidth
+          label="Points"
+          value={points}
+          onChange={(e) => setPoints(e.target.value)}
+          variant="outlined"
+          margin="normal"
+        />
+        <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
+          Submit Questionnaire
+        </Button>
+      </Box>
+      {creationStatus && <Typography color="textSecondary" sx={{ mt: 2 }}>{creationStatus}</Typography>}
+    </Box>
   );
 }
 

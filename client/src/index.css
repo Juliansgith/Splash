@@ -176,59 +176,6 @@ body, html {
 
 /*create page */
 
-
-.create-form {
-  overflow-y: auto; /* Enable vertical scrolling within the form */
-  max-height: 65vh; /* Limit the form's height to ensure it doesn't overflow the viewport */
-  width: auto; /* Ensure the form width adjusts based on content */
-  max-width: 600px; /* Maximum width to maintain design integrity */
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
-}
-
-.create-form::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
-}
-
-.create-input, .option-input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-.create-input:focus, .option-input:focus {
-  border-color: #4A90E2;
-  outline: none;
-}
-
-.add-button, .submit-button {
-  background-color: #4A90E2;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  display: block; /* Ensure buttons are full-width */
-  width: 100%;
-  margin-top: 10px;
-}
-
-.add-button:hover, .submit-button:hover {
-  background-color: #357ABD;
-}
-
-.status-message {
-  color: #4A90E2;
-  margin-top: 15px;
-}
-
 /*navbar*/
 .navbar {
   background-color: #4A90E2;

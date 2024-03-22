@@ -31,7 +31,7 @@ const mongoose = require('mongoose');
 
   router.get('/all', async (req, res) => {
     try {
-      const userId = req.query.userId; // Get userId from query parameter
+      const userId = req.query.userId;
       if (!userId) {
         return res.status(400).json({ error: 'User ID not provided' });
       }
