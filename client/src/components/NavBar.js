@@ -6,13 +6,12 @@ function NavBar() {
   const navigate = useNavigate();
   const isLoggedIn = () => {
     const token = localStorage.getItem('token');
-    return !!token; // Checks if the token exists
+    return !!token; 
   };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/'); // Redirects to the home page after logout
-    // Optionally, force reload to clear user state
+    navigate('/'); 
     window.location.reload();
   };
 

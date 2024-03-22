@@ -22,7 +22,7 @@ function LoginRegisterPopup({ setUserRole }) {
     setPasswordsMatch(formData.password === passwordConfirmation);
   }, [formData.password, passwordConfirmation]);
 
-  const navigate = useNavigate(); // Get the navigate function
+  const navigate = useNavigate(); 
 
   function openModal() {
     setIsOpen(true);
@@ -50,8 +50,7 @@ function LoginRegisterPopup({ setUserRole }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const apiUrl = 'http://localhost:5000'; // Adjust as necessary
-
+    const apiUrl = 'http://localhost:5000'; 
     const endpoint = isLogin ? '/login' : '/register';
     const data = isLogin ? {
       email: formData.email,
@@ -75,13 +74,15 @@ function LoginRegisterPopup({ setUserRole }) {
           if (response.data.token) {
             localStorage.setItem('token', response.data.token);
             console.log('Login successful, token saved.');
-            navigate('/'); // Redirect to the homepage
+            window.location.reload();
+            navigate('/'); 
           } else {
             console.log('Login successful, no token received.');
           }
         } else {
           alert('Registration successful!');
           setIsLogin(true);
+          window.location.reload();
         }
         closeModal();
       })
