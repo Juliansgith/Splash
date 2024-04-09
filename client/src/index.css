@@ -1,13 +1,283 @@
-body {
+body, html {
+  max-height: 100vh;
+  height: 100%;
   margin: 0;
+
   font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
     "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif "Poppins";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f2f5;
 }
 
 code {
   font-family: Poppins, source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff; /* Or any color/theme you prefer */
+  z-index: 1000; /* Ensure it stays above other content */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds a shadow for better separation */
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  padding-top: 60px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px; /* Adjust based on your preference */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  outline: none; /* Removes the focus outline */
+}
+
+/* Form and form elements styling */
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Makes sure padding does not affect the overall width */
+}
+
+.form-input:focus {
+  border-color: #4A90E2;
+  outline: none;
+}
+
+.form-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.form-button:hover {
+  background-color: #357ABD;
+}
+
+/* Toggle form link styling */
+.toggle-form-text {
+  color: #4A90E2;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.toggle-form-text:hover {
+  text-decoration: underline;
+}
+
+/* Logout button styling */
+.logout-button {
+  background-color: transparent;
+  color: #4A90E2;
+  border: 2px solid #4A90E2;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.logoutbutton {
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  color:white
+}
+
+.logout-button:hover {
+  background-color: #4A90E2;
+  color: white;
+}
+
+.questionnaire-list {
+  width: 100%;
+  max-width: 600px; /* Responsive max width */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.questionnaire-item {
+  border-bottom: 1px solid #eaeaea;
+  padding: 10px 0;
+}
+
+.questionnaire-title {
+  color: #333;
+  font-size: 1.2em;
+}
+
+.open-button {
+  background-color: #4A90E2;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.open-button:hover {
+  background-color: #357ABD;
+}
+
+@media (max-width: 768px) {
+  .questionnaire-list {
+    width: 90%; /* Slightly wider on smaller screens */
+  }
+}
+
+.questionnaire-detail-form {
+  width: 100%;
+  max-width: 600px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.question-text {
+  color: #333;
+  margin-top: 20px;
+  font-size: 1em;
+}
+
+.option-input {
+  margin-right: 10px;
+}
+
+.submit-button {
+  background-color: #4A90E2;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block; /* Make the button block to occupy the full width */
+  width: 100%;
+  margin-top: 20px;
+}
+
+.submit-button:hover {
+  background-color: #357ABD;
+}
+
+/*create page */
+
+/*navbar*/
+.navbar {
+  background-color: #4A90E2;
+  padding: 10px 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/*antwoord pagina*/
+/* Apply to QuestionnaireDetails component */
+.details-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 80px; /* Adjust based on navbar height */
+  width: 100%;
+  max-width: 600px; /* Consistent with the create form */
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.question-text {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.option-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.option-item {
+  background-color: #f0f2f5;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/*antwoorden 2 */
+
+.answers-container {
+  width: 90%;
+  max-width: 100vh; /* Maintains maximum width but allows flexibility */
+  margin: auto;
+  padding-top: 45vh; /* Increase as needed to prevent clipping with the navbar */
+}
+
+.questionnaire-item {
+  width:40vh;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px 0; /* Provides spacing between items */
+  padding: 5% 3%; /* Responsive padding */
+}
+
+.questionnaire-title {
+  font-size: calc(1em + 1vw); /* Responsive font size */
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.open-button {
+  padding: 10px 5%; /* Responsive padding */
+  width: auto; /* Adjusts width according to content */
+}
+
+/* Ensures responsiveness */
+@media (max-width: 768px) {
+  .answers-container {
+    padding-top: 120px; /* Adjusts top padding for smaller screens */
+  }
+}
+
+
+.input-error {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 5px;
 }

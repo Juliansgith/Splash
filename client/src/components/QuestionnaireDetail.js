@@ -9,7 +9,7 @@ function QuestionnaireDetail() {
   const [questionnaire, setQuestionnaire] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/${id}`)
+    axios.get(`http://localhost:5000/user/${id}`)
       .then(response => {
         setQuestionnaire(response.data);
       })
@@ -39,25 +39,23 @@ function QuestionnaireDetail() {
     }
   };
 
-  if (!questionnaire) return <div>Aan het laden...</div>;
+  if (!questionnaire) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className="questionnaire-detail-container">
       <h2>{questionnaire.title}</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="questionnaire-detail-form">
         {questionnaire.questions.map((q, index) => (
-          <div key={index}>
-            <h3>{q.questionText}</h3>
+          <div key={index} className="question-item">
+            <h3 className="question-text">{q.questionText}</h3>
             {q.options.map((option, oIndex) => (
-              <div key={oIndex}>
-                <label>
-                  <input type="radio" name={`question-${index}`} value={option.text} /> {option.text}
-                </label>
-              </div>
+              <label key={oIndex} className="option-label">
+                <input type="radio" name={`question-${index}`} value={option.text} className="option-input" /> {option.text}
+              </label>
             ))}
           </div>
         ))}
-        <button type="submit">Submit Answers</button>
+        <button type="submit" className="submit-button">Submit Answers</button>
       </form>
     </div>
   );

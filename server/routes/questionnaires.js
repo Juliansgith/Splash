@@ -1,6 +1,5 @@
 const express = require('express');
 const Questionnaire = require('../models/Questionnaire');
-const InactiveQuestionnaire = require('../models/InactiveQuestionnaire')
 const User = require('../models/User');
 const router = express.Router();
 const mongoose = require('mongoose');
@@ -9,15 +8,16 @@ const mongoose = require('mongoose');
       console.log("Received request body:", req.body);
 
       const documentToInsert = {
-          title: req.body.title,
-          questions: req.body.questions.map(question => ({
-              questionText: question.questionText,
-              options: question.options.map(option => ({
-                  text: option.text,
-                  count: 0 
-              }))
-          }))
-      };
+        title: req.body.title,
+        questions: req.body.questions.map(question => ({
+            questionText: question.questionText,
+            options: question.options.map(option => ({
+                text: option.text,
+                count: 0 
+            }))
+        })),
+        points: req.body.points 
+    };
 
       try {
           const result = await mongoose.connection.collection('questionnaires').insertOne(documentToInsert);
@@ -31,7 +31,7 @@ const mongoose = require('mongoose');
 
   router.get('/all', async (req, res) => {
     try {
-      const userId = req.query.userId; // Get userId from query parameter
+      const userId = req.query.userId;
       if (!userId) {
         return res.status(400).json({ error: 'User ID not provided' });
       }
@@ -49,27 +49,8 @@ const mongoose = require('mongoose');
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
-
-  router.post('/move-to-inactive/:id', async (req, res) => {
-    try {
-      const questionnaire = await Questionnaire.findById(req.params.id);
-      if (!questionnaire) {
-        return res.status(404).send('Questionnaire not found');
-      }
   
-      const inactiveQuestionnaire = new InactiveQuestionnaire(questionnaire.toObject());
-      await inactiveQuestionnaire.save();
-  
-      await Questionnaire.findByIdAndDelete(req.params.id);
-  
-      res.send({ message: 'Questionnaire moved to inactive successfully and deleted from active questionnaires.' });
-    } catch (error) {
-      res.status(500).send(error.toString());
-    }
-  });
-  
-
-  router.get('/:id', async (req, res) => {
+  router.get('/user/:id', async (req, res) => {
     try {
       const questionnaire = await Questionnaire.findById(req.params.id);
       if (!questionnaire) {
@@ -82,39 +63,59 @@ const mongoose = require('mongoose');
   });
 
   router.post('/answer/:id', async (req, res) => {
-    const { id } = req.params;
-    const { answers, userId } = req.body; // Assuming userId is passed in the body. Better to use JWT token to extract userId
+      const { id } = req.params;
+      const { answers, userId } = req.body;
   
-    if (!answers || typeof answers !== 'object') {
-      return res.status(400).send('Invalid answers format.');
-    }
+      if (!answers || typeof answers !== 'object') {
+        return res.status(400).send('Invalid answers format.');
+      }
   
-    try {
-      const questionnaire = await Questionnaire.findById(id);
-      if (!questionnaire) return res.status(404).send('Questionnaire not found');
+      try {
+        const questionnaire = await Questionnaire.findById(id);
+        if (!questionnaire) return res.status(404).send('Questionnaire not found');
   
-      Object.entries(answers).forEach(([questionIndex, optionText]) => {
-        const question = questionnaire.questions[parseInt(questionIndex)];
-        if (!question) {
-          throw new Error(`Question at index ${questionIndex} not found`);
-        }
-        const option = question.options.find(opt => opt.text === optionText);
-        if (!option) {
-          throw new Error(`Option "${optionText}" not found in question at index ${questionIndex}`);
-        }
-        option.count += 1;
-      });
+        Object.entries(answers).forEach(([questionIndex, optionText]) => {
+          const question = questionnaire.questions[parseInt(questionIndex)];
+          if (!question) {
+            throw new Error(`Question at index ${questionIndex} not found`);
+          }
+          const option = question.options.find(opt => opt.text === optionText);
+          if (!option) {
+            throw new Error(`Option "${optionText}" not found in question at index ${questionIndex}`);
+          }
+          option.count += 1;
+        });
   
-      await questionnaire.save();
+        await questionnaire.save();
   
-      await User.findByIdAndUpdate(userId, { $push: { questionnaires: id } });
+        // Here we assume the "points" attribute on the questionnaire object holds the points value
+        const pointsToAdd = questionnaire.points;
+        
+        // Use $inc operator to increment the user's points
+        await User.findByIdAndUpdate(userId, { $inc: { points: pointsToAdd } }, { new: true });
   
-      res.status(200).send(questionnaire);
-    } catch (error) {
-      console.error(error);
-      res.status(400).send(error.message);
-    }
+        // Optionally push the questionnaire ID to the user's questionnaire array
+        await User.findByIdAndUpdate(userId, { $push: { questionnaires: id } });
+  
+        res.status(200).send(questionnaire);
+      } catch (error) {
+        console.error(error);
+        res.status(400).send(error.message);
+      }
   });
   
+
+  router.get('/getall', async (req, res) => {
+    try {
+        const questionnaires = await Questionnaire.find();
+        if (questionnaires.length === 0) {
+            return res.status(404).json({ error: 'No questionnaires found' });
+        }
+        res.json(questionnaires);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 module.exports = router;

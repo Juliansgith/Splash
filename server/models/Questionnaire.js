@@ -13,7 +13,11 @@ const questionSchema = new mongoose.Schema({
 const questionnaireSchema = new mongoose.Schema({
   title: { type: String, required: true },
   questions: [questionSchema],
+  isActive: { type: Boolean, default: true },
+  points: { type: String, required: true },
 });
+
+
 
 const Questionnaire = mongoose.model('Questionnaire', questionnaireSchema);
 

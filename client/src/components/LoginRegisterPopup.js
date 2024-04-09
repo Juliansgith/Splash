@@ -1,18 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
-import { jwtDecode as jwt_decode } from 'jwt-decode';
-
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 Modal.setAppElement('#root');
 
@@ -26,6 +15,14 @@ function LoginRegisterPopup({ setUserRole }) {
     city: '',
     postcode: '',
   });
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
+
+  useEffect(() => {
+    setPasswordsMatch(formData.password === passwordConfirmation);
+  }, [formData.password, passwordConfirmation]);
+
+  const navigate = useNavigate(); 
 
   function openModal() {
     setIsOpen(true);
@@ -53,8 +50,7 @@ function LoginRegisterPopup({ setUserRole }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const apiUrl = 'http://localhost:5000'; // Adjust as necessary
-
+    const apiUrl = 'http://localhost:5000'; 
     const endpoint = isLogin ? '/login' : '/register';
     const data = isLogin ? {
       email: formData.email,
@@ -68,23 +64,25 @@ function LoginRegisterPopup({ setUserRole }) {
     };
 
     if (!isLogin && !validateDutchPostcode(formData.postcode)) {
-      alert('Please enter a valid Dutch postcode.');
+      alert('Please fill in a valid postal code');
       return;
     }
-  
+
     axios.post(`${apiUrl}${endpoint}`, data)
       .then(response => {
         if (isLogin) {
           if (response.data.token) {
             localStorage.setItem('token', response.data.token);
-            window.location.reload();
             console.log('Login successful, token saved.');
+            window.location.reload();
+            navigate('/'); 
           } else {
             console.log('Login successful, no token received.');
           }
         } else {
           alert('Registration successful!');
-          setIsLogin(true); // Optionally switch to login form
+          setIsLogin(true);
+          window.location.reload();
         }
         closeModal();
       })
@@ -93,41 +91,47 @@ function LoginRegisterPopup({ setUserRole }) {
       });
   }
 
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        setUserRole(null); 
-        window.location.reload(); 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setUserRole(null);
+    window.location.reload();
   };
 
   return (
-    <div>
+    <div className="container">
       {localStorage.getItem('token') ? (
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={handleLogout} className="logout-button">Logout</button>
       ) : (
-        <button onClick={openModal}>{isLogin ? 'Login/Register' : 'Register/Login'}</button>
+        <button onClick={openModal} className="form-button">{isLogin ? 'Login/Register' : 'Register/Login'}</button>
       )}
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className="modal-content">
         <h2>{isLogin ? 'Login' : 'Register'}</h2>
         <form onSubmit={handleSubmit}>
           {!isLogin && (
             <>
-              <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required={!isLogin} />
-              <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} required={!isLogin} />
-              <input type="text" name="postcode" placeholder="Postcode" value={formData.postcode} onChange={handleChange} required={!isLogin} />
+              <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required={!isLogin} className="form-input" />
+              <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} required={!isLogin} className="form-input" />
+              <input type="text" name="postcode" placeholder="Postcode" value={formData.postcode} onChange={handleChange} required={!isLogin} className="form-input" />
             </>
           )}
-          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-          <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
-          <button type="submit">{isLogin ? 'Login' : 'Register'}</button>
+          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required className="form-input" />
+          <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required className="form-input" />
+          {!isLogin && (
+            <>
+              <input type="password" name="passwordConfirmation" placeholder="Confirm Password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} required={!isLogin} className={`form-input ${!passwordsMatch ? 'input-error' : ''}`} />
+              {!passwordsMatch && <p className="error-message">Passwords do not match.</p>}
+            </>
+          )}
+          <button type="submit" className="form-button">{isLogin ? 'Login' : 'Register'}</button>
         </form>
         {isLogin ? (
-          <p style={{color: 'blue', cursor: 'pointer'}} onClick={toggleForm}>Nog geen account? Registreer hier</p>
+          <p className="toggle-form-text" onClick={toggleForm}>No account? Create one here</p>
         ) : (
-          <p style={{color: 'blue', cursor: 'pointer'}} onClick={toggleForm}>Already have an account? Login here</p>
+          <p className="toggle-form-text" onClick={toggleForm}>Already have an account? Log in here</p>
         )}
       </Modal>
     </div>
   );
-        }  
+}
 
 export default LoginRegisterPopup;
