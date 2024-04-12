@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./css/Stellingbox.css";
+import "../css/Stellingbox.css";
 
 function StellingKaart(props) {
   const goToGoogle = () => {

@@ -1,5 +1,5 @@
-import StellingKaart from "./Stellingbox";
-
+import StellingKaart from "../components/StellingBox"
+//ook QuestionnaireList.js hierop toevoegen. Invoegen in app.js als / pagina
 
 function QuestionnaireOverview() {
     return (

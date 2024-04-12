@@ -4,12 +4,13 @@ import { jwtDecode as jwt_decode } from "jwt-decode";
 import NavBar from './components/NavBar'; 
 import QuestionnaireList from './components/QuestionnaireList';
 import QuestionnaireDetails from './components/QuestionnaireDetails';
-import CreateQuestionnaire from './components/CreateQuestionnaire';
-import QuestionnaireDetail from './components/QuestionnaireDetail'; 
+import CreateQuestionnaire from './pages/CreateQuestionnaire';
+import QuestionnaireDetail from './pages/Questionnaire'; 
 import LoginRegisterPopup from './components/LoginRegisterPopup';
-import Answers from './components/Answers';
-import Account from './components/accounts';
-import QuestionnaireOverview from "./components/QuestionnaireOverview";
+import Answers from './pages/Answers';
+import Account from './pages/Accounts';
+import QuestionnaireOverview from "./pages/Questionnaire";
+import Home from "./pages/Overview";
 
 function App() {
   const [userRole, setUserRole] = useState(null);
@@ -31,7 +32,7 @@ function App() {
         </header>
         <div className="main-content">
         <Routes>
-          <Route path="/" element={<QuestionnaireOverview />} />
+          <Route path="/" element={<QuestionnaireList />} />
           <Route path="/answers" element={<Answers />} />
           <Route path="/account" element={<Account />} />
           {userRole === 'admin' && <Route path="/create" element={<CreateQuestionnaire />} />}
