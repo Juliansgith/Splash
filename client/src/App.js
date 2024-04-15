@@ -9,6 +9,7 @@ import QuestionnaireDetail from './components/Questionnaire';
 import LoginRegisterPopup from './components/LoginRegisterPopup';
 import Answers from './pages/Answers';
 import Account from './pages/Accounts';
+import RewardsPage from './components/RewardsPage';
 import QuestionnaireOverview from "./components/Questionnaire";
 
 function App() {
@@ -33,10 +34,12 @@ function App() {
             <Route path="/" element={<QuestionnaireList />} />
             <Route path="/answers" element={<Answers />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/rewards" element={<RewardsPage />} />
+            <Route path="/login" element={<LoginRegisterPopup setUserRole={setUserRole} />} />
             {userRole === 'admin' && <Route path="/create" element={<CreateQuestionnaire />} />}
             <Route path="/questionnaire/:id" element={<QuestionnaireDetail />} />
             <Route path="/answers/:id" element={<QuestionnaireDetails />} />
-            <Route path="/login" element={<LoginRegisterPopup setUserRole={setUserRole} />} />
+            
           </Routes>
         </div>
         <NavBar userRole={userRole} />

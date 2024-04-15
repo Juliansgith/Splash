@@ -9,10 +9,12 @@ app.use(express.json());
 const questionnaireRoutes = require('./routes/questionnaires');
 const authRoutes = require('./routes/AuthRoutes');
 const answersRouter = require('./routes/answers');
+const RewardRoutes = require('./routes/RewardRoutes');
 
 app.use('/', questionnaireRoutes);
 app.use('/', authRoutes);
 app.use('/', answersRouter);
+app.use('/', RewardRoutes);
 
 require("./db/conn");
 
