@@ -6,7 +6,7 @@ import QuestionnaireList from './pages/QuestionnaireList';
 import QuestionnaireDetails from './components/QuestionnaireDetails';
 import CreateQuestionnaire from './pages/CreateQuestionnaire';
 import QuestionnaireDetail from './components/Questionnaire'; 
-import LoginRegisterPopup from './components/LoginRegisterPopup';
+import LoginRegisterPopup from './components/LoginPopup';
 import Answers from './pages/Answers';
 import Account from './pages/Accounts';
 import RewardsPage from './components/RewardsPage';
