@@ -2,7 +2,9 @@ body, html {
   height: 100%;
   margin: 0;
   padding: 0;
-  padding-bottom: 70px;
+  display: flex;
+  justify-content: center; /* Horizontally centers content */
+  align-items: center; /* Vertically centers content */
   overflow-x: hidden; /* Prevents horizontal scroll */
   font-family: 'Poppins', sans-serif;
   background-color: #f0f2f5;
@@ -10,7 +12,13 @@ body, html {
 }
 
 .main-content {
-  padding-bottom: 10vh; /* Bottom padding should match navbar height */
+  width: 90%; /* Adjust width as necessary */
+  max-width: 800px; /* Max width to avoid very wide layouts on large screens */
+  margin: auto; /* Centers in the available horizontal space */
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  background-color: #fff; /* Optional for contrasting background */
+  border-radius: 8px; /* Optional rounded corners */
 }
 
 code {
