@@ -1,14 +1,14 @@
+.questionnaire-card {
+  margin: 2vw;
+}
 
 .Stellingcontainer {
-  width: 77vw;
   height: 42vh;
   margin: auto;
-  /* margin-bottom: 40px; */
   display: flex;
   padding: 1.5rem;
   flex-direction: column;
   align-items: flex-start;
-
   flex-shrink: 0;
   border-radius: 1.25rem;
   background: white;
