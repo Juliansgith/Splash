@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -6,7 +7,7 @@ body, html {
   justify-content: center; /* Horizontally centers content */
   align-items: center; /* Vertically centers content */
   overflow-x: hidden; /* Prevents horizontal scroll */
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #f0f2f5;
   color: #333; /* Default text color */
 }
@@ -37,7 +38,6 @@ code {
   text-align: left;    /* Aligns the text to the left */
 }
 
-
 .modal-content {
   position: fixed;
   top: 50%;
@@ -64,14 +64,14 @@ code {
 }
 
 .form-input:focus {
-  border-color: #4A90E2;
+  border-color: #4a90e2;
   outline: none;
 }
 
 .form-button {
   width: 100%;
   padding: 10px;
-  background-color: #4A90E2;
+  background-color: #4a90e2;
   color: white;
   border: none;
   border-radius: 5px;
@@ -80,12 +80,12 @@ code {
 }
 
 .form-button:hover {
-  background-color: #357ABD;
+  background-color: #357abd;
 }
 
 /* Toggle form link styling */
 .toggle-form-text {
-  color: #4A90E2;
+  color: #4a90e2;
   cursor: pointer;
   text-align: center;
   margin-top: 15px;
@@ -110,11 +110,11 @@ code {
   border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
-  color:white
+  color: white;
 }
 
 .logout-button:hover {
-  background-color: #4A90E2;
+  background-color: #4a90e2;
   color: white;
 }
 
@@ -138,7 +138,7 @@ code {
 }
 
 .open-button {
-  background-color: #4A90E2;
+  background-color: #4a90e2;
   color: #ffffff;
   border: none;
   padding: 8px 16px;
@@ -148,7 +148,7 @@ code {
 }
 
 .open-button:hover {
-  background-color: #357ABD;
+  background-color: #357abd;
 }
 
 @media (max-width: 768px) {
@@ -177,7 +177,7 @@ code {
 }
 
 .submit-button {
-  background-color: #4A90E2;
+  background-color: #4a90e2;
   color: #ffffff;
   border: none;
   padding: 10px 20px;
@@ -189,7 +189,7 @@ code {
 }
 
 .submit-button:hover {
-  background-color: #357ABD;
+  background-color: #357abd;
 }
 
 /*create page */
@@ -201,7 +201,7 @@ code {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #4A90E2; /* Use your theme color here */
+  background-color: #4a90e2; /* Use your theme color here */
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   z-index: 100; /* Ensures navbar stays on top */
   display: flex;
@@ -264,7 +264,7 @@ code {
 }
 
 .questionnaire-item {
-  width:40vh;
+  width: 40vh;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -279,7 +279,7 @@ code {
 }
 
 .open-button {
-  background-color: #4A90E2;
+  background-color: #4a90e2;
   color: #ffffff;
   border: none;
   padding: 1.5vh 3vw; /* Responsive padding */
@@ -297,7 +297,6 @@ code {
   }
 }
 
-
 .input-error {
   border-color: red;
 }
@@ -308,50 +307,4 @@ code {
   margin-top: 5px;
 }
 
-/* stellingcontainer zooi*/
-.Stellingcontainer {
-  display: flex; /* Flex container */
-  flex-direction: row; /* Items aligned in a row */
-  overflow-x: auto; /* Enables horizontal scrolling */
-  white-space: nowrap; /* Prevents wrapping of items */
-}
-
-.questionnaire-item {
-  flex: 0 0 auto; /* Prevent cards from stretching */
-  width: 80vw; /* Card width, responsive to viewport width */
-  margin: 2vh; /* Margin around the cards */
-  background-color: #ffffff;
-  border-radius: 2vh; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  padding: 4vh; /* Internal spacing */
-}
-
-.questionnaire-container {
-  padding: 2vh;
-  max-width: 40vh;
-}
-
-.title {
-  margin-bottom: 2vh;
-}
-
-.questionnaire-list {
-  display: flex;
-  flex-wrap: nowrap; /* Prevents wrapping */
-  overflow-x: auto;
-  margin-top: 10vh; /* Give some space from the header */
-  padding-bottom: 10vh; /* Give space for scrolling */
-}
-
-.questionnaire-card {
-  background: #fff;
-  border-radius: 1vh; /* Responsive border-radius based on viewport height */
-  box-shadow: 0 0.2vh 0.5vh rgba(0, 0, 0, 0.2); /* Responsive shadow based on viewport height */
-  margin-right: 2vw; /* Responsive margin based on viewport width */
-  padding: 2vh; /* Responsive padding based on viewport height */
-  min-width: 60vw; /* Sets a minimum width for the cards based on viewport width */
-  min-height: 20vh; /* Sets a minimum height for the cards based on viewport height */
-}
-
-/* Add styles for other elements like button etc. as needed */
 
