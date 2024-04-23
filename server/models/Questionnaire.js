@@ -15,6 +15,7 @@ const questionnaireSchema = new mongoose.Schema({
   questions: [questionSchema],
   isActive: { type: Boolean, default: true },
   points: { type: String, required: true },
+  company: {type: String, required: true}
 });
 
 
