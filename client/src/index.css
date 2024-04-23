@@ -307,39 +307,4 @@ code {
   margin-top: 5px;
 }
 
-/* stellingcontainer zooi*/
-.Stellingcontainer {
-  display: flex; /* Flex container */
-  flex-direction: row; /* Items aligned in a row */
-  overflow-x: auto; /* Enables horizontal scrolling */
-  white-space: nowrap; /* Prevents wrapping of items */
-}
 
-.questionnaire-item {
-  flex: 0 0 auto; /* Prevent cards from stretching */
-  width: 80vw; /* Card width, responsive to viewport width */
-  margin: 2vh; /* Margin around the cards */
-  background-color: #ffffff;
-  border-radius: 2vh; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  padding: 4vh; /* Internal spacing */
-}
-
-.questionnaire-container {
-  padding: 2vh;
-  max-width: 40vh;
-}
-
-.title {
-  margin-bottom: 2vh;
-}
-
-.questionnaire-list {
-  display: flex;
-  flex-wrap: nowrap; /* Prevents wrapping */
-  overflow-x: auto;
-  margin-top: 10vh; /* Give some space from the header */
-  padding-bottom: 10vh; /* Give space for scrolling */
-}
-
-/* Add styles for other elements like button etc. as needed */
