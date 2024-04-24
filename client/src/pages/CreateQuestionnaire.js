@@ -4,6 +4,7 @@ import { Button, TextField, Box, Typography } from '@mui/material';
 
 function CreateQuestionnaire() {
   const [questionnaireTitle, setQuestionnaireTitle] = useState("");
+  const [companyName, setCompanyName] = useState(""); 
   const [creationStatus, setCreationStatus] = useState('');
   const [questions, setQuestions] = useState([
     { questionText: "", options: [{ text: "" }] },
@@ -34,7 +35,12 @@ function CreateQuestionnaire() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const newQuestionnaire = { title: questionnaireTitle, questions, points };
+    const newQuestionnaire = {
+      title: questionnaireTitle,
+      company: companyName,
+      questions,
+      points
+    };
 
     try {
       await axios.post('http://localhost:5000/create', newQuestionnaire);
@@ -88,6 +94,15 @@ function CreateQuestionnaire() {
           variant="outlined"
           margin="normal"
         />
+        
+        <TextField 
+        fullWidth
+        label="Company Name"
+        value={companyName}
+        onChange={(e) => setCompanyName(e.target.value)}
+        variant="outlined"
+        margin="normal"
+      />
         {questions.map((question, qIndex) => (
           <Box key={qIndex} sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
             <TextField
