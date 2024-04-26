@@ -194,33 +194,6 @@ code {
 
 /*create page */
 
-/*navbar*/
-/* Styles for Bottom Navbar */
-.navbar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #4A90E2; /* Use your theme color here */
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 100; /* Ensures navbar stays on top */
-  display: flex;
-  justify-content: space-around; /* Space out nav items evenly */
-  padding: 1rem 0; /* Padding on top and bottom */
-  box-sizing: border-box; /* Ensures padding does not affect overall width */
-}
-
-/* Style for each navigation link */
-.nav-link {
-  color: white;
-  padding: 0.5rem;
-  text-decoration: none; /* Removes underline from links */
-}
-
-.nav-link:hover {
-  text-decoration: underline;
-}
-
 /*antwoord pagina*/
 /* Apply to QuestionnaireDetails component */
 .details-container {
