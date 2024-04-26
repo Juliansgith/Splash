@@ -1,14 +1,39 @@
+.questionnaire-list {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin-top: 10vh;
+  padding-bottom: 10vh;
+  width: 100%;
+  max-width: 600px; /* Responsive max width */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.questionnaire-container {
+  padding: 2vh;
+  max-width: 40vh;
+}
+
+.questionnaire-item {
+  flex: 0 0 auto; /* Prevent cards from stretching */
+  width: 80vw; /* Card width, responsive to viewport width */
+  margin: 2vh; /* Margin around the cards */
+  background-color: #ffffff;
+  border-radius: 2vh; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 4vh; /* Internal spacing */
+}
 
 .Stellingcontainer {
-  width: 77vw;
   height: 42vh;
+  width: 60vw;
   margin: auto;
-  /* margin-bottom: 40px; */
   display: flex;
   padding: 1.5rem;
   flex-direction: column;
   align-items: flex-start;
-
   flex-shrink: 0;
   border-radius: 1.25rem;
   background: white;
@@ -73,4 +98,14 @@
 .Arrowimg {
   width: 2.3rem;
   height: 2.3rem;
+}
+
+.carousel-nav {
+  text-align: center;
+  margin: 0.8vh;
+}
+
+.swiper-slide img {
+  display: block;
+  object-fit: cover;
 }

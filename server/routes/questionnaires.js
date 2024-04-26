@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 
       const documentToInsert = {
         title: req.body.title,
+        company: req.body.company,
         questions: req.body.questions.map(question => ({
             questionText: question.questionText,
             options: question.options.map(option => ({
