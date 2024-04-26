@@ -185,6 +185,8 @@ code {
 
 /*create page */
 
+<<<<<<< HEAD
+=======
 /*navbar*/
 /* Styles for Bottom Navbar */
 .navbar {
@@ -212,6 +214,7 @@ code {
   text-decoration: underline;
 }
 
+>>>>>>> Dev
 /*antwoord pagina*/
 /* Apply to QuestionnaireDetails component */
 .details-container {
