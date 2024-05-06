@@ -4,6 +4,11 @@
   overflow-x: auto;
   margin-top: 10vh;
   padding-bottom: 10vh;
+  width: 100%;
+  max-width: 600px; /* Responsive max width */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .questionnaire-container {
@@ -19,10 +24,6 @@
   border-radius: 2vh; /* Rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   padding: 4vh; /* Internal spacing */
-}
-
-.questionnaire-card {
-  margin: 2vw;
 }
 
 .Stellingcontainer {
@@ -102,4 +103,9 @@
 .carousel-nav {
   text-align: center;
   margin: 0.8vh;
+}
+
+.swiper-slide img {
+  display: block;
+  object-fit: cover;
 }
