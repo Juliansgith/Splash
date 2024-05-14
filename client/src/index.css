@@ -53,6 +53,61 @@ code {
   outline: none; /* Removes the focus outline */
 }
 
+/* begin buttons */
+button {
+  border-radius: 1rem;
+  border: none;
+  background: var(--accent-accent-color-button-color, #456eff);
+  display: flex;
+  width: 85vw;
+  padding: 0.75rem 1rem;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-accent-color-button-color, #ffffff);
+  font-family: "Poppins";
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.Start {
+  width: 70vw;
+}
+
+.Share {
+  color: var(--text-accent-color-button-color, #000000);
+  background: var(--accent-accent-color-button-color, #ffffff);
+  border: 1px solid var(--text-text-color-1, #000);
+  font-weight: 400;
+}
+
+.Skip {
+  color: var(--text-accent-color-button-color, #000000);
+  background: var(--accent-accent-color-button-color, #ffffff);
+  font-weight: 400;
+}
+
+.Answer {
+  background: linear-gradient(
+    to right,
+    #456eff 50%,
+    rgba(69, 109, 255, 0.6) 50%
+  );
+  background-size: 200% 100%;
+  animation: fillbutton 5s;
+  animation-timing-function: linear;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  background-position: right bottom;
+}
+
+@keyframes fillbutton {
+  to {
+    background-position: left bottom;
+  }
+}
+/* end buttons */
+
 /* Form and form elements styling */
 .form-input {
   width: 100%;
@@ -68,7 +123,7 @@ code {
   outline: none;
 }
 
-.form-button {
+/* .form-button {
   width: 100%;
   padding: 10px;
   background-color: #4a90e2;
@@ -77,11 +132,11 @@ code {
   border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
-}
+} */
 
-.form-button:hover {
+/* .form-button:hover {
   background-color: #357abd;
-}
+} */
 
 /* Toggle form link styling */
 .toggle-form-text {
@@ -118,7 +173,7 @@ code {
   color: white;
 }
 
-.open-button {
+/* .open-button {
   background-color: #4a90e2;
   color: #ffffff;
   border: none;
@@ -126,11 +181,11 @@ code {
   border-radius: 5px;
   cursor: pointer;
   margin-top: 5px;
-}
+} */
 
-.open-button:hover {
+/* .open-button:hover {
   background-color: #357abd;
-}
+} */
 
 @media (max-width: 768px) {
   .questionnaire-item {
@@ -166,17 +221,17 @@ code {
   margin-bottom: 10px;
 }
 
-.open-button {
+/* .open-button {
   background-color: #4a90e2;
   color: #ffffff;
   border: none;
-  padding: 1.5vh 3vw; /* Responsive padding */
+  padding: 1.5vh 3vw; 
   border-radius: 2vh;
   cursor: pointer;
-  display: block; /* Full width */
+  display: block; 
   width: auto;
   text-align: center;
-}
+} */
 
 /* Ensures responsiveness */
 @media (max-width: 768px) {
