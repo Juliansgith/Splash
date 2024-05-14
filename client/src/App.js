@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { jwtDecode as jwt_decode } from "jwt-decode";
 import NavBar from './components/NavBar'; 
-import Home from './pages/Home';
+import Home from './pages/Home'
 import QuestionnaireDetails from './components/QuestionnaireDetails';
 import CreateQuestionnaire from './pages/CreateQuestionnaire';
 import QuestionnaireDetail from './components/Questionnaire'; 

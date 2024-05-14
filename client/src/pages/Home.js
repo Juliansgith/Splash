@@ -61,7 +61,7 @@ function Home() {
                         className="Imgcompany"
                         alt="Company Logo"
                       />
-                      <h3 className="Companytxt">{questionnaire.company}</h3>
+                      <p className="txt medium">{questionnaire.company}</p>
                     </div>
                     <img
                       src="assets/Arrowright.svg"

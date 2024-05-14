@@ -1,3 +1,10 @@
+/* defining custom fonts */
+@font-face {font-family: 'Poppins-Regular'; src: url('../public/fonts/Poppins-Regular.ttf'); font-weight:400;}
+@font-face {font-family: 'Poppins-Medium'; src: url('../public/fonts/Poppins-Medium.ttf'); font-weight: 500;}
+@font-face {font-family: 'Poppins-Bold'; src: url('../public/fonts/Poppins-Bold.ttf'); font-weight: 700;}
+@font-face {font-family: 'Poppins-ExtraBold'; src: url('../public/fonts/Poppins-ExtraBold.ttf'); font-weight: 800;}
+@font-face {font-family: 'Poppins-SemiBold'; src: url('../public/fonts/Poppins-SemiBold.ttf'); font-weight: 600;}
+
 body,
 html {
   height: 100%;
@@ -9,85 +16,122 @@ html {
   overflow-x: hidden; /* Prevents horizontal scroll */
   font-family: "Poppins", sans-serif;
   background-color: #F5F3EF;
-  color: #333; /* Default text color */
+  color: #000000; /* Default text color */
 }
 
-.main-content {
-  width: 90%; /* Adjust width as necessary */
-  max-width: 800px; /* Max width to avoid very wide layouts on large screens */
-  margin: auto; /* Centers in the available horizontal space */
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
-  background-color: #fff; /* Optional for contrasting background */
-  border-radius: 8px; /* Optional rounded corners */
+
+
+/* headings */
+
+h1 {
+  font-family: 'Poppins-Medium';
+  font-size: 26px;
+  font-weight: 500;
 }
 
-code {
-  font-family: Poppins, source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+h1.bold {
+  font-family: 'Poppins-Bold';
+  font-size: 30px;
+  font-weight: 700;
 }
 
-.header {
-  position: relative; /* Keeps header in normal flow of document */
-  top: 0;
-  width: 100%; /* Ensures it stretches across the top */
-  background-color: #fff; /* Matches theme color */
-  z-index: 10; /* Keeps header above other items */
-  padding: 1vh 2vw; /* Responsive vertical padding and horizontal padding for text */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds subtle shadow below the header */
-  text-align: left; /* Aligns the text to the left */
+h1.logo {
+  font-family: 'Poppins-Medium';
+  font-size: 36px;
+  font-weight: 500;
 }
 
-.modal-content {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
-  padding-top: 60px;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 500px; /* Adjust based on your preference */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  outline: none; /* Removes the focus outline */
+h2 {
+  font-family: 'Poppins-Medium';
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 120%;
 }
 
-/* begin buttons */
+h2.bold {
+  font-family: 'Poppins-Bold';
+  font-size: 20px;
+  font-weight: 700;
+}
+
+
+
+/* text */
+
+.txt {
+  font-size: 16px;
+}
+
+.txt.regular {
+  font-family: 'Poppins-Regular', sans-serif;
+}
+
+.txt.medium {
+  font-family: 'Poppins-Medium', sans-serif;
+}
+
+.txt.bold {
+  font-family: 'Poppins-Bold', sans-serif;
+}
+
+.txt.extrabold {
+  font-family: 'Poppins-ExtraBold', sans-serif;
+}
+
+.txt.semibold {
+  font-family: 'Poppins-SemiBold', sans-serif;
+}
+
+
+
+/* buttons */
+
 button {
   border-radius: 1rem;
   border: none;
   background: var(--accent-accent-color-button-color, #456eff);
   display: flex;
-  width: 85vw;
+  width: 77.5vw;
   padding: 0.75rem 1rem;
+  margin-left: auto;
+  margin-right: auto;
   justify-content: center;
   align-items: center;
   color: var(--text-accent-color-button-color, #ffffff);
-  font-family: "Poppins";
   font-size: 1rem;
   font-style: normal;
   font-weight: 600;
+  cursor: pointer;
 }
 
-.Start {
+.start {
   width: 70vw;
 }
 
-.Share {
+.bg-white {
   color: var(--text-accent-color-button-color, #000000);
   background: var(--accent-accent-color-button-color, #ffffff);
+  font-weight: 400;
+}
+
+.bd-black {
   border: 1px solid var(--text-text-color-1, #000);
-  font-weight: 400;
 }
 
-.Skip {
-  color: var(--text-accent-color-button-color, #000000);
-  background: var(--accent-accent-color-button-color, #ffffff);
-  font-weight: 400;
+.bd-gray {
+  border: 2px solid var(--text-text-color-1, #E6E6E6);
 }
 
-.Answer {
+.bd-none {
+  border: 0;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.enable-anim {
   background: linear-gradient(
     to right,
     #456eff 50%,
@@ -106,153 +150,10 @@ button {
     background-position: left bottom;
   }
 }
-/* end buttons */
-
-/* Form and form elements styling */
-.form-input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box; /* Makes sure padding does not affect the overall width */
-}
-
-.form-input:focus {
-  border-color: #4a90e2;
-  outline: none;
-}
-
-/* .form-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-} */
-
-/* .form-button:hover {
-  background-color: #357abd;
-} */
-
-/* Toggle form link styling */
-.toggle-form-text {
-  color: #4a90e2;
-  cursor: pointer;
-  text-align: center;
-  margin-top: 15px;
-}
-
-.toggle-form-text:hover {
-  text-decoration: underline;
-}
-
-/* Logout button styling */
-.logoutbutton {
-  padding: 0.5rem;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
-
-.logoutbutton {
-  background-color: transparent;
-  border: 2px solid #ffffff;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-  color: white;
-}
-
-.logout-button:hover {
-  background-color: #4a90e2;
-  color: white;
-}
-
-/* .open-button {
-  background-color: #4a90e2;
-  color: #ffffff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 5px;
-} */
-
-/* .open-button:hover {
-  background-color: #357abd;
-} */
-
-@media (max-width: 768px) {
-  .questionnaire-item {
-    width: 90vw; /* Cards take more width on smaller screens */
-  }
-}
-
-/*create page */
-
-/*antwoord pagina*/
-
-/*antwoorden 2 */
-
-.answers-container {
-  width: 90%;
-  max-width: 100vh; /* Maintains maximum width but allows flexibility */
-  margin: auto;
-  padding-top: 45vh; /* Increase as needed to prevent clipping with the navbar */
-}
-
-.questionnaire-item {
-  width: 40vh;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 20px 0; /* Provides spacing between items */
-  padding: 5% 3%; /* Responsive padding */
-}
-
-.questionnaire-title {
-  font-size: calc(1em + 1vw); /* Responsive font size */
-  color: #333;
-  margin-bottom: 10px;
-}
-
-/* .open-button {
-  background-color: #4a90e2;
-  color: #ffffff;
-  border: none;
-  padding: 1.5vh 3vw; 
-  border-radius: 2vh;
-  cursor: pointer;
-  display: block; 
-  width: auto;
-  text-align: center;
-} */
-
-/* Ensures responsiveness */
-@media (max-width: 768px) {
-  .answers-container {
-    padding-top: 120px; /* Adjusts top padding for smaller screens */
-  }
-}
-
-.input-error {
-  border-color: red;
-}
-
-.error-message {
-  color: red;
-  font-size: 0.8rem;
-  margin-top: 5px;
-}
 
 
-/* basic containers */
-/* containers that are used in multiple places */
+
+/* containers */
 
 .top-container {
   position: fixed;
@@ -270,41 +171,43 @@ button {
 }
 
 
-/* basic headings */
-/* headings that are used in multiple places */
 
-h1 {
-  font-size: 26px;
-  font-weight: 500;
-  line-height: auto;
+/* form */
+
+.form-input {
+  width: 77.5vw;
+  padding: 16px 18px;
+  margin: 10px 0;
+  border: 0;
+  border-radius: 10px;
+  box-sizing: border-box; /* Makes sure padding does not affect the overall width */
 }
 
-h1.bold {
-  font-size: 30px;
-  font-weight: 700;
-  line-height: auto;
+.form-input:focus {
+  border-color: #4a90e2;
+  outline: none;
 }
 
-h1.logo {
-  font-size: 36px;
-  font-weight: 500;
-  line-height: auto;
+.toggle-form-text {
+  color: #4a90e2;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 15px;
 }
 
-h2 {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 120%;
+.toggle-form-text:hover {
+  text-decoration: underline;
 }
 
-h2.bold {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: auto;
+@media (max-width: 768px) {
+  .questionnaire-item {
+    width: 90vw; /* Cards take more width on smaller screens */
+  }
 }
 
 
-/* basic tags */
+
+/* tags */
 
 .tag {
   display: inline-flex;

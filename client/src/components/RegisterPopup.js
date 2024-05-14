@@ -85,7 +85,7 @@ function RegisterPopup({ setUserRole }) {
 
         {!passwordsMatch && <p className="error-message">Passwords do not match.</p>}
 
-        <button type="submit" className="form-button">Sign up</button>
+        <button type="submit" className="button">Sign up</button>
       </form>
 
       <Link to="/login" className="toggle-form-text">Already have an account? Log in here</Link>

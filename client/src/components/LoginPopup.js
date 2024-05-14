@@ -79,7 +79,7 @@ function LoginPopup({ setUserRole }) {
         <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required className="form-input" />
         <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required className="form-input" />
 
-        <button type="submit" className="form-button">Log in</button>
+        <button type="submit" className="disabled">Log in</button>
       </form>
 
       <Link to="/register" className="toggle-form-text">No account? Create one here</Link>

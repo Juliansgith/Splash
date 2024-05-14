@@ -67,7 +67,7 @@ function QuestionnaireDetail() {
             </div>
           </div>
         ))}
-        <button type="submit" className="submit-button">Submit Answers</button>
+        <button type="submit" className="enable-anim">Submit Answers</button>
       </form>
     </div>
   );
