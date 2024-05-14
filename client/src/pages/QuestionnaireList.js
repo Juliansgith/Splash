@@ -31,8 +31,8 @@ function QuestionnaireList() {
         <h1 className="title">Open Questionnaires</h1>
         <div className="questionnaire-list">
           <Swiper
-            slidesPerView={1.2}
-            spaceBetween={25}
+            slidesPerView={1.1}
+            spaceBetween={0}
             centeredSlides={true}
             pagination={{
               clickable: true,
