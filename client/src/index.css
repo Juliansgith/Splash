@@ -8,7 +8,7 @@ html {
   align-items: center; /* Vertically centers content */
   overflow-x: hidden; /* Prevents horizontal scroll */
   font-family: "Poppins", sans-serif;
-  background-color: #f0f2f5;
+  background-color: #F5F3EF;
   color: #333; /* Default text color */
 }
 
@@ -173,16 +173,6 @@ button {
   color: white;
 }
 
-.questionnaire-item {
-  border-bottom: 1px solid #eaeaea;
-  padding: 10px 0;
-}
-
-.questionnaire-title {
-  color: #333;
-  font-size: 1.2em;
-}
-
 /* .open-button {
   background-color: #4a90e2;
   color: #ffffff;
@@ -203,75 +193,9 @@ button {
   }
 }
 
-.questionnaire-detail-form {
-  width: 100%;
-  max-width: 600px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-}
-
-.question-text {
-  color: #333;
-  margin-top: 20px;
-  font-size: 1em;
-}
-
-.option-input {
-  margin-right: 10px;
-}
-
-/* .submit-button {
-  background-color: #4a90e2;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  display: block; 
-  width: 100%;
-  margin-top: 20px;
-} */
-
-/* .submit-button:hover {
-  background-color: #357abd;
-} */
-
 /*create page */
 
 /*antwoord pagina*/
-/* Apply to QuestionnaireDetails component */
-.details-container {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 80px; /* Adjust based on navbar height */
-  width: 100%;
-  max-width: 600px; /* Consistent with the create form */
-}
-
-.question {
-  margin-bottom: 20px;
-}
-
-.question-text {
-  font-size: 1.2em;
-  color: #333;
-}
-
-.option-list {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.option-item {
-  background-color: #f0f2f5;
-  margin: 5px 0;
-  padding: 10px;
-  border-radius: 5px;
-}
 
 /*antwoorden 2 */
 
@@ -324,4 +248,126 @@ button {
   color: red;
   font-size: 0.8rem;
   margin-top: 5px;
+}
+
+
+/* basic containers */
+/* containers that are used in multiple places */
+
+.top-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* height: 24.5%; */
+  width: 100%;
+  border-radius: 0 0 20px 20px;
+  background-color: #ffffff;
+}
+
+.logo-container {
+  margin-top: 60px;
+  padding: 0 24px 16px 24px;
+}
+
+
+/* basic headings */
+/* headings that are used in multiple places */
+
+h1 {
+  font-size: 26px;
+  font-weight: 500;
+  line-height: auto;
+}
+
+h1.bold {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: auto;
+}
+
+h1.logo {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: auto;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+h2.bold {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: auto;
+}
+
+
+/* basic tags */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  width: auto;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.tag p {
+  margin: 0 2px;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.tag img {
+  width: 16px;
+  height: 16px;
+  margin: 0 2px;
+}
+
+.tag.green {
+  background-color: rgba(27, 200, 44, 0.2);
+  color: #1BC82C;
+}
+
+.tag.green img{
+  filter: invert(63%) sepia(24%) saturate(6077%) hue-rotate(83deg) brightness(101%) contrast(89%);
+}
+
+.tag.red {
+  background-color: rgba(253, 42, 42, 0.2);
+  color: #FD2A2A;
+}
+
+.tag.red img {
+  filter: invert(29%) sepia(50%) saturate(5108%) hue-rotate(344deg) brightness(101%) contrast(108%);
+}
+
+.tag.blue {
+  background-color: rgba(42, 190, 253, 0.2);
+  color: #2ABEFD;
+}
+
+.tag.blue img {
+  filter: invert(56%) sepia(64%) saturate(591%) hue-rotate(159deg) brightness(101%) contrast(98%);
+}
+
+.tag.orange {
+  background-color: rgba(255, 158, 12, 0.2);
+  color: #FF9E0C;
+}
+
+.tag.orange img {
+  filter: invert(79%) sepia(49%) saturate(4884%) hue-rotate(352deg) brightness(102%) contrast(102%);
+}
+
+.tag.purple {
+  background-color: rgba(185, 42, 253, 0.2);
+  color: #B92AFD;
+}
+
+.tag.purple img {
+  filter: invert(21%) sepia(97%) saturate(3716%) hue-rotate(273deg) brightness(105%) contrast(99%);
 }

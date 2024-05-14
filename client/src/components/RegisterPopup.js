@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 
-function LoginPopup({ setUserRole }) {
+function RegisterPopup({ setUserRole }) {
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
@@ -74,18 +74,24 @@ function LoginPopup({ setUserRole }) {
 
   return (
     <div className="container">
-      <h2>{isLogin ? 'Login' : 'Register'}</h2>
+      <h2>Register</h2>
       <form onSubmit={handleSubmit}>
+        <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required className="form-input" />
+        <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} required className="form-input" />
+        <input type="text" name="postcode" placeholder="Postcode" value={formData.postcode} onChange={handleChange} required className="form-input" />
         <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required className="form-input" />
         <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required className="form-input" />
+        <input type="password" name="passwordConfirmation" placeholder="Confirm Password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} required={!isLogin} className={`form-input ${!passwordsMatch ? 'input-error' : ''}`} />
 
-        <button type="submit" className="form-button">Log in</button>
+        {!passwordsMatch && <p className="error-message">Passwords do not match.</p>}
+
+        <button type="submit" className="form-button">Sign up</button>
       </form>
 
-      <Link to="/register" className="toggle-form-text">No account? Create one here</Link>
+      <Link to="/login" className="toggle-form-text">Already have an account? Log in here</Link>
 
     </div>
   );
 }
 
-export default LoginPopup;
+export default RegisterPopup;

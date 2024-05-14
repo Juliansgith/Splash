@@ -1,64 +1,64 @@
 /*navbar*/
 /* Styles for Bottom Navbar */
 .navbar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 12.8vh; /* Design asks for 12.8 vh, but I thought this looked a little better */
-    background-color: #FFFFFF; /* Use your theme color here */
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center; /* centers the items */
-    padding: 1rem 0; /* Padding on top and bottom */
-    box-sizing: border-box; /* Ensures padding does not affect overall width */
-    border-radius: 20px 20px 0 0; /* Adds rounded borders */
-    align-items: center;
-  }
-  
-  /* Style for each navigation link */
-  .nav-link {
-    width: 25vw;
-    padding: 5px;
-    text-decoration: none; /* Removes underline from links */
-    display: flex;
-    flex-direction: column; /* Places the icons above the text */
-    align-items: center;
-    cursor: pointer;
-    color: #808080;
-  }
-  
-  .nav-link:hover .nav-text {
-    color: #456eff;
-  }
-  
-  .nav-link:hover .nav-icon {
-    filter: invert(33%) sepia(81%) saturate(1665%) hue-rotate(216deg) brightness(101%) contrast(101%);
-  }
-  
-  .nav-icon {
-    width: 16px;
-    height: auto;
-    margin: auto;
-    filter: invert(57%) sepia(0%) saturate(0%) hue-rotate(167deg) brightness(88%) contrast(74%);
-  }
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 12.8vh; /* Design asks for 12.8 vh, but I thought this looked a little better */
+  background-color: #FFFFFF; /* Use your theme color here */
+  /* box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); */
+  display: flex;
+  justify-content: center; /* centers the items */
+  padding: 1rem 0; /* Padding on top and bottom */
+  box-sizing: border-box; /* Ensures padding does not affect overall width */
+  border-radius: 20px 20px 0 0; /* Adds rounded borders */
+  align-items: center;
+}
 
-  .img-containter {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .nav-text {
-    font-size: 16px;
-    margin-top: 5px;
-  }
-  
-  .nav-text.selected {
-    color: #456eff;
-  }
-  
-  .nav-icon.selected {
-    filter: invert(33%) sepia(81%) saturate(1665%) hue-rotate(216deg) brightness(101%) contrast(101%);
-  }
+/* Style for each navigation link */
+.nav-link {
+  width: 25vw;
+  padding: 5px;
+  text-decoration: none; /* Removes underline from links */
+  display: flex;
+  flex-direction: column; /* Places the icons above the text */
+  align-items: center;
+  cursor: pointer;
+  color: #808080;
+}
+
+.nav-link:hover .nav-text {
+  color: #456eff;
+}
+
+.nav-link:hover .nav-icon {
+  filter: invert(33%) sepia(81%) saturate(1665%) hue-rotate(216deg) brightness(101%) contrast(101%);
+}
+
+.nav-icon {
+  width: 16px;
+  height: auto;
+  margin: auto;
+  filter: invert(57%) sepia(0%) saturate(0%) hue-rotate(167deg) brightness(88%) contrast(74%);
+}
+
+.img-containter {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-text {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.nav-text.selected {
+  color: #456eff;
+}
+
+.nav-icon.selected {
+  filter: invert(33%) sepia(81%) saturate(1665%) hue-rotate(216deg) brightness(101%) contrast(101%);
+}
