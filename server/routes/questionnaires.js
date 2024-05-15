@@ -64,45 +64,56 @@ const mongoose = require('mongoose');
   });
 
   router.post('/answer/:id', async (req, res) => {
-      const { id } = req.params;
-      const { answers, userId } = req.body;
+    const { id } = req.params;
+    const { answers, userId } = req.body;
   
-      if (!answers || typeof answers !== 'object') {
-        return res.status(400).send('Invalid answers format.');
+    if (!answers || typeof answers !== 'object') {
+      return res.status(400).send('Invalid answers format.');
+    }
+  
+    try {
+      const questionnaire = await Questionnaire.findById(id);
+      if (!questionnaire) return res.status(404).send('Questionnaire not found');
+  
+      Object.entries(answers).forEach(([questionIndex, optionText]) => {
+        const question = questionnaire.questions[parseInt(questionIndex)];
+        if (!question) {
+          throw new Error(`Question at index ${questionIndex} not found`);
+        }
+        const option = question.options.find(opt => opt.text === optionText);
+        if (!option) {
+          throw new Error(`Option "${optionText}" not found in question at index ${questionIndex}`);
+        }
+        option.count += 1;
+      });
+  
+      await questionnaire.save();
+  
+      const pointsToAdd = questionnaire.points;
+  
+      await User.findByIdAndUpdate(userId, { $inc: { points: pointsToAdd } }, { new: true });
+  
+      const user = await User.findById(userId);
+      if (!user) return res.status(404).send('User not found');
+  
+      const { week, year } = user.getCurrentWeekYear();
+  
+      let weeklyEntry = user.questionnairesByWeek.find(entry => entry.week === week && entry.year === year);
+  
+      if (!weeklyEntry) {
+        weeklyEntry = { week, year, questionnaires: [id] };
+        user.questionnairesByWeek.push(weeklyEntry);
+      } else {
+        weeklyEntry.questionnaires.push(id);
       }
   
-      try {
-        const questionnaire = await Questionnaire.findById(id);
-        if (!questionnaire) return res.status(404).send('Questionnaire not found');
+      await user.save();
   
-        Object.entries(answers).forEach(([questionIndex, optionText]) => {
-          const question = questionnaire.questions[parseInt(questionIndex)];
-          if (!question) {
-            throw new Error(`Question at index ${questionIndex} not found`);
-          }
-          const option = question.options.find(opt => opt.text === optionText);
-          if (!option) {
-            throw new Error(`Option "${optionText}" not found in question at index ${questionIndex}`);
-          }
-          option.count += 1;
-        });
-  
-        await questionnaire.save();
-  
-        // Here we assume the "points" attribute on the questionnaire object holds the points value
-        const pointsToAdd = questionnaire.points;
-        
-        // Use $inc operator to increment the user's points
-        await User.findByIdAndUpdate(userId, { $inc: { points: pointsToAdd } }, { new: true });
-  
-        // Optionally push the questionnaire ID to the user's questionnaire array
-        await User.findByIdAndUpdate(userId, { $push: { questionnaires: id } });
-  
-        res.status(200).send(questionnaire);
-      } catch (error) {
-        console.error(error);
-        res.status(400).send(error.message);
-      }
+      res.status(200).send(questionnaire);
+    } catch (error) {
+      console.error(error);
+      res.status(400).send(error.message);
+    }
   });
   
 
