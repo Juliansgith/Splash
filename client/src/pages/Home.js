@@ -17,14 +17,16 @@ function Home() {
   const userId = token ? jwt_decode(token).userId : null;
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/all?userId=${userId}`)
-      .then((response) => {
-        setQuestionnaires(response.data);
-        console.log(questionnaires);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    if (userId) {
+      axios
+        .get(`http://localhost:5000/all?userId=${userId}`)
+        .then((response) => {
+          setQuestionnaires(response.data);
+          console.log(response.data);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [userId]);
 
   return (
     <>
@@ -46,11 +48,11 @@ function Home() {
             modules={[Pagination]}
             className="mySwiper"
           >
-            {questionnaires.map((questionnaire, index) => (
-              <SwiperSlide>
-                <div key={questionnaire._id} className="Stellingcontainer">
+            {questionnaires.map((questionnaire) => (
+              <SwiperSlide key={questionnaire._id}>
+                <div className="Stellingcontainer">
                   <div
-                    className={questionnaire.tag === "" && "test2" + "test"}
+                    className={questionnaire.tag === "" ? "test2 test" : ""}
                   />
                   <h2 className="Title">{questionnaire.title}</h2>
                   <h3 className="Tag">{questionnaire.tag}</h3>

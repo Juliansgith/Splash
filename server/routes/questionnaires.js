@@ -31,25 +31,26 @@ const mongoose = require('mongoose');
   });
 
   router.get('/all', async (req, res) => {
+    const { userId } = req.query;
     try {
-      const userId = req.query.userId;
-      if (!userId) {
-        return res.status(400).json({ error: 'User ID not provided' });
-      }
-  
-      const user = await User.findById(userId);
+      const user = await User.findById(userId).populate('questionnairesByWeek.questionnaires');
       if (!user) {
-        return res.status(404).json({ error: 'User not found' });
+        return res.status(404).send('User not found');
       }
+      const completedQuestionnaires = user.questionnairesByWeek.reduce((acc, week) => {
+        return acc.concat(week.questionnaires.map(q => q.toString()));
+      }, []);
+      
+      const allQuestionnaires = await Questionnaire.find();
   
-      const filledQuestionnaireIds = user.questionnaires;
-      const questionnaires = await Questionnaire.find({ _id: { $nin: filledQuestionnaireIds } });
-      res.json(questionnaires);
+      const availableQuestionnaires = allQuestionnaires.filter(q => !completedQuestionnaires.includes(q._id.toString()));
+  
+      res.json(availableQuestionnaires);
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).send(error.toString());
     }
   });
+  
   
   router.get('/user/:id', async (req, res) => {
     try {
