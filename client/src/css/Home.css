@@ -1,3 +1,28 @@
+.top-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* height: 24.5%; */
+  width: 100%;
+  border-radius: 0 0 20px 20px;
+  background-color: #ffffff;
+}
+
+.logo-points {
+  margin-top: 60px;
+  padding: 0rem 1.5rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.logo {
+  font-family: "Poppins-Bold";
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 60%;
+}
+
 .questionnaire-container {
   max-width: 400px;
 }
@@ -10,8 +35,9 @@
   padding-bottom: 5vh;
   width: 100%;
   max-width: 600px; /* Responsive max width */
-  background-color: #ffffff;
+  background-color: #f5f3ef;
   height: 55vh;
+  padding-top: 30px;
 }
 
 .questionnaire-item {

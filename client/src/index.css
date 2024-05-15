@@ -1,9 +1,29 @@
 /* defining custom fonts */
-@font-face {font-family: 'Poppins-Regular'; src: url('../public/fonts/Poppins-Regular.ttf'); font-weight:400;}
-@font-face {font-family: 'Poppins-Medium'; src: url('../public/fonts/Poppins-Medium.ttf'); font-weight: 500;}
-@font-face {font-family: 'Poppins-Bold'; src: url('../public/fonts/Poppins-Bold.ttf'); font-weight: 700;}
-@font-face {font-family: 'Poppins-ExtraBold'; src: url('../public/fonts/Poppins-ExtraBold.ttf'); font-weight: 800;}
-@font-face {font-family: 'Poppins-SemiBold'; src: url('../public/fonts/Poppins-SemiBold.ttf'); font-weight: 600;}
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("../public/fonts/Poppins-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url("../public/fonts/Poppins-Medium.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("../public/fonts/Poppins-Bold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Poppins-ExtraBold";
+  src: url("../public/fonts/Poppins-ExtraBold.ttf");
+  font-weight: 800;
+}
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url("../public/fonts/Poppins-SemiBold.ttf");
+  font-weight: 600;
+}
 
 body,
 html {
@@ -15,46 +35,42 @@ html {
   align-items: center; /* Vertically centers content */
   overflow-x: hidden; /* Prevents horizontal scroll */
   font-family: "Poppins", sans-serif;
-  background-color: #F5F3EF;
+  background-color: #f5f3ef;
   color: #000000; /* Default text color */
 }
-
-
 
 /* headings */
 
 h1 {
-  font-family: 'Poppins-Medium';
+  font-family: "Poppins-Medium";
   font-size: 26px;
   font-weight: 500;
 }
 
 h1.bold {
-  font-family: 'Poppins-Bold';
+  font-family: "Poppins-Bold";
   font-size: 30px;
   font-weight: 700;
 }
 
 h1.logo {
-  font-family: 'Poppins-Medium';
+  font-family: "Poppins-Medium";
   font-size: 36px;
   font-weight: 500;
 }
 
 h2 {
-  font-family: 'Poppins-Medium';
+  font-family: "Poppins-Medium";
   font-size: 20px;
   font-weight: 700;
   line-height: 120%;
 }
 
 h2.bold {
-  font-family: 'Poppins-Bold';
+  font-family: "Poppins-Bold";
   font-size: 20px;
   font-weight: 700;
 }
-
-
 
 /* text */
 
@@ -63,26 +79,24 @@ h2.bold {
 }
 
 .txt.regular {
-  font-family: 'Poppins-Regular', sans-serif;
+  font-family: "Poppins-Regular", sans-serif;
 }
 
 .txt.medium {
-  font-family: 'Poppins-Medium', sans-serif;
+  font-family: "Poppins-Medium", sans-serif;
 }
 
 .txt.bold {
-  font-family: 'Poppins-Bold', sans-serif;
+  font-family: "Poppins-Bold", sans-serif;
 }
 
 .txt.extrabold {
-  font-family: 'Poppins-ExtraBold', sans-serif;
+  font-family: "Poppins-ExtraBold", sans-serif;
 }
 
 .txt.semibold {
-  font-family: 'Poppins-SemiBold', sans-serif;
+  font-family: "Poppins-SemiBold", sans-serif;
 }
-
-
 
 /* buttons */
 
@@ -119,7 +133,7 @@ button {
 }
 
 .bd-gray {
-  border: 2px solid var(--text-text-color-1, #E6E6E6);
+  border: 2px solid var(--text-text-color-1, #e6e6e6);
 }
 
 .bd-none {
@@ -150,27 +164,6 @@ button {
     background-position: left bottom;
   }
 }
-
-
-
-/* containers */
-
-.top-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  /* height: 24.5%; */
-  width: 100%;
-  border-radius: 0 0 20px 20px;
-  background-color: #ffffff;
-}
-
-.logo-container {
-  margin-top: 60px;
-  padding: 0 24px 16px 24px;
-}
-
-
 
 /* form */
 
@@ -205,8 +198,6 @@ button {
   }
 }
 
-
-
 /* tags */
 
 .tag {
@@ -232,45 +223,50 @@ button {
 
 .tag.green {
   background-color: rgba(27, 200, 44, 0.2);
-  color: #1BC82C;
+  color: #1bc82c;
 }
 
-.tag.green img{
-  filter: invert(63%) sepia(24%) saturate(6077%) hue-rotate(83deg) brightness(101%) contrast(89%);
+.tag.green img {
+  filter: invert(63%) sepia(24%) saturate(6077%) hue-rotate(83deg)
+    brightness(101%) contrast(89%);
 }
 
 .tag.red {
   background-color: rgba(253, 42, 42, 0.2);
-  color: #FD2A2A;
+  color: #fd2a2a;
 }
 
 .tag.red img {
-  filter: invert(29%) sepia(50%) saturate(5108%) hue-rotate(344deg) brightness(101%) contrast(108%);
+  filter: invert(29%) sepia(50%) saturate(5108%) hue-rotate(344deg)
+    brightness(101%) contrast(108%);
 }
 
 .tag.blue {
   background-color: rgba(42, 190, 253, 0.2);
-  color: #2ABEFD;
+  color: #2abefd;
 }
 
 .tag.blue img {
-  filter: invert(56%) sepia(64%) saturate(591%) hue-rotate(159deg) brightness(101%) contrast(98%);
+  filter: invert(56%) sepia(64%) saturate(591%) hue-rotate(159deg)
+    brightness(101%) contrast(98%);
 }
 
 .tag.orange {
   background-color: rgba(255, 158, 12, 0.2);
-  color: #FF9E0C;
+  color: #ff9e0c;
 }
 
 .tag.orange img {
-  filter: invert(79%) sepia(49%) saturate(4884%) hue-rotate(352deg) brightness(102%) contrast(102%);
+  filter: invert(79%) sepia(49%) saturate(4884%) hue-rotate(352deg)
+    brightness(102%) contrast(102%);
 }
 
 .tag.purple {
   background-color: rgba(185, 42, 253, 0.2);
-  color: #B92AFD;
+  color: #b92afd;
 }
 
 .tag.purple img {
-  filter: invert(21%) sepia(97%) saturate(3716%) hue-rotate(273deg) brightness(105%) contrast(99%);
+  filter: invert(21%) sepia(97%) saturate(3716%) hue-rotate(273deg)
+    brightness(105%) contrast(99%);
 }

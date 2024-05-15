@@ -7,7 +7,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "../css/Home.css";
 import { Pagination } from "swiper/modules";
-import NavBar from '../components/NavBar'; 
+import NavBar from "../components/NavBar";
+import PointsButton from "../components/PointsButton";
 
 function Home() {
   const navigate = useNavigate();
@@ -31,15 +32,16 @@ function Home() {
   return (
     <>
       <header className="top-container">
-        <div className="logo-container">
-          <h2 className="bold">Splash</h2>
+        <div className="logo-points">
+          <h2 className="logo">Splash</h2>
+          <PointsButton></PointsButton>
         </div>
       </header>
 
       <div className="questionnaire-container">
         <div className="questionnaire-list">
           <Swiper
-            slidesPerView={1.1}
+            slidesPerView={1.0}
             spaceBetween={0}
             centeredSlides={true}
             pagination={{
