@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { jwtDecode as jwt_decode } from "jwt-decode";
+import NavBar from '../components/NavBar'; 
 
 const RewardsManager = () => {
   const [points, setPoints] = useState(0);
@@ -54,22 +55,31 @@ const RewardsManager = () => {
   };
 
   return (
-    <div className="rewards-manager">
-      <h2>Manage Your Rewards</h2>
-      <div className="points-display">
-        <p>Your Points: {points}</p>
+    <>
+      <header className="top-container">
+        <div className="logo-container">
+          <h2 className="bold">Splash</h2>
+        </div>
+      </header>
+
+      <div className="rewards-manager">
+        <h2>Manage Your Rewards</h2>
+        <div className="points-display">
+          <p>Your Points: {points}</p>
+        </div>
+        <div className="redeem-rewards">
+          <input
+            type="number"
+            value={pointsToRedeem}
+            onChange={e => setPointsToRedeem(e.target.value)}
+            placeholder="Enter points to redeem"
+            className="redeem-input"
+          />
+          <button onClick={handleRedeem} className="redeem-button">Redeem Points</button>
+        </div>
+        <NavBar />
       </div>
-      <div className="redeem-rewards">
-        <input
-          type="number"
-          value={pointsToRedeem}
-          onChange={e => setPointsToRedeem(e.target.value)}
-          placeholder="Enter points to redeem"
-          className="redeem-input"
-        />
-        <button onClick={handleRedeem} className="redeem-button">Redeem Points</button>
-      </div>
-    </div>
+    </>
   );
 };
 

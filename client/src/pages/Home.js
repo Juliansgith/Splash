@@ -5,10 +5,11 @@ import { jwtDecode as jwt_decode } from "jwt-decode";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import "../css/QuestionnaireList.css";
+import "../css/Home.css";
 import { Pagination } from "swiper/modules";
+import NavBar from '../components/NavBar'; 
 
-function QuestionnaireList() {
+function Home() {
   const navigate = useNavigate();
   const [questionnaires, setQuestionnaires] = useState([]);
 
@@ -27,12 +28,17 @@ function QuestionnaireList() {
 
   return (
     <>
+      <header className="top-container">
+        <div className="logo-container">
+          <h2 className="bold">Splash</h2>
+        </div>
+      </header>
+
       <div className="questionnaire-container">
-        <h1 className="title">Open Questionnaires</h1>
         <div className="questionnaire-list">
           <Swiper
-            slidesPerView={1.2}
-            spaceBetween={25}
+            slidesPerView={1.1}
+            spaceBetween={0}
             centeredSlides={true}
             pagination={{
               clickable: true,
@@ -55,7 +61,7 @@ function QuestionnaireList() {
                         className="Imgcompany"
                         alt="Company Logo"
                       />
-                      <h3 className="Companytxt">{questionnaire.company}</h3>
+                      <p className="txt medium">{questionnaire.company}</p>
                     </div>
                     <img
                       src="assets/Arrowright.svg"
@@ -72,8 +78,9 @@ function QuestionnaireList() {
           </Swiper>
         </div>
       </div>
+      <NavBar />
     </>
   );
 }
 
-export default QuestionnaireList;
+export default Home;
