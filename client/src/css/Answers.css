@@ -1,0 +1,38 @@
+.answers-container {
+    width: 90%;
+    max-width: 100vh; /* Maintains maximum width but allows flexibility */
+    margin: auto;
+    padding-top: 45vh; /* Increase as needed to prevent clipping with the navbar */
+  }
+  
+  .questionnaire-item {
+    width: 40vh;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px 0; /* Provides spacing between items */
+    padding: 5% 3%; /* Responsive padding */
+  }
+  
+  .questionnaire-title {
+    font-size: calc(1em + 1vw); /* Responsive font size */
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Ensures responsiveness */
+  @media (max-width: 768px) {
+    .answers-container {
+      padding-top: 120px; /* Adjusts top padding for smaller screens */
+    }
+  }
+  
+  .input-error {
+    border-color: red;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 5px;
+  }

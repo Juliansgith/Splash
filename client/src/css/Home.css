@@ -26,7 +26,10 @@
 
 .Stellingcontainer {
   height: 42vh;
+<<<<<<< HEAD:client/src/css/QuestionnaireList.css
   max-width: 60vw;
+=======
+>>>>>>> c681c9b897c96a481499a78a6530195c0e55de28:client/src/css/Home.css
   margin: auto;
   display: flex;
   padding: 1.5rem;

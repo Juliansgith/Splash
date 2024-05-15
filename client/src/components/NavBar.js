@@ -4,17 +4,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import "../css/navbar.css"
 
 function NavBar() {
-  const navigate = useNavigate();
-  const isLoggedIn = () => {
-    const token = localStorage.getItem('token');
-    return !!token; 
-  };
+  // const navigate = useNavigate();
+  // const isLoggedIn = () => {
+  //   const token = localStorage.getItem('token');
+  //   return !!token; 
+  // };
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/'); 
-    window.location.reload();
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem('token');
+  //   navigate('/'); 
+  //   window.location.reload();
+  // };
 
   const currentPath = window.location.pathname;
   const selectedItem = currentPath === '/rewards' ? 'rewards' :
@@ -24,7 +24,7 @@ function NavBar() {
     
     <nav className="navbar">
 
-      <Link to="/" className="nav-link">
+      <Link to="/home" className="nav-link">
         <div className="img-containter">
           <img src="assets/home.svg" className={`nav-icon ${selectedItem === 'home' ? 'selected' : ''}`} />
         </div>
