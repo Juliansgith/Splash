@@ -11,6 +11,11 @@ function Coupon({ pointsNeeded, pointsCollected}) {
                 <img src="/assets/AHlogo.svg" className="logo"></img>
             </div>
             
+            <div className="point">
+                <p className="txt medium white">{pointsNeeded}</p>
+                <img src="/assets/droplet.svg" className="pointlogo"></img>
+            </div>
+
             <h2 className="bold">5% korting op biologische producten</h2>
             <p className="txt medium">Albert Heijn</p>
             <button className="redeem-btn bg-white txt semibold" disabled={pointsCollected < pointsNeeded}>

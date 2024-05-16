@@ -68,25 +68,25 @@ const RewardsManager = () => {
             <div className="number-container">
               <img src="/assets/PointBg1.svg" className="pbg"></img>
               <div className="point-container">
-                <h2 className="point">1</h2>
+                <h2 className="pointnr">1</h2>
               </div>
             </div>
             <div className="number-container">
               <img src="/assets/PointBg2.svg" className="pbg"></img>
               <div className="point-container">
-                <h2 className="point">2</h2>
+                <h2 className="pointnr">2</h2>
               </div>
             </div>
             <div className="number-container">
               <img src="/assets/PointBg3.svg" className="pbg"></img>
               <div className="point-container">
-                <h2 className="point">3</h2>
+                <h2 className="pointnr">3</h2>
               </div>
             </div>
             <div className="number-container">
               <img src="/assets/PointBg4.svg" className="pbg"></img>
               <div className="point-container">
-                <img src="/assets/droplet.svg" className="spoint"></img>
+                <img src="/assets/droplet.svg" className="spointnr"></img>
               </div>
             </div>
           </div>

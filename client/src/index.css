@@ -54,7 +54,7 @@ h2.bold {
   font-weight: 700;
 }
 
-h2.point {
+h2.pointnr {
   font-family: 'Poppins-ExtraBold';
   font-size: 40px;
 }
@@ -85,6 +85,10 @@ h2.point {
 
 .txt.semibold {
   font-family: 'Poppins-SemiBold', sans-serif;
+}
+
+.txt.white {
+  color: #ffffff;
 }
 
 
@@ -274,4 +278,24 @@ button {
 
 .tag.purple img {
   filter: invert(21%) sepia(97%) saturate(3716%) hue-rotate(273deg) brightness(105%) contrast(99%);
+}
+
+.point {
+  display: flex;
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  bottom: 0;
+  border-radius: 66.84px;
+  background-color: #456EFF;
+  height: 36px;
+  width: 76px;
+  justify-content: center;
+  align-items: center;
+}
+
+.pointlogo {
+  height: 16px;
+  width: 12px;
+  margin-left: 5px;
 }
