@@ -5,7 +5,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 12.8vh; /* Design asks for 12.8 vh, but I thought this looked a little better */
+  height: 10vh; /* Design asks for 12.8 vh, but I thought this looked a little better */
   background-color: #FFFFFF; /* Use your theme color here */
   /* box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); */
   display: flex;
@@ -14,6 +14,7 @@
   box-sizing: border-box; /* Ensures padding does not affect overall width */
   border-radius: 20px 20px 0 0; /* Adds rounded borders */
   align-items: center;
+  z-index: 2;
 }
 
 /* Style for each navigation link */
