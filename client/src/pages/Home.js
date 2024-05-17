@@ -7,7 +7,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "../css/Home.css";
 import { Pagination } from "swiper/modules";
-import NavBar from '../components/NavBar'; 
+import NavBar from "../components/NavBar";
+import PointsButton from "../components/PointsButton";
 
 function Home() {
   const navigate = useNavigate();
@@ -17,28 +18,31 @@ function Home() {
   const userId = token ? jwt_decode(token).userId : null;
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/all?userId=${userId}`)
-      .then((response) => {
-        setQuestionnaires(response.data);
-        console.log(questionnaires);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    if (userId) {
+      axios
+        .get(`http://localhost:5000/all?userId=${userId}`)
+        .then((response) => {
+          setQuestionnaires(response.data);
+          console.log(response.data);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [userId]);
 
   return (
     <>
       <header className="top-container">
-        <div className="logo-container">
-          <h2 className="bold">Splash</h2>
+        <div className="logo-points">
+          <h2 className="logo">Splash</h2>
+          <PointsButton></PointsButton>
         </div>
       </header>
 
       <div className="questionnaire-container">
         <div className="questionnaire-list">
           <Swiper
-            slidesPerView={1.2}
-            spaceBetween={25}
+            slidesPerView={1.0}
+            spaceBetween={0}
             centeredSlides={true}
             pagination={{
               clickable: true,
@@ -46,11 +50,11 @@ function Home() {
             modules={[Pagination]}
             className="mySwiper"
           >
-            {questionnaires.map((questionnaire, index) => (
-              <SwiperSlide>
-                <div key={questionnaire._id} className="Stellingcontainer">
+            {questionnaires.map((questionnaire) => (
+              <SwiperSlide key={questionnaire._id}>
+                <div className="Stellingcontainer">
                   <div
-                    className={questionnaire.tag === "" && "test2" + "test"}
+                    className={questionnaire.tag === "" ? "test2 test" : ""}
                   />
                   <h2 className="Title">{questionnaire.title}</h2>
                   <h3 className="Tag">{questionnaire.tag}</h3>
