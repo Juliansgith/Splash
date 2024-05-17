@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import "../css/Auth.css"
 
 function LoginPopup({ setUserRole }) {
   const [isLogin, setIsLogin] = useState(true);
@@ -73,17 +74,26 @@ function LoginPopup({ setUserRole }) {
   }
 
   return (
-    <div className="container">
-      <h2>{isLogin ? 'Login' : 'Register'}</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required className="form-input" />
-        <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required className="form-input" />
+    <div className="page-container">
+      <div className="container">
+        <h1 className="bold authtitle">Welcome back!</h1>
+        <p className="txt regular space">To be able to use Splash again, you must first log in to your account.</p>
+        <form onSubmit={handleSubmit}>
+          <p className="txt large medium nomargin">Email</p>
+          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required className="form-input" />
+          <p className="txt large medium nomargin">Password</p>
+          <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required className="form-input" />
+          <Link className="toggle-form-text  forgotpass">Forgot password?</Link>
 
-        <button type="submit" className="disabled">Log in</button>
-      </form>
+          <div className="submit-container">
+            <button type="submit" className="submit">Log in</button>
+            <Link to="/register" className="toggle-form-text">No account? Create one here</Link>
+          </div>
+        </form>
 
-      <Link to="/register" className="toggle-form-text">No account? Create one here</Link>
+        
 
+      </div>
     </div>
   );
 }

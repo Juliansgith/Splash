@@ -67,6 +67,10 @@ h2.pointnr {
   font-size: 16px;
 }
 
+.txt.large {
+  font-size: 18px;
+}
+
 .txt.regular {
   font-family: "Poppins-Regular", sans-serif;
 }
@@ -89,6 +93,10 @@ h2.pointnr {
 
 .txt.white {
   color: #ffffff;
+}
+
+.nomargin {
+  margin: 0;
 }
 
 
@@ -186,10 +194,11 @@ button {
 .form-input {
   width: 77.5vw;
   padding: 16px 18px;
-  margin: 10px 0;
+  margin: 5px 0 20px 0;
   border: 0;
   border-radius: 10px;
   box-sizing: border-box; /* Makes sure padding does not affect the overall width */
+  background-color: #F5F5F5;
 }
 
 .form-input:focus {

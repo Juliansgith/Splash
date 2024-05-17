@@ -1,0 +1,76 @@
+.page-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.start-logo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-top: 32vh;
+}
+
+.start-logo img {
+    width: 125px;
+    height: auto;
+}
+
+.start-buttons {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.quote {
+    margin-top: 12.2vh;
+    text-align: center;
+}
+
+a {
+    width: 100vw;
+    text-decoration: none;
+    padding-bottom: 10px;
+}
+
+.start-buttons button {
+    width: 77.5%;
+}
+
+.submit {
+    margin: 0 auto;
+}
+
+.submit-container a {
+    float: right;
+}
+
+.authtitle {
+    margin-top: 120px;
+}
+
+.submit-container {
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    width: 100%;
+}
+
+p.space {
+    margin-bottom: 30px;
+}
+
+.forgotpass {
+    float: right;
+    text-align: right;
+    margin-top: -10px;
+}
