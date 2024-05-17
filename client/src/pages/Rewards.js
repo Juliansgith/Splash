@@ -56,6 +56,8 @@ const RewardsManager = () => {
     }
   };
 
+  const pointArray = points.toString().split("")
+
   return (
     <>
       <div className="app-container">
@@ -68,19 +70,19 @@ const RewardsManager = () => {
             <div className="number-container">
               <img src="/assets/PointBg1.svg" className="pbg"></img>
               <div className="point-container">
-                <h2 className="pointnr">1</h2>
+                <h2 className="pointnr">{pointArray[0]}</h2>
               </div>
             </div>
             <div className="number-container">
               <img src="/assets/PointBg2.svg" className="pbg"></img>
               <div className="point-container">
-                <h2 className="pointnr">2</h2>
+                <h2 className="pointnr">{pointArray[1]}</h2>
               </div>
             </div>
             <div className="number-container">
               <img src="/assets/PointBg3.svg" className="pbg"></img>
               <div className="point-container">
-                <h2 className="pointnr">3</h2>
+                <h2 className="pointnr">{pointArray[2]}</h2>
               </div>
             </div>
             <div className="number-container">
@@ -110,8 +112,8 @@ const RewardsManager = () => {
         </div> */}
 
         <div className="reward-container">
-          <div><Coupon pointsNeeded={200} pointsCollected={150} /></div>
-          <div><Coupon pointsNeeded={200} pointsCollected={150} /></div>
+          <div><Coupon pointsNeeded={200} pointsCollected={200} /></div>
+          <div><Coupon pointsNeeded={200} pointsCollected={200} /></div>
           <div><Coupon pointsNeeded={200} pointsCollected={150} /></div>
           <div><Coupon pointsNeeded={200} pointsCollected={150} /></div>
           <div><Coupon pointsNeeded={200} pointsCollected={150} /></div>

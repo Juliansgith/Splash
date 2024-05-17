@@ -282,10 +282,6 @@ button {
 
 .point {
   display: flex;
-  position: absolute;
-  top: 50px;
-  left: 20px;
-  bottom: 0;
   border-radius: 66.84px;
   background-color: #456EFF;
   height: 36px;
