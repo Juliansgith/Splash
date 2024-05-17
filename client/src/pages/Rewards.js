@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { jwtDecode as jwt_decode } from "jwt-decode";
-import NavBar from '../components/NavBar'; 
+import NavBar from "../components/NavBar";
 
 const RewardsManager = () => {
   const [points, setPoints] = useState(0);
-  const [pointsToRedeem, setPointsToRedeem] = useState('');
+  const [pointsToRedeem, setPointsToRedeem] = useState("");
 
   const getUserIdFromJWT = () => {
     const token = localStorage.getItem("token");
@@ -21,11 +21,13 @@ const RewardsManager = () => {
   useEffect(() => {
     const fetchPoints = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/points-balance?userId=${userId}`);
+        const response = await axios.get(
+          `http://localhost:5000/points-balance?userId=${userId}`
+        );
         setPoints(response.data.points);
       } catch (error) {
-        console.error('Error fetching points:', error);
-        alert('Failed to fetch points');
+        console.error("Error fetching points:", error);
+        alert("Failed to fetch points");
       }
     };
 
@@ -41,23 +43,26 @@ const RewardsManager = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/redeem-rewards', {
-        userId,
-        pointsToRedeem: parseInt(pointsToRedeem, 10)
-      });
+      const response = await axios.post(
+        "http://localhost:5000/redeem-rewards",
+        {
+          userId,
+          pointsToRedeem: parseInt(pointsToRedeem, 10),
+        }
+      );
       alert(response.data.message);
-      setPoints(response.data.newPointsBalance); 
-      setPointsToRedeem(''); 
+      setPoints(response.data.newPointsBalance);
+      setPointsToRedeem("");
     } catch (error) {
-      console.error('Error redeeming points:', error);
-      alert('Failed to redeem points');
+      console.error("Error redeeming points:", error);
+      alert("Failed to redeem points");
     }
   };
 
   return (
     <>
       <header className="top-container">
-        <div className="logo-container">
+        <div className="logo-points">
           <h2 className="bold">Splash</h2>
         </div>
       </header>
@@ -71,11 +76,13 @@ const RewardsManager = () => {
           <input
             type="number"
             value={pointsToRedeem}
-            onChange={e => setPointsToRedeem(e.target.value)}
+            onChange={(e) => setPointsToRedeem(e.target.value)}
             placeholder="Enter points to redeem"
             className="redeem-input"
           />
-          <button onClick={handleRedeem} className="redeem-button">Redeem Points</button>
+          <button onClick={handleRedeem} className="redeem-button">
+            Redeem Points
+          </button>
         </div>
         <NavBar />
       </div>

@@ -9,6 +9,7 @@ import "../css/Home.css";
 import { Pagination } from "swiper/modules";
 import NavBar from "../components/NavBar";
 import PointsButton from "../components/PointsButton";
+import ProgressBar from "../components/ProgressBar";
 
 function Home() {
   const navigate = useNavigate();
@@ -34,7 +35,11 @@ function Home() {
       <header className="top-container">
         <div className="logo-points">
           <h2 className="logo">Splash</h2>
-          <PointsButton></PointsButton>
+          <PointsButton />
+        </div>
+
+        <div className="weekly-container">
+          <ProgressBar />
         </div>
       </header>
 
