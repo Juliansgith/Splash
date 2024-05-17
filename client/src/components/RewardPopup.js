@@ -4,28 +4,29 @@ import "../css/Reward.css";
 
 const RewardPopup = ({ isOpen, onClose, children }) => {
     const popupRef = useRef(null);
-  
+
     const handleClickOutside = (event) => {
-      if (popupRef.current && !popupRef.current.contains(event.target)) {
-        onClose();
-      }
+        if (popupRef.current && !popupRef.current.contains(event.target)) {
+            onClose();
+        }
     };
-  
+
     useEffect(() => {
-      if (isOpen) {
-        document.addEventListener('mousedown', handleClickOutside);
-      } else {
-        document.removeEventListener('mousedown', handleClickOutside);
-      }
-  
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
+        if (isOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
     }, [isOpen]);
-  
+
     if (!isOpen) {
-      return null;
+        return null;
     }
+
   
     return (
         <div className="overlay">
