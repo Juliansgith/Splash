@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import "../css/Auth.css"
 
 function RegisterPopup({ setUserRole }) {
   const [isLogin, setIsLogin] = useState(true);
@@ -73,23 +74,32 @@ function RegisterPopup({ setUserRole }) {
   }
 
   return (
-    <div className="container">
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required className="form-input" />
-        <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} required className="form-input" />
-        <input type="text" name="postcode" placeholder="Postcode" value={formData.postcode} onChange={handleChange} required className="form-input" />
-        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required className="form-input" />
-        <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required className="form-input" />
-        <input type="password" name="passwordConfirmation" placeholder="Confirm Password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} required={!isLogin} className={`form-input ${!passwordsMatch ? 'input-error' : ''}`} />
+    <div className="page-container">
+      <div className="container">
+        <h1 className="bold authtitle">Create account</h1>
+        <p className="txt regular space">To use Splash, you must first create an account.</p>
+        <form onSubmit={handleSubmit}>
+          <p className="txt large medium nomargin">Name</p>
+          <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required className="form-input" />
+          {/* <p className="txt large medium nomargin">City</p>
+          <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} required className="form-input" />
+          <p className="txt large medium nomargin">Postal code</p>
+          <input type="text" name="postcode" placeholder="Postcode" value={formData.postcode} onChange={handleChange} required className="form-input" /> */}
+          <p className="txt large medium nomargin">Email</p>
+          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required className="form-input" />
+          <p className="txt large medium nomargin">Password</p>
+          <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required className="form-input" />
+          <p className="txt large medium nomargin">Confirm password</p>
+          <input type="password" name="passwordConfirmation" placeholder="Confirm Password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} required={!isLogin} className={`form-input ${!passwordsMatch ? 'input-error' : ''}`} />
 
-        {!passwordsMatch && <p className="error-message">Passwords do not match.</p>}
+          {!passwordsMatch && <p className="error-message">Passwords do not match.</p>}
 
-        <button type="submit" className="button">Sign up</button>
-      </form>
-
-      <Link to="/login" className="toggle-form-text">Already have an account? Log in here</Link>
-
+          <div className="submit-container">
+            <button type="submit" className="submit">Sign up</button>
+            <Link to="/login" className="toggle-form-text">Already have an account? Log in here</Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import LoginPopup from '../components/LoginPopup';
 import { Link, useNavigate } from 'react-router-dom';
+import "../css/Auth.css"
 
 function Start() {
   const isLoggedIn = () => {
@@ -8,15 +9,20 @@ function Start() {
   };
 
   return (
-    <>
-      <h1>Splash</h1>
+    <div className="page-container">
+      <div className="start-logo">
+        <img src="/assets/splashLogo.png"></img>
+        <h1 className="logo">Splash</h1>
+      </div>
 
-      {/* {!isLoggedIn() && <Link to="/login" className="nav-link">Log in</Link>}
-      {!isLoggedIn() && <Link to="/register" className="nav-link">Sign-up</Link>} */}
+      <p className="txt regular quote">Splash: Your Opinion Matters of Splash: Opinions that Reward, Insights that Transform.</p>
 
-      <Link to="/login" className="nav-link">Log in</Link>
-      <Link to="/register" className="nav-link">Sign-up</Link>
-    </>
+      <div className="start-buttons">
+        <Link to="/login" className=""><button>Log in</button></Link>
+        <Link to="/register" className=""><button className="bg-white">Sign-up</button></Link>
+      </div>
+      
+    </div>
   );
 }
 
