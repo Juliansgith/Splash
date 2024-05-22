@@ -1,0 +1,54 @@
+.returndiv {
+  display: flex;
+  width: 24.375rem;
+  padding: 0rem 1.5rem 1rem 1.5rem;
+  align-items: center;
+  margin-top: 60px;
+  margin-left: 30px;
+  margin-bottom: 10%;
+}
+
+.return {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.custommargin {
+  margin-bottom: 30%;
+  color: #000;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.3125rem;
+  opacity: 0.6;
+}
+
+.custommarginv2 {
+  margin-bottom: 70%;
+  color: #000;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.3125rem;
+  opacity: 0.6;
+}
+
+.centerquestionicon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.questionIconsvg {
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+}
+
+.bold {
+  text-align: center;
+}

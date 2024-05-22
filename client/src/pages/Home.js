@@ -53,9 +53,6 @@ function Home() {
             {questionnaires.map((questionnaire) => (
               <SwiperSlide key={questionnaire._id}>
                 <div className="Stellingcontainer">
-                  <div
-                    className={questionnaire.tag === "" ? "test2 test" : ""}
-                  />
                   <h2 className="Title">{questionnaire.title}</h2>
                   <h3 className="Tag">{questionnaire.tag}</h3>
                   <div className="CompanyRedirect">
@@ -71,9 +68,7 @@ function Home() {
                       src="assets/Arrowright.svg"
                       className="Arrowimg"
                       alt="Navigate to Questionnaire"
-                      onClick={() =>
-                        navigate(`/questionnaire/${questionnaire._id}`)
-                      }
+                      onClick={() => navigate("/answerstart")}
                     />
                   </div>
                 </div>
