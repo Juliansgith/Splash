@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../css/Profile.css"; // Import the CSS file for the progress bar styles
-import { useState } from "react";
+import { jwtDecode as jwt_decode } from 'jwt-decode';
 
-function ProgressBar() {
+function ProgressBar({ token }) {
   const [score, setScore] = useState(1);
+  let userId;
+
+  if (token) {
+    try {
+      const decodedToken = jwt_decode(token);
+      userId = decodedToken.userId;
+    } catch (error) {
+      console.error("Invalid token specified:", error);
+    }
+  }
+
+  useEffect(() => {
+    if (userId) {
+      axios
+        .get(`http://localhost:5000/getinformation?userId=${userId}`)
+        .then((response) => {
+          console.log("Response data:", response.data); 
+          setScore(response.data.score);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [userId]);
 
   return (
     <div className="progressbar">

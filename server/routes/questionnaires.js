@@ -131,4 +131,38 @@ const mongoose = require('mongoose');
     }
 });
 
+router.get('/getinformation', async (req, res) => {
+  const { userId } = req.query;
+  try {
+    const user = await User.findById(userId).populate('questionnairesByWeek.questionnaires');
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    // Function to get the current week number
+    const getCurrentWeek = () => {
+      const currentDate = new Date();
+      const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
+      const pastDaysOfYear = (currentDate - startOfYear) / 86400000;
+      return Math.ceil((pastDaysOfYear + startOfYear.getDay() + 1) / 7);
+    };
+
+    const currentWeek = getCurrentWeek();
+    const currentYear = new Date().getFullYear();
+
+    console.log(`Current Week: ${currentWeek}, Current Year: ${currentYear}`);
+
+    const thisWeekQuestionnaires = user.questionnairesByWeek
+      .filter(week => week.week === currentWeek && week.year === currentYear)
+      .reduce((acc, week) => acc.concat(week.questionnaires), []);
+
+    console.log(`This Week's Questionnaires:`, thisWeekQuestionnaires);
+
+    res.json({ score: Math.min(thisWeekQuestionnaires.length, 10) });
+  } catch (error) {
+    res.status(500).send(error.toString());
+  }
+});
+
+
 module.exports = router;

@@ -1,5 +1,6 @@
 /* Progressbar */
 
+
 .progressbar {
   width: 100%;
   height: 1rem;
@@ -12,24 +13,23 @@
 
 .progress {
   border-radius: 1.25rem;
-  width: 0;
   height: 100%;
   background: var(--Accent-Button-color, #456eff);
+  position: relative;
 }
 
 .droplet {
   position: absolute;
-  left: 0;
-  top: 60%;
+  top: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
 }
 
 .dropletgoal {
   position: absolute;
-  left: 100%;
-  top: 60%;
-  transform: translate(-50%, -50%);
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%);
 }
 
 .scoreText {
