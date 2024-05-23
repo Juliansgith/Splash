@@ -30,6 +30,12 @@ function Home() {
     }
   }, [userId]);
 
+  const handleStartClick = () => {
+    if (questionnaires.length > 0) {
+      navigate(`/questionnaire/${questionnaires[0]._id}`);
+    }
+  };
+
   return (
     <>
       <header className="top-container">
@@ -86,6 +92,7 @@ function Home() {
             ))}
           </Swiper>
         </div>
+        <button onClick={handleStartClick}>Start</button>
       </div>
       <NavBar />
     </>
