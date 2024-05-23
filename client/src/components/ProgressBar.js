@@ -4,13 +4,14 @@ import "../css/Profile.css"; // Import the CSS file for the progress bar styles
 import { jwtDecode as jwt_decode } from 'jwt-decode';
 
 function ProgressBar({ token }) {
-  const [score, setScore] = useState(1);
+  const [score, setScore] = useState(0);
   let userId;
 
   if (token) {
     try {
       const decodedToken = jwt_decode(token);
       userId = decodedToken.userId;
+      console.log("Decoded userId:", userId);
     } catch (error) {
       console.error("Invalid token specified:", error);
     }
@@ -18,20 +19,21 @@ function ProgressBar({ token }) {
 
   useEffect(() => {
     if (userId) {
+      console.log("Making request to backend with userId:", userId);
       axios
         .get(`http://localhost:5000/getinformation?userId=${userId}`)
         .then((response) => {
           console.log("Response data:", response.data); 
           setScore(response.data.score);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.log("Error fetching data:", error));
     }
   }, [userId]);
 
   return (
     <div className="progressbar">
-      <div className="progress" style={{ width: `${score * 10}%` }}>
-        <div className="droplet" style={{ left: `${score * 10}%` }}>
+      <div className="progress" style={{ width: `${(score / 10) * 100}%` }}>
+        <div className="droplet" style={{ left: `${(score / 10) * 100}%` }}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="26"

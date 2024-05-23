@@ -45,7 +45,7 @@ function Home() {
         </div>
 
         <div className="weekly-container">
-          <ProgressBar />
+          <ProgressBar token={token} />
         </div>
       </header>
 
