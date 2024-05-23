@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../css/Profile.css"; // Import the CSS file for the progress bar styles
-import { jwtDecode as jwt_decode } from 'jwt-decode';
+import { jwtDecode as jwt_decode } from "jwt-decode";
 
 function ProgressBar({ token }) {
   const [score, setScore] = useState(0);
@@ -23,7 +23,7 @@ function ProgressBar({ token }) {
       axios
         .get(`http://localhost:5000/getinformation?userId=${userId}`)
         .then((response) => {
-          console.log("Response data:", response.data); 
+          console.log("Response data:", response.data);
           setScore(response.data.score);
         })
         .catch((error) => console.log("Error fetching data:", error));
@@ -32,8 +32,8 @@ function ProgressBar({ token }) {
 
   return (
     <div className="progressbar">
-      <div className="progress" style={{ width: `${(score / 10) * 100}%` }}></div>
-      <div className="droplet">
+      <div className="progress" style={{ width: `${score * 10}%` }}></div>
+      <div className="droplet" style={{ left: `${score * 10}%` }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="26"

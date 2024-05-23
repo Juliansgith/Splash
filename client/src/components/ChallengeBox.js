@@ -2,6 +2,7 @@ import React from "react";
 import ProgressBar from "./ProgressBar";
 
 const ChallengeBox = () => {
+  const token = localStorage.getItem("token");
   return (
     <>
       <div className="challengebox">
@@ -27,7 +28,7 @@ const ChallengeBox = () => {
           </div>
         </div>
 
-        <ProgressBar />
+        <ProgressBar token={token} />
 
         <div className="challengerow">
           <p className="nomargin">Deze uitdaging duurt nog 2 dagen</p>
