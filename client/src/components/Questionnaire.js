@@ -4,11 +4,11 @@ import axios from 'axios';
 import { jwtDecode as jwt_decode } from 'jwt-decode';
 import "../css/Question.css"
 
-
 function QuestionnaireDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [questionnaire, setQuestionnaire] = useState(null);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true); // Add state for button disabled
 
   useEffect(() => {
     axios.get(`http://localhost:5000/user/${id}`)
@@ -17,6 +17,15 @@ function QuestionnaireDetail() {
       })
       .catch(error => console.log(error));
   }, [id]);
+
+  useEffect(() => {
+    // Enable the button after the animation is complete (e.g., 5 seconds)
+    const timer = setTimeout(() => {
+      setIsButtonDisabled(false);
+    }, 5000); // Duration of your animation
+
+    return () => clearTimeout(timer); // Cleanup the timer on unmount
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,7 +54,6 @@ function QuestionnaireDetail() {
 
   return (
     <div className="question-container">
-
       <div className="tag green">
         <img src="/assets/tag.svg"></img>
         <p>Gezondheid</p>
@@ -67,7 +75,7 @@ function QuestionnaireDetail() {
             </div>
           </div>
         ))}
-        <button type="submit" className="enable-anim">Submit Answers</button>
+        <button type="submit" className="enable-anim" disabled={isButtonDisabled}>Submit Answers</button>
       </form>
     </div>
   );
