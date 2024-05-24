@@ -4,7 +4,6 @@ import { jwtDecode as jwt_decode } from "jwt-decode";
 import NavBar from '../components/NavBar'; 
 import Coupon from '../components/Coupon';
 import "../css/Reward.css"
-import NavBar from "../components/NavBar";
 
 const RewardsManager = () => {
   const [points, setPoints] = useState(0);

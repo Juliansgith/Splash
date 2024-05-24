@@ -11,7 +11,7 @@ function Start() {
   return (
     <div className="page-container">
       <div className="start-logo">
-        <img src="/assets/splashLogo.png"></img>
+        <img src="/assets/splashLogo.png" alt="Splash Logo"></img>
         <h1 className="logo">Splash</h1>
       </div>
 
