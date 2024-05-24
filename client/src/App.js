@@ -27,8 +27,6 @@ function App() {
 
   return (
     <Router>
-      {/* <div className="App"> */}
-      {/* <div className="main-content"> */}
       <Routes>
         <Route path="/" element={<Start />} />
         <Route path="/home" element={<Home />} />
@@ -47,11 +45,9 @@ function App() {
           <Route path="/create" element={<CreateQuestionnaire />} />
         )}
         <Route path="/questionnaire/:id" element={<QuestionnaireDetail />} />
-        <Route path="/answerstart" element={<AnswerStart />} />
+        <Route path="/answerstart/:id" element={<AnswerStart />} />
         <Route path="/answers/:id" element={<QuestionnaireDetails />} />
       </Routes>
-      {/* </div> */}
-      {/* </div> */}
     </Router>
   );
 }

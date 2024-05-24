@@ -68,7 +68,7 @@ function Home() {
                       src="assets/Arrowright.svg"
                       className="Arrowimg"
                       alt="Navigate to Questionnaire"
-                      onClick={() => navigate("/answerstart")}
+                      onClick={() => navigate(`/answerstart/${questionnaire._id}`)}
                     />
                   </div>
                 </div>
