@@ -15,7 +15,12 @@
   flex-direction: row;
   justify-content: center;
 }
-
+.logo{
+  font-family: "Poppins-Bold";
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 60%;
+}
 h2.logo {
   font-family: "Poppins-Bold";
   font-size: 20px;
@@ -32,7 +37,7 @@ h2.logo {
   flex-wrap: nowrap;
   overflow-x: auto;
   margin: 0;
-  padding-bottom: 5vh;
+  /* padding-bottom: 5vh; */
   width: 100%;
   max-width: 600px; /* Responsive max width */
   background-color: #f5f3ef;
@@ -52,7 +57,7 @@ h2.logo {
 
 .Stellingcontainer {
   height: 42vh;
-  max-width:60vw;
+  max-width: 60vw;
   margin: auto;
   display: flex;
   padding: 1.5rem;
@@ -133,3 +138,13 @@ h2.logo {
   display: block;
   object-fit: cover;
 }
+
+.weekly-container {
+  position: relative;
+  display: flex;
+  padding: 0 24px 0px 36px;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+

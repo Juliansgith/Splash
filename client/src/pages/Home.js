@@ -9,6 +9,7 @@ import "../css/Home.css";
 import { Pagination } from "swiper/modules";
 import NavBar from "../components/NavBar";
 import PointsButton from "../components/PointsButton";
+import ProgressBar from "../components/ProgressBar";
 
 function Home() {
   const navigate = useNavigate();
@@ -29,12 +30,22 @@ function Home() {
     }
   }, [userId]);
 
+  const handleStartClick = () => {
+    if (questionnaires.length > 0) {
+      navigate(`/questionnaire/${questionnaires[0]._id}`);
+    }
+  };
+
   return (
     <>
       <header className="top-container">
         <div className="logo-points">
           <h2 className="logo">Splash</h2>
-          <PointsButton></PointsButton>
+          <PointsButton />
+        </div>
+
+        <div className="weekly-container">
+          <ProgressBar token={token} />
         </div>
       </header>
 
@@ -81,6 +92,7 @@ function Home() {
             ))}
           </Swiper>
         </div>
+        <button onClick={handleStartClick}>Start</button>
       </div>
       <NavBar />
     </>

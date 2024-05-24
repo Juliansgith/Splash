@@ -99,8 +99,6 @@ h2.pointnr {
   margin: 0;
 }
 
-
-
 /* buttons */
 
 button {
@@ -109,6 +107,7 @@ button {
   background: var(--accent-accent-color-button-color, #456eff);
   display: flex;
   width: 77.5vw;
+  max-width: 312px;
   padding: 0.75rem 1rem;
   margin-left: auto;
   margin-right: auto;
@@ -168,26 +167,28 @@ button {
   }
 }
 
-
-
 /* containers */
 
 .top-container {
   position: fixed;
   top: 0;
   left: 0;
+  /* height: 24.5%; */
   width: 100%;
   border-radius: 0 0 20px 20px;
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
   z-index: 2;
 }
 
-.logo-container {
+.logo-points {
   margin-top: 60px;
-  padding: 0 24px 0px 24px;
+  padding: 0rem 1.5rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
 }
-
-
 
 /* form */
 

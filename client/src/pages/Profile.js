@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { jwtDecode as jwt_decode } from 'jwt-decode';
-import NavBar from '../components/NavBar'; 
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { jwtDecode as jwt_decode } from "jwt-decode";
+import NavBar from "../components/NavBar";
+import ChallengeBox from "../components/ChallengeBox";
+import ProgressBar from "../components/ProgressBar";
 
 function Account() {
   const [userDetails, setUserDetails] = useState({});
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   const userId = token ? jwt_decode(token).userId : null;
 
   useEffect(() => {
@@ -13,14 +15,17 @@ function Account() {
       if (!userId) return;
 
       try {
-        const { data } = await axios.get(`http://localhost:5000/userdetails/${userId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const { data } = await axios.get(
+          `http://localhost:5000/userdetails/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setUserDetails(data);
       } catch (error) {
-        console.error('Error fetching user details:', error);
+        console.error("Error fetching user details:", error);
       }
     };
 
@@ -30,14 +35,15 @@ function Account() {
   return (
     <>
       <header className="top-container">
-        <div className="logo-container">
+        <div className="logo-points">
           <h2 className="bold">Splash</h2>
         </div>
       </header>
-
+      {/* 
       <h2>Account Details</h2>
       <p>Email: {userDetails.email}</p>
-      <p>Points: {userDetails.points}</p>
+      <p>Points: {userDetails.points}</p> */}
+      <ChallengeBox></ChallengeBox>
 
       <NavBar />
     </>
