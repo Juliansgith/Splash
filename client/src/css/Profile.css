@@ -67,6 +67,7 @@
   gap: 0.5rem;
   border-radius: 1.25rem;
   background: var(--Background-Background, #fff);
+  margin-bottom: 2.06rem;
 }
 
 .challengerow {
@@ -97,3 +98,30 @@
 }
 
 /* Weekly challenge */
+
+/* Infoboxes */
+.infobox {
+  justify-content: left;
+  display: flex;
+  border-radius: 1.25rem;
+  background: var(--Background-Background, #fff);
+  padding: 1.25rem;
+  align-items: center;
+  gap: 0.8125rem;
+}
+
+.iconsbox {
+  display: flex;
+  padding: 0.75rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+/* Infoboxes */
+
+.profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
