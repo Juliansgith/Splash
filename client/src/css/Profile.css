@@ -40,6 +40,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  font-weight: 500;
+}
+
+.scoreText.black {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-weight: 500;
 }
 
 /* Progressbar */
