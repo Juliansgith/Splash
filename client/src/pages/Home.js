@@ -37,7 +37,12 @@ function Home() {
           <PointsButton></PointsButton>
         </div>
       </header>
-
+      <div className="recieve">
+        <div className="recieve-pointstxt">
+          <img src="assets/Gift.svg" className="recieveimg" />
+          Recieve <span className="pointsnmbr">+20</span> points
+        </div>
+      </div>
       <div className="questionnaire-container">
         <div className="questionnaire-list">
           <Swiper
@@ -68,7 +73,9 @@ function Home() {
                       src="assets/Arrowright.svg"
                       className="Arrowimg"
                       alt="Navigate to Questionnaire"
-                      onClick={() => navigate(`/answerstart/${questionnaire._id}`)}
+                      onClick={() =>
+                        navigate(`/answerstart/${questionnaire._id}`)
+                      }
                     />
                   </div>
                 </div>
