@@ -48,7 +48,12 @@ function Home() {
           <ProgressBar token={token} />
         </div>
       </header>
-
+      <div className="recieve">
+        <div className="recieve-pointstxt">
+          <img src="assets/Gift.svg" className="recieveimg" />
+          Recieve <span className="pointsnmbr">+20</span> points
+        </div>
+      </div>
       <div className="questionnaire-container">
         <div className="questionnaire-list">
           <Swiper
@@ -64,9 +69,6 @@ function Home() {
             {questionnaires.map((questionnaire) => (
               <SwiperSlide key={questionnaire._id}>
                 <div className="Stellingcontainer">
-                  <div
-                    className={questionnaire.tag === "" ? "test2 test" : ""}
-                  />
                   <h2 className="Title">{questionnaire.title}</h2>
                   <h3 className="Tag">{questionnaire.tag}</h3>
                   <div className="CompanyRedirect">
@@ -83,7 +85,7 @@ function Home() {
                       className="Arrowimg"
                       alt="Navigate to Questionnaire"
                       onClick={() =>
-                        navigate(`/questionnaire/${questionnaire._id}`)
+                        navigate(`/answerstart/${questionnaire._id}`)
                       }
                     />
                   </div>
