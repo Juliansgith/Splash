@@ -83,7 +83,7 @@ function Account() {
           <div className="profile-user">
             <h1 className="bold nomargin">John Doe</h1>
             <h2 Style="color: #456eff;" className="bold nomargin">
-              200 points
+              {userDetails.points} points
             </h2>
           </div>
         </div>
