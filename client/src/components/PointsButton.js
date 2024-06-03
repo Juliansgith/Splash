@@ -50,7 +50,7 @@ function PointsButton() {
       <img src="assets/Droplet.svg" className="Dropletsvg" alt="Droplet logo" />
       {expanded && (
         <div className="expandedContent">
-          <p>{points}</p>
+          <p className="txt medium">{points}</p>
         </div>
       )}
     </button>
