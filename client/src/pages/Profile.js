@@ -36,7 +36,7 @@ function Account() {
     <>
       <header className="top-container">
         <div className="logo-points">
-          <h2 className="bold">Splash</h2>
+          <h2 className="logo">Splash</h2>
         </div>
       </header>
       {/* 
