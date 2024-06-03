@@ -18,6 +18,10 @@
     margin-top: 32vh;
 }
 
+.logo {
+    margin: 0 auto;
+}
+
 .start-logo img {
     width: 125px;
     height: auto;
