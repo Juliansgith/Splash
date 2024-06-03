@@ -40,7 +40,7 @@ function Home() {
     <>
       <header className="top-container">
         <div className="logo-points">
-          <h2 className="logo">Splash</h2>
+          <h2 className="logo sharedlogo">Splash</h2>
           <PointsButton />
         </div>
 

@@ -1,3 +1,5 @@
+@font-face {font-family: "Poppins-Medium"; src: url("../../public/fonts/Poppins-Medium.ttf"); font-weight: 500;}
+
 #pointsbtn {
   border-radius: 4.1775rem;
   background-color: #456eff;
@@ -15,5 +17,5 @@
   width: 5rem;
   display: flex;
   flex-direction: row-reverse;
-  font-family: Poppins;
+  font-weight: 500;
 }
