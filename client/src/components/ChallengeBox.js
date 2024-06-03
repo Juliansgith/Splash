@@ -23,15 +23,15 @@ const ChallengeBox = () => {
             />
           </svg>
           <div className="challengecolumn">
-            <h2 className="nomargin">Wekelijkse uitdaging</h2>
-            <p className="nomargin">Vul deze week 10 stellingen in</p>
+            <h2 className="nomargin">Weekly goals</h2>
+            <p className="nomargin">Answer 10 questions this week</p>
           </div>
         </div>
 
         <ProgressBar token={token} />
 
         <div className="challengerow">
-          <p className="nomargin">Deze uitdaging duurt nog 2 dagen</p>
+          <p className="nomargin opacity">This challenge ends in two days</p>
           <div className="points">
             <p>+100</p>
             <svg

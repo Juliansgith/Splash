@@ -1,85 +1,88 @@
-@font-face {font-family: 'Poppins-Bold'; src: url('../../public/fonts/Poppins-Bold.ttf'); font-weight: 700;}
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("../../public/fonts/Poppins-Bold.ttf");
+  font-weight: 700;
+}
 
 .coupon-container {
-    position: relative;
-    width: 87.7vw;
-    border-radius: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-    padding: 70px 20px 20px 20px;
-    box-sizing: border-box;
-    max-width: 470px;
-    min-width: 255px;
+  position: relative;
+  width: 87.7vw;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 70px 20px 20px 20px;
+  box-sizing: border-box;
+  max-width: 470px;
+  min-width: 255px;
 }
 
 .banner {
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    border-radius: 20px 20px 0 0;
-    background-color: #00A0E2;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  border-radius: 20px 20px 0 0;
+  background-color: #00a0e2;
 }
 
 .banner .logo {
-    height: 70px;
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
+  height: 70px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .point.coupon {
-    position: absolute;
-    top: 50px;
-    left: 20px;
-    bottom: 0;
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  bottom: 0;
 }
 
 .redeem-btn {
-    position: relative;
-    border: 2px solid var(--text-text-color-1, #E6E6E6);
-    padding: 5px 20px;
-    transition: background-color 0.3s;
-    border-radius: 16px;
-    box-sizing: border-box;
-    max-width: 330px;
-    min-width: 225px;
+  position: relative;
+  border: 2px solid var(--text-text-color-1, #e6e6e6);
+  padding: 5px 20px;
+  transition: background-color 0.3s;
+  border-radius: 16px;
+  box-sizing: border-box;
+  max-width: 330px;
+  min-width: 225px;
 }
 
 button:disabled {
-    cursor: default;
+  cursor: default;
 }
 
 .progress-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    background-color: #E6E6E6;
-    border-radius: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #e6e6e6;
+  border-radius: 12px;
 }
 
 .reward-container {
-    display: flex;
-    flex-direction: column;
-    height: calc(90vh - 218px);
-    margin-top: 118px;
-    overflow-x: hidden;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+  display: flex;
+  flex-direction: column;
+  height: calc(90vh - 218px);
+  margin-top: 118px;
+  overflow-x: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .reward-container::-webkit-scrollbar {
-    display: none;
-}
-  
-.reward-container > div {
-    width: 100%;
-    padding: 10px;
+  display: none;
 }
 
+.reward-container > div {
+  width: 100%;
+  padding: 10px;
+}
 
 /* @media screen and (max-width: 800px) {
     .grid-container {
@@ -87,123 +90,118 @@ button:disabled {
     }
   } */
 
-
-
-
 .point-counter {
-    position: relative;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    width: 306px;
-    margin-bottom: 10px;
+  position: relative;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 306px;
+  margin-bottom: 10px;
 }
 
 .number-container {
-    position: relative;
-    padding: 2px;
+  position: relative;
+  padding: 2px;
 }
 
 .pbg {
-    width: 75px;
-    height: auto;
+  width: 75px;
+  height: auto;
 }
 
 .point-container {
-    position: absolute;
-    top: 0;
-    left: 1;
-    bottom: 0;
-    width: 75px;
-    color: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 1;
+  bottom: 0;
+  width: 75px;
+  color: #ffffff;
 }
 
 .pointnr {
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 32.5%;
-    width: 24px;
-    height: 32px;
-    justify-content: center;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 32.5%;
+  width: 24px;
+  height: 32px;
+  justify-content: center;
 }
 
 .spointnr {
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 40%;
-    width: 24px;
-    height: 32px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40%;
+  width: 24px;
+  height: 32px;
 }
 
-
-
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
 }
 
 .rewardpopup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #F5F3EF;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    z-index: 1001;
-    width: 80vw;
-    text-align: left;
-    padding: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f5f3ef;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  z-index: 1001;
+  width: 80vw;
+  text-align: left;
+  padding: 20px;
 }
 
 .rewardpopup h2 {
-    margin: 0;
+  margin: 0;
 }
-  
+
 .rewardpopup-content {
-    background-color: #ffffff;
-    text-align: left;
-    padding: 30px 20px;
-    border-radius: 20px;
-    margin: 20px 0;
+  background-color: #ffffff;
+  text-align: left;
+  padding: 30px 20px;
+  border-radius: 20px;
+  margin: 20px 0;
 }
 
 .pop-no {
-    width: 30%;
-    font-family: 'Poppins-Bold', sans-serif;
-    margin-right: 5%;
+  width: 30%;
+  font-family: "Poppins-Bold", sans-serif;
+  margin-right: 5%;
 }
 
-.pop-yes{
-    width: 65%;
+.pop-yes {
+  width: 65%;
 }
 
 .btn-wrap {
-    display: flex;
+  display: flex;
 }
 
-.wrap-1{
-    display: flex;
+.wrap-1 {
+  display: flex;
 }
 
 .wrap-1 img {
-    margin-right: 5px;
-    align-items: flex-start;
-    width: 28px;
-    height: 28px;
+  margin-right: 5px;
+  align-items: flex-start;
+  width: 28px;
+  height: 28px;
 }
 
 .wrap-1 h2 {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .wrap-2 p {
-    margin: 8px 0;
+  margin: 8px 0;
 }

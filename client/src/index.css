@@ -1,9 +1,29 @@
 /* defining custom fonts */
-@font-face {font-family: "Poppins-Regular"; src: url("../public/fonts/Poppins-Regular.ttf"); font-weight: 400;}
-@font-face {font-family: "Poppins-Medium"; src: url("../public/fonts/Poppins-Medium.ttf"); font-weight: 500;}
-@font-face { font-family: "Poppins-Bold"; src: url("../public/fonts/Poppins-Bold.ttf"); font-weight: 700;}
-@font-face { font-family: "Poppins-ExtraBold"; src: url("../public/fonts/Poppins-ExtraBold.ttf"); font-weight: 800;}
-@font-face { font-family: "Poppins-SemiBold"; src: url("../public/fonts/Poppins-SemiBold.ttf"); font-weight: 600;}
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("../public/fonts/Poppins-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url("../public/fonts/Poppins-Medium.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("../public/fonts/Poppins-Bold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Poppins-ExtraBold";
+  src: url("../public/fonts/Poppins-ExtraBold.ttf");
+  font-weight: 800;
+}
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url("../public/fonts/Poppins-SemiBold.ttf");
+  font-weight: 600;
+}
 
 body,
 html {
@@ -18,8 +38,6 @@ html {
   background-color: #f5f3ef;
   color: #000000; /* Default text color */
 }
-
-
 
 /* headings */
 
@@ -55,11 +73,13 @@ h2.bold {
 }
 
 h2.pointnr {
-  font-family: 'Poppins-ExtraBold';
+  font-family: "Poppins-ExtraBold";
   font-size: 40px;
 }
 
-
+.opacity {
+  opacity: 0.4;
+}
 
 /* text */
 
@@ -199,7 +219,7 @@ button {
   border: 0;
   border-radius: 10px;
   box-sizing: border-box; /* Makes sure padding does not affect the overall width */
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 .form-input:focus {
@@ -223,8 +243,6 @@ button {
     width: 90vw; /* Cards take more width on smaller screens */
   }
 }
-
-
 
 /* tags */
 
@@ -302,7 +320,7 @@ button {
 .point {
   display: flex;
   border-radius: 66.84px;
-  background-color: #456EFF;
+  background-color: #456eff;
   height: 36px;
   width: 76px;
   justify-content: center;
