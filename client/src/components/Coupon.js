@@ -1,9 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../css/Reward.css";
 import RewardPopup from './RewardPopup';
+import axios from "axios";
+import { jwtDecode as jwt_decode } from "jwt-decode";
 
 function Coupon({ pointsNeeded, pointsCollected }) {
+    const [points, setPoints] = useState(0);
+    const [pointsToRedeem, setPointsToRedeem] = useState("");
     const percentComplete = (pointsCollected / pointsNeeded) * 100;
+
+    useEffect(() => {
+        setPointsToRedeem(pointsNeeded.parseInt);
+    }, [pointsNeeded]);
+
+    const getUserIdFromJWT = () => {
+        const token = localStorage.getItem("token");
+        if (token) {
+          const decoded = jwt_decode(token);
+          return decoded.userId;
+        }
+        return null;
+    };
+
+    const userId = getUserIdFromJWT();
 
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -11,9 +30,29 @@ function Coupon({ pointsNeeded, pointsCollected }) {
         setIsPopupOpen(!isPopupOpen);
     };
 
-    const handleActivate = () => {
+    const handleActivate = async () => {
         // Handle activation logic here
         console.log('Beloning geactiveerd!');
+        if (pointsToRedeem > points) {
+            alert("You don't have enough points to redeem this amount.");
+            return;
+          }
+      
+          try {
+            const response = await axios.post(
+              "http://localhost:5000/redeem-rewards",
+              {
+                userId,
+                pointsToRedeem: parseInt(pointsToRedeem, 10),
+              }
+            );
+            alert(response.data.message);
+            setPoints(response.data.newPointsBalance);
+            setPointsToRedeem("");
+          } catch (error) {
+            console.error("Error redeeming points:", error);
+            alert("Failed to redeem points");
+          }
     };
 
     return (
