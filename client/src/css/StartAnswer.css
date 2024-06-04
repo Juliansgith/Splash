@@ -17,7 +17,7 @@
   margin-bottom: 30%;
   color: #000;
   text-align: center;
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
@@ -29,7 +29,7 @@
   margin-bottom: 70%;
   color: #000;
   text-align: center;
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
@@ -49,6 +49,6 @@
   flex-shrink: 0;
 }
 
-.bold {
+.bold.center {
   text-align: center;
 }
