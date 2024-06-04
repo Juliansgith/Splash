@@ -39,7 +39,7 @@ const RewardPopup = ({ isOpen, onClose, onActivate, children }) => {
     }
 
     return (
-        <div className="overlay">
+        <div className="overlay-reward">
             <div className="rewardpopup" ref={popupRef}>
                 <h2 className="bold">{message}</h2>
                 {buttonsVisible ? (

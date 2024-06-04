@@ -38,28 +38,28 @@ const RewardsManager = () => {
     }
   }, [userId]);
 
-  const handleRedeem = async () => {
-    if (pointsToRedeem > points) {
-      alert("You don't have enough points to redeem this amount.");
-      return;
-    }
+  // const handleRedeem = async () => {
+  //   if (pointsToRedeem > points) {
+  //     alert("You don't have enough points to redeem this amount.");
+  //     return;
+  //   }
 
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/redeem-rewards",
-        {
-          userId,
-          pointsToRedeem: parseInt(pointsToRedeem, 10),
-        }
-      );
-      alert(response.data.message);
-      setPoints(response.data.newPointsBalance);
-      setPointsToRedeem("");
-    } catch (error) {
-      console.error("Error redeeming points:", error);
-      alert("Failed to redeem points");
-    }
-  };
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost:5000/redeem-rewards",
+  //       {
+  //         userId,
+  //         pointsToRedeem: parseInt(pointsToRedeem, 10),
+  //       }
+  //     );
+  //     alert(response.data.message);
+  //     setPoints(response.data.newPointsBalance);
+  //     setPointsToRedeem("");
+  //   } catch (error) {
+  //     console.error("Error redeeming points:", error);
+  //     alert("Failed to redeem points");
+  //   }
+  // };
 
   const pointArray = points.toString().split("")
 
