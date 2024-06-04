@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { jwtDecode as jwt_decode } from "jwt-decode";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "../css/StartAnswer.css";
 
 function AnswerStart() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { id } = useParams(); // Retrieve the questionnaire ID from the URL
-  const [questionnaires, setQuestionnaires] = useState([]);
+  const [questionnaire, setQuestionnaire] = useState([]);
+  const { questionnaires } = location.state || { questionnaires: [] };
 
   const token = localStorage.getItem("token");
   const userId = token ? jwt_decode(token).userId : null;
@@ -17,7 +19,7 @@ function AnswerStart() {
       axios
         .get(`http://localhost:5000/all?userId=${userId}`)
         .then((response) => {
-          setQuestionnaires(response.data);
+          setQuestionnaire(response.data);
           console.log(response.data);
         })
         .catch((error) => console.log(error));
@@ -42,9 +44,9 @@ function AnswerStart() {
           alt="Question icon"
         />
       </div>
-      <h1 className="bold">Up next 2 questions.</h1>
+      <h1 className="bold center">Up next 2 questions.</h1>
       <p className="custommarginv2">You will earn 20 points!</p>
-      <button onClick={() => navigate(`/questionnaire/${id}`)}> {/* Use the ID from the URL */}
+      <button onClick={() => navigate(`/questionnaire/${questionnaires[0]._id}`, { state: { questionnaires } })}> {/* Use the ID from the URL */}
         Continue
       </button>
     </>

@@ -32,7 +32,14 @@ function Home() {
 
   const handleStartClick = () => {
     if (questionnaires.length > 0) {
-      navigate(`/questionnaire/${questionnaires[0]._id}`);
+      navigate(`/answerstart/${questionnaires[0]._id}`, { state: { questionnaires } });
+    }
+  };
+
+  const handleArrowClick = (questionnaireId) => {
+    const selectedQuestionnaire = questionnaires.find(q => q._id === questionnaireId);
+    if (selectedQuestionnaire) {
+      navigate(`/answerstart/${questionnaireId}`, { state: { questionnaires: [selectedQuestionnaire] } });
     }
   };
 
@@ -84,9 +91,7 @@ function Home() {
                       src="assets/Arrowright.svg"
                       className="Arrowimg"
                       alt="Navigate to Questionnaire"
-                      onClick={() =>
-                        navigate(`/answerstart/${questionnaire._id}`)
-                      }
+                      onClick={() => handleArrowClick(questionnaire._id)}
                     />
                   </div>
                 </div>
@@ -94,7 +99,7 @@ function Home() {
             ))}
           </Swiper>
         </div>
-        <button onClick={handleStartClick}>Start</button>
+        <button onClick={handleStartClick}>Start all questions</button>
       </div>
       <NavBar />
     </>

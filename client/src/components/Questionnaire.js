@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { jwtDecode as jwt_decode } from 'jwt-decode';
 import "../css/Question.css"
@@ -7,8 +7,15 @@ import "../css/Question.css"
 function QuestionnaireDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const [questionnaire, setQuestionnaire] = useState(null);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true); // Add state for button disabled
+  const { questionnaires } = location.state || { questionnaire: null };
+
+  const totalLength = questionnaires.length
+  const currentIndex = questionnaires.findIndex(q => q._id === id);
+  const nextQuestionnaireId = questionnaires[currentIndex + 1]?._id;
+  const prevQuestionnaireId = questionnaires[currentIndex - 1]?._id;
 
   useEffect(() => {
     axios.get(`http://localhost:5000/user/${id}`)
@@ -43,7 +50,11 @@ function QuestionnaireDetail() {
 
       await axios.post(`http://localhost:5000/answer/${id}`, { answers, userId });
       alert('Answers submitted successfully');
-      navigate('/home'); 
+      if (nextQuestionnaireId) {
+        navigate(`/questionnaire/${nextQuestionnaireId}`, { state: { questionnaires } });
+      } else {
+        navigate('/home');
+      }
     } catch (error) {
       console.error('Error submitting answers:', error);
       alert('Failed to submit answers');
@@ -54,6 +65,8 @@ function QuestionnaireDetail() {
 
   return (
     <div className="question-container">
+      <p>{currentIndex} out of {totalLength} questions answered</p>
+
       <div className="tag green">
         <img src="/assets/tag.svg"></img>
         <p>Gezondheid</p>
