@@ -4,6 +4,8 @@ import { jwtDecode as jwt_decode } from "jwt-decode";
 import NavBar from "../components/NavBar";
 import ChallengeBox from "../components/ChallengeBox";
 import PointsButton from "../components/PointsButton";
+import SettingsPopup from "../components/SettingsPopup";
+
 function Account() {
   const [userDetails, setUserDetails] = useState({});
   const token = localStorage.getItem("token");
@@ -31,12 +33,18 @@ function Account() {
     fetchUserDetails();
   }, [userId]);
 
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const togglePopup = () => {
+      setIsPopupOpen(!isPopupOpen);
+  };
+
   return (
     <>
       <header className="top-container">
         <div className="logo-points">
           <h2 className="logo">Splash</h2>
-          <div className="settings-icon">
+          <div className="settings-icon" onClick={togglePopup}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -167,6 +175,7 @@ function Account() {
         </div>
       </div>
 
+      <SettingsPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)}></SettingsPopup>
       <NavBar />
     </>
   );
