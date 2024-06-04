@@ -1,59 +1,26 @@
-const mongoose = require('mongoose');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../db/conn');
 
-const weeklyQuestionnairesSchema = new mongoose.Schema({
-  week: Number,
-  year: Number,
-  questionnaires: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Questionnaire',
-  }],
-}, { _id: false });
-
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  city: {
-    type: String,
-    required: true,
-  },
-  postcode: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  role: {
-    type: String,
-    default: 'user',
-  },
-  points: {
-    type: Number,
-    default: 0,
-  },
-  questionnairesByWeek: [weeklyQuestionnairesSchema],
+const User = sequelize.define('User', {
+    name: DataTypes.STRING,
+    email: {
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false
+    },
+    city: DataTypes.STRING,
+    postcode: DataTypes.STRING,
+    password: DataTypes.STRING,
+    role: {
+        type: DataTypes.STRING,
+        defaultValue: 'user'
+    },
+    points: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+    }
+}, {
+    tableName: 'Users' // Explicitly setting table name
 });
 
-userSchema.methods.getCurrentWeekYear = function() {
-  const currentDate = new Date();
-  const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
-  const pastDaysOfYear = (currentDate - startOfYear) / 86400000;
-
-  const currentWeek = Math.ceil((pastDaysOfYear + startOfYear.getDay() + 1) / 7);
-  return {
-    week: currentWeek,
-    year: currentDate.getFullYear(),
-  };
-};
-
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+module.exports = { User };
