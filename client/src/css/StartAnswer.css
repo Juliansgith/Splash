@@ -1,3 +1,5 @@
+@import url('../index.css');
+
 .returndiv {
   display: flex;
   width: 24.375rem;
@@ -11,13 +13,14 @@
 .return {
   width: 1.5rem;
   height: 1.5rem;
+  filter: var(--primary-icon-color);
 }
 
 .custommargin {
   margin-bottom: 30%;
-  color: #000;
+  color: var(--primary-text-color);
   text-align: center;
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
@@ -27,9 +30,9 @@
 
 .custommarginv2 {
   margin-bottom: 70%;
-  color: #000;
+  color: var(--primary-text-color);
   text-align: center;
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
@@ -49,6 +52,6 @@
   flex-shrink: 0;
 }
 
-.bold {
+.bold.center {
   text-align: center;
 }

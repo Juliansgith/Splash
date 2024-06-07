@@ -1,29 +1,55 @@
 /* defining custom fonts */
-@font-face {
-  font-family: "Poppins-Regular";
-  src: url("../public/fonts/Poppins-Regular.ttf");
-  font-weight: 400;
+@font-face {font-family: "Poppins-Regular";src: url("../public/fonts/Poppins-Regular.ttf");font-weight: 400;}
+@font-face {font-family: "Poppins-Medium";src: url("../public/fonts/Poppins-Medium.ttf");font-weight: 500;}
+@font-face {font-family: "Poppins-Bold";src: url("../public/fonts/Poppins-Bold.ttf");font-weight: 700;}
+@font-face {font-family: "Poppins-ExtraBold";src: url("../public/fonts/Poppins-ExtraBold.ttf");font-weight: 800;}
+@font-face {font-family: "Poppins-SemiBold";src: url("../public/fonts/Poppins-SemiBold.ttf");font-weight: 600;}
+
+:root {
+  --primary-background-color: #FFFFFF;
+  --secondary-background-color: #F5F3EF;
+
+  --inputfield-background-color: #F5F5F5;
+
+  --button-color: #456EFF;
+  --button-border-color: #E6E6E6;
+  --disabled-button-color: #456EFF99;
+
+  --primary-text-color: #000000;
+  --secondary-text-color: #FFFFFF;
+  --tertiary-text-color: #808080;
+  --accent-text-color: #456EFF;
+
+  --accent-red-1: #FD2A2A;
+  --accent-red-2: #fd2a2a33;
+  --accent-green-1: #1BC82C;
+  --accent-green-2: #1bc82c33;
+  --accent-orange-1: #FF9E0C;
+  --accent-orange-2: #ff9e0c33;
+  --accent-purple-1: #B92AFD;
+  --accent-purple-2: #b92afd33;
+  --accent-light-blue-1: #2ABEFD;
+  --accent-light-blue-2: #2abefd33;
+
+  --white: #FFFFFF;
+
+  --primary-icon-color: invert(0%) sepia(85%) saturate(7439%) hue-rotate(294deg) brightness(85%) contrast(113%);
 }
-@font-face {
-  font-family: "Poppins-Medium";
-  src: url("../public/fonts/Poppins-Medium.ttf");
-  font-weight: 500;
+
+[data-theme="dark"] {
+  --primary-background-color: #292929;
+  --secondary-background-color: #222222;
+  --inputfield-background-color: #414141;
+  --primary-text-color: #FFFFFF;
+  --secondary-text-color: #000000;
+  --button-border-color: #414141;
+  --primary-icon-color: invert(100%) sepia(100%) saturate(2%) hue-rotate(69deg) brightness(103%) contrast(101%);
 }
-@font-face {
-  font-family: "Poppins-Bold";
-  src: url("../public/fonts/Poppins-Bold.ttf");
-  font-weight: 700;
-}
-@font-face {
-  font-family: "Poppins-ExtraBold";
-  src: url("../public/fonts/Poppins-ExtraBold.ttf");
-  font-weight: 800;
-}
-@font-face {
-  font-family: "Poppins-SemiBold";
-  src: url("../public/fonts/Poppins-SemiBold.ttf");
-  font-weight: 600;
-}
+
+/* .high-contrast {
+
+} */
+
 
 body,
 html {
@@ -35,8 +61,8 @@ html {
   align-items: center; /* Vertically centers content */
   overflow-x: hidden; /* Prevents horizontal scroll */
   font-family: "Poppins", sans-serif;
-  background-color: #f5f3ef;
-  color: #000000; /* Default text color */
+  background-color: var(--secondary-background-color);
+  color: var(--primary-text-color); /* Default text color */
 }
 
 /* headings */
@@ -55,7 +81,7 @@ h1.bold {
 
 h1.logo {
   font-family: "Poppins-Medium";
-  font-size: 26px;
+  font-size: 36px;
   font-weight: 500;
 }
 
@@ -75,6 +101,14 @@ h2.bold {
 h2.pointnr {
   font-family: "Poppins-ExtraBold";
   font-size: 40px;
+}
+
+h2.logo {
+  font-family: "Poppins-Bold";
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 0;
+  margin-bottom: 8px;
 }
 
 .opacity {
@@ -112,7 +146,7 @@ h2.pointnr {
 }
 
 .txt.white {
-  color: #ffffff;
+  color: var(--white);
 }
 
 .nomargin {
@@ -124,7 +158,7 @@ h2.pointnr {
 button {
   border-radius: 1rem;
   border: none;
-  background: var(--accent-accent-color-button-color, #456eff);
+  background: var(--button-color);
   display: flex;
   width: 77.5vw;
   max-width: 312px;
@@ -133,7 +167,7 @@ button {
   margin-right: auto;
   justify-content: center;
   align-items: center;
-  color: var(--text-accent-color-button-color, #ffffff);
+  color: var(--white);
   font-size: 1rem;
   font-style: normal;
   font-weight: 600;
@@ -145,17 +179,17 @@ button {
 }
 
 .bg-white {
-  color: var(--text-accent-color-button-color, #000000);
-  background: var(--accent-accent-color-button-color, #ffffff);
+  color: var(--primary-text-color);
+  background: var(--primary-background-color);
   font-weight: 400;
 }
 
 .bd-black {
-  border: 1px solid var(--text-text-color-1, #000);
+  border: 1px solid var(--primary-text-color);
 }
 
 .bd-gray {
-  border: 2px solid var(--text-text-color-1, #e6e6e6);
+  border: 2px solid var(--button-border-color);
 }
 
 .bd-none {
@@ -170,8 +204,8 @@ button {
 .enable-anim {
   background: linear-gradient(
     to right,
-    #456eff 50%,
-    rgba(69, 109, 255, 0.6) 50%
+    var(--button-color) 50%,
+    var(--disabled-button-color) 50%
   );
   background-size: 200% 100%;
   animation: fillbutton 5s;
@@ -196,7 +230,7 @@ button {
   /* height: 24.5%; */
   width: 100%;
   border-radius: 0 0 20px 20px;
-  background-color: #ffffff;
+  background-color: var(--primary-background-color);
   display: flex;
   flex-direction: column;
   z-index: 2;
@@ -219,16 +253,16 @@ button {
   border: 0;
   border-radius: 10px;
   box-sizing: border-box; /* Makes sure padding does not affect the overall width */
-  background-color: #f5f5f5;
+  background-color: var(--inputfield-background-color);
 }
 
 .form-input:focus {
-  border-color: #4a90e2;
+  border-color: var(--accent-text-color);
   outline: none;
 }
 
 .toggle-form-text {
-  color: #4a90e2;
+  color: var(--accent-text-color);
   cursor: pointer;
   text-align: center;
   margin-top: 15px;
@@ -268,8 +302,8 @@ button {
 }
 
 .tag.green {
-  background-color: rgba(27, 200, 44, 0.2);
-  color: #1bc82c;
+  background-color: var(--accent-green-2);
+  color: var(--accent-green-1);
 }
 
 .tag.green img {
@@ -278,8 +312,8 @@ button {
 }
 
 .tag.red {
-  background-color: rgba(253, 42, 42, 0.2);
-  color: #fd2a2a;
+  background-color: var(--accent-red-2);
+  color: var(--accent-red-1);
 }
 
 .tag.red img {
@@ -288,8 +322,8 @@ button {
 }
 
 .tag.blue {
-  background-color: rgba(42, 190, 253, 0.2);
-  color: #2abefd;
+  background-color: var(--accent-light-blue-2);
+  color: var(--accent-light-blue-1);
 }
 
 .tag.blue img {
@@ -298,8 +332,8 @@ button {
 }
 
 .tag.orange {
-  background-color: rgba(255, 158, 12, 0.2);
-  color: #ff9e0c;
+  background-color: var(--accent-orange-2);
+  color: var(--accent-orange-1);
 }
 
 .tag.orange img {
@@ -308,8 +342,8 @@ button {
 }
 
 .tag.purple {
-  background-color: rgba(185, 42, 253, 0.2);
-  color: #b92afd;
+  background-color: var(--accent-purple-2);
+  color: var(--accent-purple-1);
 }
 
 .tag.purple img {
@@ -320,7 +354,7 @@ button {
 .point {
   display: flex;
   border-radius: 66.84px;
-  background-color: #456eff;
+  background-color: var(--button-color);
   height: 36px;
   width: 76px;
   justify-content: center;

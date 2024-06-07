@@ -1,0 +1,223 @@
+@import url('../index.css');
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.settingspopup {
+    background: var(--primary-background-color);
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    height: 62.5%;
+    padding: 10px;
+    box-sizing: border-box;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.overlay.open .settingspopup {
+    transform: translateY(0);
+}
+
+.settings-item {
+    height: 13%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.set-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    filter: var(--primary-icon-color);
+}
+
+.set-arrow {
+    width: auto;
+    height: 11.5px;
+    margin-right: 0px;
+    margin-left: auto;
+    filter: var(--primary-icon-color);
+}
+
+.cogwheel {
+    filter: var(--primary-icon-color);
+    margin-top: -10px;
+    padding: 0;
+}
+
+
+/* opened setting */
+
+.settingoverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1001;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.settingoverlay.openedsetting {
+    pointer-events: auto;
+}
+
+.settingdata {
+    background: var(--primary-background-color);
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    height: 80vh;
+    padding: 10px;
+    box-sizing: border-box;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.settingoverlay.openedsetting .settingdata {
+    transform: translateY(0);
+}
+
+.set-cross {
+    width: auto;
+    height: 20px;
+    margin-right: 0px;
+    margin-left: auto;
+    filter: var(--primary-icon-color);
+}
+
+/* interests */
+
+.interestsform {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.setting-option-item {
+    display: flex;
+    position: relative;
+    margin: 5px 0;
+    padding: 0 0 0 30px;
+    width: 100%;
+    height: 6vh;
+    box-sizing: border-box;
+    cursor: pointer;
+    align-items: center;
+}
+  
+.setting-option-item input {
+    opacity: 0;
+    cursor: pointer;
+}
+  
+.setting-option-input {
+    width: 28px;
+    height: 28px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+  
+.check {
+    position: absolute;
+    top: 20px;
+    left: 17px;
+    display: none;
+}
+  
+.setting-option-item input:checked ~ .check {
+    display: block;
+}
+
+.apply-interests-btn {
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+.setting-option-item p {
+    margin-left: 10px;
+}
+
+/* settings slider */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+  
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--tertiary-text-color);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--primary-background-color);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+  
+input:checked + .slider {
+    background-color: var(--accent-text-color);
+}
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--accent-text-color);
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}

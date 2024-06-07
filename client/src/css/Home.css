@@ -1,3 +1,6 @@
+@font-face {font-family: "Poppins-Medium"; src: url("../../public/fonts/Poppins-Medium.ttf"); font-weight: 500;}
+@import url('../index.css');
+
 .top-container {
   position: fixed;
   top: 0;
@@ -5,26 +8,34 @@
   /* height: 24.5%; */
   width: 100%;
   border-radius: 0 0 20px 20px;
-  background-color: #ffffff;
+  background-color: var(--primary-background-color);
 }
 
-.logo-points {
+/* .logo-points {
   margin-top: 60px;
   padding: 0rem 1.5rem 1rem 1.5rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
-}
-.logo{
+} */
+/* .logo{
   font-family: "Poppins-Bold";
   font-size: 20px;
   font-weight: 700;
   margin-right: 60%;
-}
-h2.logo {
+} */
+/* h2.logo {
   font-family: "Poppins-Bold";
   font-size: 20px;
   font-weight: 700;
+  margin-right: 60%;
+} */
+
+.sharedlogo {
+  margin-bottom: 20px;
+}
+
+.sharedlogo h2 {
   margin-right: 60%;
 }
 
@@ -36,15 +47,15 @@ h2.logo {
 
 .recieve-pointstxt {
   display: inline-flex;
-  padding: 0.75rem 0.5rem 0.375rem 0.5rem;
+  padding: 1.5rem 0.5rem 0.375rem 0.5rem;
   gap: 0.2rem;
   margin: 0;
   justify-content: center;
   align-items: center;
   align-content: center;
-  color: #000;
+  color: var(--primary-text-color);
   text-align: center;
-  font-family: Poppins;
+  font-family: "Poppins-Medium", sans-serif;
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
@@ -53,10 +64,11 @@ h2.logo {
 
 .recieveimg {
   padding-right: 0.5rem;
+  filter: var(--primary-icon-color);
 }
 
 .pointsnmbr {
-  color: #456eff;
+  color: var(--accent-text-color);
 }
 
 .questionnaire-container {
@@ -71,7 +83,7 @@ h2.logo {
   /* padding-bottom: 5vh; */
   width: 100%;
   max-width: 600px; /* Responsive max width */
-  background-color: #f5f3ef;
+  background-color: var(--secondary-background-color);
   height: 55vh;
   padding-top: 10px;
 }
@@ -96,14 +108,14 @@ h2.logo {
   align-items: flex-start;
   flex-shrink: 0;
   border-radius: 1.25rem;
-  background: white;
+  background: var(--primary-background-color);
   box-shadow: 0px 0px 6px 0px rgba(151, 151, 151, 0.4);
 }
 
 .Title {
-  color: var(--Zwart, #000);
-  font-family: Poppins;
-  font-size: 2rem;
+  color: var(--primary-text-color);
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -121,7 +133,7 @@ h2.logo {
   width: fit-content;
   color: var(--Interest-tags-Green, #1bc82c);
   text-align: center;
-  font-family: Poppins;
+  font-family: "Poppins-Medium", sans-serif;
   font-size: 1.35rem;
   font-style: normal;
   font-weight: 700;
@@ -148,7 +160,7 @@ h2.logo {
 
 .Companytxt {
   color: #000;
-  font-family: Poppins;
+  font-family: "Poppins-Medium", sans-serif;
   font-size: 1.35rem;
   font-style: normal;
   font-weight: 500;

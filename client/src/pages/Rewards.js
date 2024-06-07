@@ -38,28 +38,28 @@ const RewardsManager = () => {
     }
   }, [userId]);
 
-  const handleRedeem = async () => {
-    if (pointsToRedeem > points) {
-      alert("You don't have enough points to redeem this amount.");
-      return;
-    }
+  // const handleRedeem = async () => {
+  //   if (pointsToRedeem > points) {
+  //     alert("You don't have enough points to redeem this amount.");
+  //     return;
+  //   }
 
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/redeem-rewards",
-        {
-          userId,
-          pointsToRedeem: parseInt(pointsToRedeem, 10),
-        }
-      );
-      alert(response.data.message);
-      setPoints(response.data.newPointsBalance);
-      setPointsToRedeem("");
-    } catch (error) {
-      console.error("Error redeeming points:", error);
-      alert("Failed to redeem points");
-    }
-  };
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost:5000/redeem-rewards",
+  //       {
+  //         userId,
+  //         pointsToRedeem: parseInt(pointsToRedeem, 10),
+  //       }
+  //     );
+  //     alert(response.data.message);
+  //     setPoints(response.data.newPointsBalance);
+  //     setPointsToRedeem("");
+  //   } catch (error) {
+  //     console.error("Error redeeming points:", error);
+  //     alert("Failed to redeem points");
+  //   }
+  // };
 
   const pointArray = points.toString().split("")
 
@@ -67,8 +67,8 @@ const RewardsManager = () => {
     <>
       <div className="app-container">
         <header className="top-container">
-          <div className="logo-container">
-            <h2 className="bold" style={{ margin: 7 }}>Splash</h2>
+          <div className="logo-points">
+            <h2 className="logo">Splash</h2>
           </div>
 
           <div className="point-counter">
@@ -117,6 +117,7 @@ const RewardsManager = () => {
         </div> */}
 
         <div className="reward-container">
+          <p className="txt medium">punten inwisselen:</p>
           <div><Coupon pointsNeeded={200} pointsCollected={200} /></div>
           <div><Coupon pointsNeeded={200} pointsCollected={200} /></div>
           <div><Coupon pointsNeeded={200} pointsCollected={150} /></div>
