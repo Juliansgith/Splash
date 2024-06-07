@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { jwtDecode as jwt_decode } from 'jwt-decode';
-import "../css/Question.css"
+import "../css/Question.css";
 
 function QuestionnaireDetail() {
   const { id } = useParams();
@@ -11,7 +11,7 @@ function QuestionnaireDetail() {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true); // Add state for button disabled
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/user/${id}`)
+    axios.get(`http://localhost:5000/answers2/${id}`)
       .then(response => {
         setQuestionnaire(response.data);
       })
@@ -55,21 +55,21 @@ function QuestionnaireDetail() {
   return (
     <div className="question-container">
       <div className="tag green">
-        <img src="/assets/tag.svg"></img>
+        <img src="/assets/tag.svg" alt="Tag" />
         <p>Gezondheid</p>
       </div>
 
       <form onSubmit={handleSubmit} className="form">
-        {questionnaire.questions.map((q, index) => (
+        {questionnaire.Questions && questionnaire.Questions.map((q, index) => (
           <div key={index}>
             <h2>{q.questionText}</h2>
             <p>Maak een keuze:</p>
             <div className="options">
-              {q.options.map((option, oIndex) => (
+              {q.Options && q.Options.map((option, oIndex) => (
                 <label key={oIndex} className="option-item">
-                  <input type="radio" name={`question-${index}`} value={option.text}  /> {option.text}
+                  <input type="radio" name={`question-${index}`} value={option.text} /> {option.text}
                   <span className="option-input"></span>
-                  <img className="check" src="/assets/checkmark.svg"></img>
+                  <img className="check" src="/assets/checkmark.svg" alt="Checkmark" />
                 </label>
               ))}
             </div>

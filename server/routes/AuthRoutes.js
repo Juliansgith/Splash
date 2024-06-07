@@ -35,7 +35,7 @@ router.get('/userdetails/:id', async (req, res) => {
     const { id } = req.params;
 
     try {
-        const user = await User.findByPk(id, { attributes: ['email', 'points'] });
+        const user = await User.findByPk(id, { attributes: ['name', 'email', 'points'] });
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -45,5 +45,6 @@ router.get('/userdetails/:id', async (req, res) => {
         res.status(500).json({ message: 'Error fetching user details' });
     }
 });
+
 
 module.exports = router;
