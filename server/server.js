@@ -21,10 +21,6 @@ console.log('Associations applied');
 sequelize.sync()
   .then(() => {
     console.log('Database & tables synced!');
-    // Start the server
-    app.listen(port, () => {
-      console.log(`Server is running on port: ${port}`);
-    });
   })
   .catch(err => {
     console.error('Failed to sync database and tables', err);
@@ -44,3 +40,5 @@ app.use((req, res, next) => {
   res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
   next();
 });
+
+module.exports = app;

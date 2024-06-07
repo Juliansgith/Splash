@@ -22,5 +22,9 @@
     "pg-hstore": "^2.3.4",
     "postgres": "^3.4.4",
     "sequelize": "^6.37.3"
+  },
+  "devDependencies": {
+    "electron": "^30.1.0",
+    "electron-packager": "^17.1.2"
   }
 }

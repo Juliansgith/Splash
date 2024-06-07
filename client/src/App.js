@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { jwtDecode as jwt_decode } from "jwt-decode";
-import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import QuestionnaireDetails from "./components/QuestionnaireDetails";
 import CreateQuestionnaire from "./pages/CreateQuestionnaire";
@@ -10,7 +9,6 @@ import LoginPopup from "./components/LoginPopup";
 import RegisterPopup from "./components/RegisterPopup";
 import Answers from "./pages/Answers";
 import Account from "./pages/Profile";
-import Start from "./pages/Start";
 import RewardsPage from "./pages/Rewards";
 import AnswerStart from "./components/StartAnswer";
 
@@ -28,7 +26,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Start />} />
+        <Route
+          path="/"
+          element={<LoginPopup setUserRole={setUserRole} />} // Default to login page
+        />
         <Route path="/home" element={<Home />} />
         <Route path="/answers" element={<Answers />} />
         <Route path="/account" element={<Account />} />

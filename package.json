@@ -1,6 +1,19 @@
 {
+  "name": "Splash",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "concurrently \"npm run start-client\" \"npm run start-server\"",
+    "start-client": "cd client && npm start",
+    "start-server": "cd server && nodemon server.js",
+    "package": "electron-packager . Splash --platform=win32,darwin,linux --arch=x64 --out=dist"
+  },
+  "devDependencies": {
+    "concurrently": "^6.5.1",
+    "electron": "^12.0.0",
+    "electron-packager": "^15.0.0"
+  },
   "dependencies": {
-    "postgres": "^3.4.4",
-    "sequelize": "^6.37.3"
+    "dotenv": "^10.0.0"
   }
 }
