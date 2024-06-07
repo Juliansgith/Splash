@@ -1,1 +1,39 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="logo192.png"/><link rel="manifest" href="manifest.json"/><title>React App</title><script defer="defer" src="static/js/main.dd1b2d7b.js"></script><link href="static/css/main.a33d9bcc.css" rel="stylesheet"><script defer="defer" src="/static/js/main.36217361.js"></script><link href="/static/css/main.f32994f1.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" href="favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#000000"/>
+    <meta name="description" content="Web site created using create-react-app"/>
+    <link rel="apple-touch-icon" href="logo192.png"/>
+    <link rel="manifest" href="manifest.json"/>
+    <title>React App</title>
+    <script defer="defer" src="static/js/main.dd1b2d7b.js"></script>
+    <link href="static/css/main.a33d9bcc.css" rel="stylesheet">
+    <script defer="defer" src="/static/js/main.36217361.js"></script>
+    <link href="/static/css/main.f32994f1.css" rel="stylesheet">
+</head>
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <script type="text/javascript">
+        document.addEventListener('deviceready', function() {
+            cordova.plugins.backgroundMode.enable();
+
+            // Start your server here
+            const exec = require('cordova/exec');
+            const node = require('nodejs-mobile-react-native');
+            node.start('server/server.js');
+            node.channel.addListener(
+                'message',
+                (msg) => {
+                    console.log('From node:', msg);
+                },
+                this
+            );
+        }, false);
+    </script>
+</body>
+</html>

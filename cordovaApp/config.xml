@@ -10,4 +10,9 @@
     <allow-intent href="https://*/*" />
     <access origin="*" />
     <allow-navigation href="http://*/*" />
+
+    <!-- Add the platform section for Android -->
+    <platform name="android">
+        <preference name="android-targetSdkVersion" value="34" />
+    </platform>
 </widget>

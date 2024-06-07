@@ -13,11 +13,16 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "devDependencies": {
-    "cordova-android": "^13.0.0"
+    "cordova-android": "^13.0.0",
+    "cordova-plugin-background-mode": "^0.7.3",
+    "cordova-plugin-device": "^2.1.0",
+    "nodejs-mobile-cordova": "github:JaneaSystems/nodejs-mobile-cordova"
   },
   "cordova": {
-    "platforms": [
-      "android"
-    ]
+    "platforms": [],
+    "plugins": {
+      "cordova-plugin-background-mode": {},
+      "nodejs-mobile-cordova": {}
+    }
   }
 }
