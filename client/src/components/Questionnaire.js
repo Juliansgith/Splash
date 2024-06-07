@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
-import { jwtDecode as jwt_decode } from 'jwt-decode';
-import "../css/Question.css"
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
+import { jwtDecode as jwt_decode } from "jwt-decode";
+import "../css/Question.css";
 
 function QuestionnaireDetail() {
   const { id } = useParams();
@@ -12,17 +12,18 @@ function QuestionnaireDetail() {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true); // Add state for button disabled
   const { questionnaires } = location.state || { questionnaire: null };
 
-  const totalLength = questionnaires.length
-  const currentIndex = questionnaires.findIndex(q => q._id === id);
+  const totalLength = questionnaires.length;
+  const currentIndex = questionnaires.findIndex((q) => q._id === id);
   const nextQuestionnaireId = questionnaires[currentIndex + 1]?._id;
   const prevQuestionnaireId = questionnaires[currentIndex - 1]?._id;
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/user/${id}`)
-      .then(response => {
+    axios
+      .get(`http://localhost:5000/user/${id}`)
+      .then((response) => {
         setQuestionnaire(response.data);
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   }, [id]);
 
   useEffect(() => {
@@ -34,30 +35,63 @@ function QuestionnaireDetail() {
     return () => clearTimeout(timer); // Cleanup the timer on unmount
   }, []);
 
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   const formData = new FormData(event.target);
+  //   const answers = {};
+  //   for (let [key, value] of formData.entries()) {
+  //     const questionIndex = key.split("-")[1];
+  //     answers[questionIndex] = value;
+  //   }
+
+  //   try {
+  //     const token = localStorage.getItem("token");
+  //     const decodedToken = jwt_decode(token);
+  //     const userId = decodedToken.userId;
+
+  //     await axios.post(`http://localhost:5000/answer/${id}`, {
+  //       answers,
+  //       userId,
+  //     });
+  //     alert("Answers submitted successfully");
+  //     if (nextQuestionnaireId) {
+  //       navigate(`/questionnaire/${nextQuestionnaireId}`, {
+  //         state: { questionnaires },
+  //       });
+  //     } else {
+  //       navigate("/home");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error submitting answers:", error);
+  //     alert("Failed to submit answers");
+  //   }
+  // };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const answers = {};
     for (let [key, value] of formData.entries()) {
-      const questionIndex = key.split('-')[1];
+      const questionIndex = key.split("-")[1];
       answers[questionIndex] = value;
     }
-  
+
     try {
-      const token = localStorage.getItem('token'); 
+      const token = localStorage.getItem("token");
       const decodedToken = jwt_decode(token);
       const userId = decodedToken.userId;
 
-      await axios.post(`http://localhost:5000/answer/${id}`, { answers, userId });
-      alert('Answers submitted successfully');
-      if (nextQuestionnaireId) {
-        navigate(`/questionnaire/${nextQuestionnaireId}`, { state: { questionnaires } });
-      } else {
-        navigate('/home');
-      }
+      await axios.post(`http://localhost:5000/answer/${id}`, {
+        answers,
+        userId,
+      });
+      alert("Answers submitted successfully");
+      navigate(`/results/${id}`, {
+        state: { questionnaires, currentIndex, nextQuestionnaireId },
+      });
     } catch (error) {
-      console.error('Error submitting answers:', error);
-      alert('Failed to submit answers');
+      console.error("Error submitting answers:", error);
+      alert("Failed to submit answers");
     }
   };
 
@@ -65,7 +99,9 @@ function QuestionnaireDetail() {
 
   return (
     <div className="question-container">
-      <p>{currentIndex} out of {totalLength} questions answered</p>
+      <p>
+        {currentIndex + 1} out of {totalLength} questions
+      </p>
 
       <div className="tag green">
         <img src="/assets/tag.svg"></img>
@@ -80,7 +116,12 @@ function QuestionnaireDetail() {
             <div className="options">
               {q.options.map((option, oIndex) => (
                 <label key={oIndex} className="option-item">
-                  <input type="radio" name={`question-${index}`} value={option.text}  /> {option.text}
+                  <input
+                    type="radio"
+                    name={`question-${index}`}
+                    value={option.text}
+                  />{" "}
+                  {option.text}
                   <span className="option-input"></span>
                   <img className="check" src="/assets/checkmark.svg"></img>
                 </label>
@@ -88,7 +129,13 @@ function QuestionnaireDetail() {
             </div>
           </div>
         ))}
-        <button type="submit" className="enable-anim" disabled={isButtonDisabled}>Submit Answers</button>
+        <button
+          type="submit"
+          className="enable-anim"
+          disabled={isButtonDisabled}
+        >
+          Submit Answers
+        </button>
       </form>
     </div>
   );

@@ -13,6 +13,7 @@ import Account from "./pages/Profile";
 import Start from "./pages/Start";
 import RewardsPage from "./pages/Rewards";
 import AnswerStart from "./components/StartAnswer";
+import QuestionResults from "./components/QuestionResults";
 
 function App() {
   const [userRole, setUserRole] = useState(null);
@@ -47,6 +48,7 @@ function App() {
         <Route path="/questionnaire/:id" element={<QuestionnaireDetail />} />
         <Route path="/answerstart/:id" element={<AnswerStart />} />
         <Route path="/answers/:id" element={<QuestionnaireDetails />} />
+        <Route path="/results/:id" element={<QuestionResults />} />
       </Routes>
     </Router>
   );
