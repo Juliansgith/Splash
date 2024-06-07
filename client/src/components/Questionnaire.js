@@ -3,6 +3,7 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode as jwt_decode } from "jwt-decode";
 import "../css/Question.css";
+import PointsButton from "./PointsButton";
 
 function QuestionnaireDetail() {
   const { id } = useParams();
@@ -98,46 +99,62 @@ function QuestionnaireDetail() {
   if (!questionnaire) return <div>Loading...</div>;
 
   return (
-    <div className="question-container">
-      <p>
-        {currentIndex + 1} out of {totalLength} questions
-      </p>
-
-      <div className="tag green">
-        <img src="/assets/tag.svg"></img>
-        <p>Gezondheid</p>
-      </div>
-
-      <form onSubmit={handleSubmit} className="form">
-        {questionnaire.questions.map((q, index) => (
-          <div key={index}>
-            <h2>{q.questionText}</h2>
-            <p>Maak een keuze:</p>
-            <div className="options">
-              {q.options.map((option, oIndex) => (
-                <label key={oIndex} className="option-item">
-                  <input
-                    type="radio"
-                    name={`question-${index}`}
-                    value={option.text}
-                  />{" "}
-                  {option.text}
-                  <span className="option-input"></span>
-                  <img className="check" src="/assets/checkmark.svg"></img>
-                </label>
-              ))}
-            </div>
+    <>
+      <header className="question-header">
+        <div className="question-header-items">
+          <img
+            src="../assets/cross.svg"
+            className="return"
+            alt="Return back to home"
+            onClick={() => navigate("/home")}
+          />
+          <p>questions</p>
+          <p className="opacity">
+            {currentIndex + 1}/{totalLength}
+          </p>
+          <div className="points-button-wrapper">
+            <PointsButton />
           </div>
-        ))}
-        <button
-          type="submit"
-          className="enable-anim"
-          disabled={isButtonDisabled}
-        >
-          Submit Answers
-        </button>
-      </form>
-    </div>
+        </div>
+      </header>
+
+      <div className="question-container">
+        <div className="tag green">
+          <img src="/assets/tag.svg"></img>
+          <p>Gezondheid</p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="form">
+          {questionnaire.questions.map((q, index) => (
+            <div key={index}>
+              <h2>{q.questionText}</h2>
+              <p>Maak een keuze:</p>
+              <div className="options">
+                {q.options.map((option, oIndex) => (
+                  <label key={oIndex} className="option-item">
+                    <input
+                      type="radio"
+                      name={`question-${index}`}
+                      value={option.text}
+                    />{" "}
+                    {option.text}
+                    <span className="option-input"></span>
+                    <img className="check" src="/assets/checkmark.svg"></img>
+                  </label>
+                ))}
+              </div>
+            </div>
+          ))}
+          <button
+            type="submit"
+            className="enable-anim"
+            disabled={isButtonDisabled}
+          >
+            Submit Answers
+          </button>
+        </form>
+      </div>
+    </>
   );
 }
 

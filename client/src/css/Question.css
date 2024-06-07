@@ -1,4 +1,4 @@
-@import url('../index.css');
+@import url("../index.css");
 
 .question-container {
   position: fixed;
@@ -84,4 +84,31 @@
 
 .form p {
   margin: 0;
+}
+
+/* header */
+
+.question-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  padding: 0px 24px 0px 24px;
+  align-items: center;
+  gap: 8px;
+  height: 13.5%;
+  align-items: end;
+  box-sizing: border-box;
+}
+
+.question-header-items {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.points-button-wrapper {
+  margin-left: auto;
 }

@@ -32,14 +32,20 @@ function Home() {
 
   const handleStartClick = () => {
     if (questionnaires.length > 0) {
-      navigate(`/answerstart/${questionnaires[0]._id}`, { state: { questionnaires } });
+      navigate(`/answerstart/${questionnaires[0]._id}`, {
+        state: { questionnaires },
+      });
     }
   };
 
   const handleArrowClick = (questionnaireId) => {
-    const selectedQuestionnaire = questionnaires.find(q => q._id === questionnaireId);
+    const selectedQuestionnaire = questionnaires.find(
+      (q) => q._id === questionnaireId
+    );
     if (selectedQuestionnaire) {
-      navigate(`/answerstart/${questionnaireId}`, { state: { questionnaires: [selectedQuestionnaire] } });
+      navigate(`/answerstart/${questionnaireId}`, {
+        state: { questionnaires: [selectedQuestionnaire] },
+      });
     }
   };
 

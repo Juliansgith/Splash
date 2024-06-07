@@ -47,7 +47,11 @@ function PointsButton() {
       className={`pointsbtn ${expanded ? "expanded" : ""}`}
       id="pointsbtn"
     >
-      <img src="assets/Droplet.svg" className="Dropletsvg" alt="Droplet logo" />
+      <img
+        src="/assets/droplet.svg"
+        className="Dropletsvg"
+        alt="Droplet logo"
+      />
       {expanded && (
         <div className="expandedContent">
           <p className="txt medium">{points}</p>
