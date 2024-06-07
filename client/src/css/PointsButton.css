@@ -1,8 +1,10 @@
 @font-face {font-family: "Poppins-Medium"; src: url("../../public/fonts/Poppins-Medium.ttf"); font-weight: 500;}
+@import url('../index.css');
 
 #pointsbtn {
   border-radius: 4.1775rem;
-  background-color: #456eff;
+  background-color: var(--accent-text-color);
+  color: var(--white);
   display: flex;
   flex-direction: row-reverse;
   align-items: center;

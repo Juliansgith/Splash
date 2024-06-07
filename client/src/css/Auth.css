@@ -1,10 +1,12 @@
+@import url('../index.css');
+
 .page-container {
     position: absolute;
     width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;
-    background-color: #ffffff;
+    background-color: var(--primary-background-color);
     padding: 0 40px;
     box-sizing: border-box;
 }

@@ -1,3 +1,5 @@
+@import url('../index.css');
+
 .question-container {
   position: fixed;
   bottom: 0;
@@ -5,7 +7,7 @@
   height: 86.5%;
   width: 100%;
   border-radius: 20px 20px 0 0;
-  background-color: #ffffff;
+  background-color: var(--primary-background-color);
   padding: 32px;
   box-sizing: border-box;
 }
@@ -17,7 +19,7 @@
 .option-item {
   display: flex;
   position: relative;
-  background-color: #F5F5F5;
+  background-color: var(--inputfield-background-color);
   margin: 5px 0;
   padding: 0 0 0 30px;
   border-radius: 16px;
@@ -43,13 +45,13 @@
   position: absolute;
   top: 12px;
   left: 12px;
-  background-color: #FFFFFF;
+  background-color: var(--white);
   border-radius: 50%;
 }
 
 .option-item:has(> input:checked) {
-  background-color: #456EFF;
-  color: #ffffff;
+  background-color: var(--button-color);
+  color: var(--secondary-text-color);
   font-weight: 700;
 }
 
@@ -65,8 +67,8 @@
 }
 
 .submit-button {
-  background-color: #4a90e2;
-  color: #ffffff;
+  background-color: var(--button-color);
+  color: var(--secondary-text-color);
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
