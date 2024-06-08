@@ -68,6 +68,16 @@ function QuestionnaireDetail() {
   //   }
   // };
 
+  const handleNext = () => {
+    if (nextQuestionnaireId) {
+      navigate(`/questionnaire/${nextQuestionnaireId}`, {
+        state: { questionnaires },
+      });
+    } else {
+      navigate("/home");
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -145,13 +155,18 @@ function QuestionnaireDetail() {
               </div>
             </div>
           ))}
-          <button
-            type="submit"
-            className="enable-anim"
-            disabled={isButtonDisabled}
-          >
-            Submit Answers
-          </button>
+          <div className="button-container">
+            <button
+              type="submit"
+              className="enable-anim"
+              disabled={isButtonDisabled}
+            >
+              Submit Answers
+            </button>
+            <button onClick={handleNext} className="bd-none bg-white">
+              Skip
+            </button>
+          </div>
         </form>
       </div>
     </>
