@@ -131,14 +131,14 @@ function QuestionnaireDetail() {
       <div className="question-container">
         <div className="tag green">
           <img src="/assets/tag.svg"></img>
-          <p>Gezondheid</p>
+          <p>Health</p>
         </div>
 
         <form onSubmit={handleSubmit} className="form">
           {questionnaire.questions.map((q, index) => (
             <div key={index}>
               <h2>{q.questionText}</h2>
-              <p>Maak een keuze:</p>
+              <p>Make a choice:</p>
               <div className="options">
                 {q.options.map((option, oIndex) => (
                   <label key={oIndex} className="option-item">
@@ -152,6 +152,17 @@ function QuestionnaireDetail() {
                     <img className="check" src="/assets/checkmark.svg"></img>
                   </label>
                 ))}
+                <div className="company-info">
+                  <p>Question by:</p>
+                  <div className="Company">
+                    <img
+                      src="/assets/AHcompany.svg"
+                      className="Imgcompany"
+                      alt="Company Logo"
+                    />
+                    <p>{questionnaire.company}</p>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

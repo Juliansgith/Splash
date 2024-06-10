@@ -1,31 +1,3 @@
-// import React from "react";
-// import { useNavigate, useLocation } from "react-router-dom";
-
-// function QuestionResults() {
-//   const navigate = useNavigate();
-//   const location = useLocation();
-//   const { questionnaires, nextQuestionnaireId } = location.state || {};
-
-//   const handleNext = () => {
-//     if (nextQuestionnaireId) {
-//       navigate(`/questionnaire/${nextQuestionnaireId}`, {
-//         state: { questionnaires },
-//       });
-//     } else {
-//       navigate("/home");
-//     }
-//   };
-
-//   return (
-//     <div className="results-container">
-//       <h2>Results Page</h2>
-//       <button onClick={handleNext}>Next Question</button>
-//     </div>
-//   );
-// }
-
-// export default QuestionResults;
-
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -45,7 +17,9 @@ function QuestionResults() {
     axios
       .get(`http://localhost:5000/user/${id}`)
       .then((response) => {
-        setQuestion(response.data.questions[currentIndex]);
+        setQuestion(response.data);
+        // console.log(response.data.questions[currentIndex]);
+        console.log(response.data);
       })
       .catch((error) => console.log(error));
   }, [id, currentIndex]);
@@ -85,37 +59,51 @@ function QuestionResults() {
       <div className="question-container">
         <div className="tag green">
           <img src="/assets/tag.svg" alt="Tag" />
-          <p>Gezondheid</p>
+          <p>Health</p>
         </div>
 
-        <div className="form">
-          <h2>{question.questionText}</h2>
-          <div className="results-form-title">
-            <p>Results:</p>
-            <p>12345 votes</p>
-          </div>
+        {question.questions.map((q, index) => (
+          <div className="form">
+            <h2>{q.questionText}</h2>
+            <div className="results-form-title">
+              <p>Results:</p>
+              <p>12345 votes</p>
+            </div>
 
-          <div className="options">
-            {question.options.map((option, index) => (
-              <div key={index} className={`option-item-results`}>
-                {option.text}
-                <span className="option-input"></span>
-                <img
-                  className="check"
-                  src="/assets/checkmark.svg"
-                  alt="Check"
-                />
-                <div>
-                  <p>10%</p>
+            <div key="index" className="options">
+              {q.options.map((option, oIndex) => (
+                <div key={oIndex} className={`option-item-results`}>
+                  {option.text}
+                  <span className="option-input"></span>
+                  <img
+                    className="check"
+                    src="/assets/checkmark.svg"
+                    alt="Check"
+                  />
+                  <div>
+                    <p>10%</p>
+                  </div>
                 </div>
+              ))}
+            </div>
+
+            <div key="index" className="company-info">
+              <p>Question by:</p>
+              <div className="Company">
+                <img
+                  src="/assets/AHcompany.svg"
+                  className="Imgcompany"
+                  alt="Company Logo"
+                />
+                <p>{question.company}</p>
               </div>
-            ))}
+            </div>
+            <div className="button-container">
+              <button onClick={handleNext}>Next Question</button>
+              <button className="bd-black bg-white">Share Results</button>
+            </div>
           </div>
-          <div className="button-container">
-            <button onClick={handleNext}>Next Question</button>
-            <button className="bd-black bg-white">Share Results</button>
-          </div>
-        </div>
+        ))}
       </div>
     </>
   );

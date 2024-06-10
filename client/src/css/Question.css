@@ -87,6 +87,12 @@
   margin: 0;
 }
 
+.company-info {
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  box-sizing: border-box;
+}
+
 /* header */
 
 .question-header {
@@ -157,12 +163,10 @@
 }
 
 /* test css option checked */
-/* .chosen {
+
+.chosen {
+  /* display: block !important; */
   font-weight: bold;
 }
-
-.checked {
-  display: block !important;
-} */
 
 /* resultspage little tweaks */
