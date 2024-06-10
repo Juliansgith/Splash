@@ -139,6 +139,21 @@
   padding-left: 52px;
   display: flex;
   justify-content: space-between;
+
+  background: linear-gradient(
+    to right,
+    #1bc82c33 30%,
+    var(--inputfield-background-color) 30%
+  );
+  background-size: 200% 100%;
+  animation: fillOption 1s ease-in-out forwards;
+  background-position: right bottom;
+}
+
+@keyframes fillOption {
+  to {
+    background-position: left bottom;
+  }
 }
 
 /* test css option checked */
