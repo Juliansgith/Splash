@@ -1,25 +1,13 @@
-const mongoose = require('mongoose');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../db/conn');
 
-const optionSchema = new mongoose.Schema({
-  text: String,
-  count: { type: Number, default: 0 },
+const Questionnaire = sequelize.define('Questionnaire', {
+  title: DataTypes.STRING,
+  isActive: DataTypes.BOOLEAN,
+  points: DataTypes.INTEGER,
+  company: DataTypes.STRING,
+}, {
+  tableName: 'Questionnaires'
 });
 
-const questionSchema = new mongoose.Schema({
-  questionText: String,
-  options: [optionSchema],
-});
-
-const questionnaireSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  questions: [questionSchema],
-  isActive: { type: Boolean, default: true },
-  points: { type: String, required: true },
-  company: {type: String, required: true}
-});
-
-
-
-const Questionnaire = mongoose.model('Questionnaire', questionnaireSchema);
-
-module.exports = Questionnaire;
+module.exports = { Questionnaire };

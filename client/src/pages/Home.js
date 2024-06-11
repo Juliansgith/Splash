@@ -57,8 +57,8 @@ function Home() {
       </header>
       <div className="recieve">
         <div className="recieve-pointstxt">
-          <img src="assets/Gift.svg" className="recieveimg" />
-          Recieve <span className="pointsnmbr">+20</span> points
+          <img src="assets/Gift.svg" className="recieveimg" alt="Receive Gift" />
+          Receive <span className="pointsnmbr">+20</span> points
         </div>
       </div>
       <div className="questionnaire-container">
@@ -74,7 +74,7 @@ function Home() {
             className="mySwiper"
           >
             {questionnaires.map((questionnaire) => (
-              <SwiperSlide key={questionnaire._id}>
+              <SwiperSlide key={questionnaire.id}> {/* Use 'id' instead of '_id' */}
                 <div className="Stellingcontainer">
                   <h2 className="Title">{questionnaire.title}</h2>
                   <h3 className="Tag">{questionnaire.tag}</h3>
@@ -91,7 +91,9 @@ function Home() {
                       src="assets/Arrowright.svg"
                       className="Arrowimg"
                       alt="Navigate to Questionnaire"
-                      onClick={() => handleArrowClick(questionnaire._id)}
+                      onClick={() =>
+                        navigate(`/answerstart/${questionnaire.id}`) // Use 'id' instead of '_id'
+                      }
                     />
                   </div>
                 </div>

@@ -8,6 +8,7 @@ function AnswerStart() {
   const navigate = useNavigate();
   const location = useLocation();
   const { id } = useParams(); // Retrieve the questionnaire ID from the URL
+  const [questionnaire, setQuestionnaire] = useState(null); // Store the questionnaire details
   const [questionnaire, setQuestionnaire] = useState([]);
   const { questionnaires } = location.state || { questionnaires: [] };
 
@@ -15,16 +16,17 @@ function AnswerStart() {
   const userId = token ? jwt_decode(token).userId : null;
 
   useEffect(() => {
-    if (userId) {
+    if (id) {
       axios
-        .get(`http://localhost:5000/all?userId=${userId}`)
+        .get(`http://localhost:5000/answers2/${id}`) // Fetch the specific questionnaire details
         .then((response) => {
+          setQuestionnaire(response.data);
           setQuestionnaire(response.data);
           console.log(response.data);
         })
         .catch((error) => console.log(error));
     }
-  }, [userId]);
+  }, [id]);
 
   return (
     <>
@@ -36,19 +38,25 @@ function AnswerStart() {
           onClick={() => navigate("/home")}
         />
       </div>
-      <p className="custommargin">Expected time to complete: 1 minute.</p>
-      <div className="centerquestionicon">
-        <img
-          src="../assets/questionIcon.svg"
-          className="questionIconsvg"
-          alt="Question icon"
-        />
-      </div>
-      <h1 className="bold center">Up next 2 questions.</h1>
-      <p className="custommarginv2">You will earn 20 points!</p>
-      <button onClick={() => navigate(`/questionnaire/${questionnaires[0]._id}`, { state: { questionnaires } })}> {/* Use the ID from the URL */}
-        Continue
-      </button>
+      {questionnaire && questionnaire.Questions ? (
+        <>
+          <p className="custommargin">Expected time to complete: 1 minute.</p>
+          <div className="centerquestionicon">
+            <img
+              src="../assets/questionIcon.svg"
+              className="questionIconsvg"
+              alt="Question icon"
+            />
+          </div>
+          <h1 className="bold">Up next {questionnaire.Questions.length} questions.</h1>
+          <p className="custommarginv2">You will earn {questionnaire.points} points!</p>
+          <button onClick={() => navigate(`/questionnaire/${id}`)}> {/* Use the ID from the URL */}
+            Continue
+          </button>
+        </>
+      ) : (
+        <p className="custommargin">Loading questionnaire...</p>
+      )}
     </>
   );
 }
