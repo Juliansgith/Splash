@@ -15,6 +15,10 @@ router.post('/answer/:id', async (req, res) => {
     return res.status(400).send('Invalid answers format.');
   }
 
+  if (!userId) {
+    return res.status(400).send("User ID is required");
+  }
+
   try {
     const questionnaire = await Questionnaire.findByPk(id, {
       include: {
@@ -24,6 +28,7 @@ router.post('/answer/:id', async (req, res) => {
         }
       }
     });
+
     if (!questionnaire) return res.status(404).send('Questionnaire not found');
 
     for (const [questionIndex, optionText] of Object.entries(answers)) {
@@ -39,8 +44,11 @@ router.post('/answer/:id', async (req, res) => {
       await option.save();
     }
 
-    const pointsToAdd = questionnaire.points;
-    await User.update({ points: sequelize.literal(`points + ${pointsToAdd}`) }, { where: { id: userId } });
+    const pointsToAdd = questionnaire.qpoints; // Update to use 'qpoints'
+    await User.update(
+      { points: sequelize.literal(`points + ${pointsToAdd}`) }, // Ensure this is correct
+      { where: { id: userId } }
+    );
 
     const user = await User.findByPk(userId);
     if (!user) return res.status(404).send('User not found');
@@ -65,26 +73,29 @@ router.post('/answer/:id', async (req, res) => {
   }
 });
 
+
 router.get('/answers2/:id', async (req, res) => {
-    try {
-      const questionnaire = await Questionnaire.findByPk(req.params.id, {
+  try {
+    const questionnaire = await Questionnaire.findByPk(req.params.id, {
+      include: {
+        model: Question,
         include: {
-          model: Question,
-          include: {
-            model: Option
-          }
+          model: Option
         }
-      });
-
-      if (!questionnaire) {
-        return res.status(404).json({ message: 'Questionnaire not found' });
       }
+    });
 
-      res.json(questionnaire);
-    } catch (err) {
-      res.status(500).json({ message: err.message });
+    if (!questionnaire) {
+      return res.status(404).json({ message: 'Questionnaire not found' });
     }
-  });
+
+    // Change the structure of the returned JSON if needed
+    res.json({ ...questionnaire.toJSON(), points: questionnaire.qpoints }); // Assuming the internal attribute is now qpoints
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 
 router.get('/answered-per-week', async (req, res) => {
     const { userId } = req.query;

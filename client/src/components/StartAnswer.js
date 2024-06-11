@@ -9,8 +9,6 @@ function AnswerStart() {
   const location = useLocation();
   const { id } = useParams(); // Retrieve the questionnaire ID from the URL
   const [questionnaire, setQuestionnaire] = useState(null); // Store the questionnaire details
-  const [questionnaire, setQuestionnaire] = useState([]);
-  const { questionnaires } = location.state || { questionnaires: [] };
 
   const token = localStorage.getItem("token");
   const userId = token ? jwt_decode(token).userId : null;
@@ -20,7 +18,6 @@ function AnswerStart() {
       axios
         .get(`http://localhost:5000/answers2/${id}`) // Fetch the specific questionnaire details
         .then((response) => {
-          setQuestionnaire(response.data);
           setQuestionnaire(response.data);
           console.log(response.data);
         })
@@ -49,7 +46,7 @@ function AnswerStart() {
             />
           </div>
           <h1 className="bold">Up next {questionnaire.Questions.length} questions.</h1>
-          <p className="custommarginv2">You will earn {questionnaire.points} points!</p>
+          <p className="custommarginv2">You will earn {questionnaire.qpoints} points!</p> {/* Updated to use qpoints */}
           <button onClick={() => navigate(`/questionnaire/${id}`)}> {/* Use the ID from the URL */}
             Continue
           </button>

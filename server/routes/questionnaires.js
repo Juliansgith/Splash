@@ -11,13 +11,13 @@ router.post('/create', async (req, res) => {
   console.log("Received request body:", req.body);
 
   try {
-    const { title, company, questions, points, isActive } = req.body;
+    const { title, company, questions, qpoints, isActive } = req.body;
 
     const questionnaire = await Questionnaire.create({
       title,
       company,
-      points,
-      isActive: isActive || true
+      qpoints, 
+      isActive: isActive ?? true  
     });
 
     for (const question of questions) {
@@ -43,6 +43,7 @@ router.post('/create', async (req, res) => {
   }
 });
 
+
 router.get('/all', async (req, res) => {
   const { userId } = req.query;
   try {
@@ -59,6 +60,7 @@ router.get('/all', async (req, res) => {
     const completedQuestionnaires = questionnairesByWeek.map(entry => entry.questionnaireId);
 
     const allQuestionnaires = await Questionnaire.findAll({
+      attributes: ['id', 'title', 'qpoints', 'company', 'isActive'],  // Ensure 'qpoints' is included
       include: [{
         model: Question,
         include: [Option]
@@ -72,6 +74,7 @@ router.get('/all', async (req, res) => {
     res.status(500).send(error.toString());
   }
 });
+
 
 
 router.get('/user/:id', async (req, res) => {

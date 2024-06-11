@@ -24,7 +24,6 @@ function Home() {
         .get(`http://localhost:5000/all?userId=${userId}`)
         .then((response) => {
           setQuestionnaires(response.data);
-          console.log(response.data);
         })
         .catch((error) => console.log(error));
     }
@@ -32,12 +31,12 @@ function Home() {
 
   const handleStartClick = () => {
     if (questionnaires.length > 0) {
-      navigate(`/answerstart/${questionnaires[0]._id}`, { state: { questionnaires } });
+      navigate(`/answerstart/${questionnaires[0].id}`, { state: { questionnaires } });
     }
   };
 
   const handleArrowClick = (questionnaireId) => {
-    const selectedQuestionnaire = questionnaires.find(q => q._id === questionnaireId);
+    const selectedQuestionnaire = questionnaires.find(q => q.id === questionnaireId);
     if (selectedQuestionnaire) {
       navigate(`/answerstart/${questionnaireId}`, { state: { questionnaires: [selectedQuestionnaire] } });
     }
@@ -74,7 +73,7 @@ function Home() {
             className="mySwiper"
           >
             {questionnaires.map((questionnaire) => (
-              <SwiperSlide key={questionnaire.id}> {/* Use 'id' instead of '_id' */}
+              <SwiperSlide key={questionnaire.id}>
                 <div className="Stellingcontainer">
                   <h2 className="Title">{questionnaire.title}</h2>
                   <h3 className="Tag">{questionnaire.tag}</h3>
@@ -86,14 +85,13 @@ function Home() {
                         alt="Company Logo"
                       />
                       <p className="txt medium">{questionnaire.company}</p>
+                      <p className="txt small">Earn {questionnaire.qpoints} points</p>
                     </div>
                     <img
                       src="assets/Arrowright.svg"
                       className="Arrowimg"
                       alt="Navigate to Questionnaire"
-                      onClick={() =>
-                        navigate(`/answerstart/${questionnaire.id}`) // Use 'id' instead of '_id'
-                      }
+                      onClick={() => handleArrowClick(questionnaire.id)}
                     />
                   </div>
                 </div>

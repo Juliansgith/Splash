@@ -10,7 +10,7 @@ function QuestionnaireDetail() {
   const location = useLocation();
   const [questionnaire, setQuestionnaire] = useState(null);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true); // Add state for button disabled
-  const { questionnaires } = location.state || { questionnaire: null };
+  const { questionnaires = [] } = location.state || {}; // Ensures questionnaires is an array even if location.state is undefined or empty
 
   const totalLength = questionnaires.length
   const currentIndex = questionnaires.findIndex(q => q._id === id);
