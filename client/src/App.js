@@ -42,7 +42,7 @@ function App() {
           path="/register"
           element={<RegisterPopup setUserRole={setUserRole} />}
         />
-        {userRole === "admin" && (
+        {userRole === "user" && (
           <Route path="/create" element={<CreateQuestionnaire />} />
         )}
         <Route path="/questionnaire/:id" element={<QuestionnaireDetail />} />

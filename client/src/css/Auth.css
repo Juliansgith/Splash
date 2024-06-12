@@ -56,19 +56,18 @@ a {
     margin: 0 auto;
 }
 
+.submit-container {
+    text-align: center; /* Center-align the submit container */
+    margin-top: 20px; /* Add some space above the submit container */
+}
+
 .submit-container a {
-    float: right;
+    display: block;
+    margin-top: 10px;
 }
 
 .authtitle {
     margin-top: 120px;
-}
-
-.submit-container {
-    position: absolute;
-    bottom: 70px;
-    left: 0;
-    width: 100%;
 }
 
 p.space {
@@ -79,4 +78,46 @@ p.space {
     float: right;
     text-align: right;
     margin-top: -10px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+}
+
+.input-error {
+    border-color: red;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.submit {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: #0056b3;
+}
+
+.toggle-form-text {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.toggle-form-text:hover {
+    text-decoration: underline;
 }

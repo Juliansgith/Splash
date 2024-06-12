@@ -5,13 +5,14 @@ import { jwtDecode as jwt_decode } from "jwt-decode";
 import "../css/Question.css";
 import PointsButton from "./PointsButton";
 
+
 function QuestionnaireDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const [questionnaire, setQuestionnaire] = useState(null);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true); // Add state for button disabled
-  const { questionnaires } = location.state || { questionnaire: null };
+  const { questionnaires = [] } = location.state || {}; // Ensures questionnaires is an array even if location.state is undefined or empty
 
   const totalLength = questionnaires.length;
   const currentIndex = questionnaires.findIndex((q) => q._id === id);
@@ -19,9 +20,10 @@ function QuestionnaireDetail() {
   const prevQuestionnaireId = questionnaires[currentIndex - 1]?._id;
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/user/${id}`)
-      .then((response) => {
+
+    axios.get(`http://localhost:5000/answers2/${id}`)
+      .then(response => {
+
         setQuestionnaire(response.data);
       })
       .catch((error) => console.log(error));
@@ -164,6 +166,7 @@ function QuestionnaireDetail() {
                   </div>
                 </div>
               </div>
+
             </div>
           ))}
           <div className="button-container">

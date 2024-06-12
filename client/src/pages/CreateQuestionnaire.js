@@ -9,7 +9,7 @@ function CreateQuestionnaire() {
   const [questions, setQuestions] = useState([
     { questionText: "", options: [{ text: "" }] },
   ]);
-  const [points, setPoints] = useState('');
+  const [qpoints, setQPoints] = useState(''); // Renamed state for clarity
 
   const handleQuestionTextChange = (index, text) => {
     const newQuestions = [...questions];
@@ -39,14 +39,16 @@ function CreateQuestionnaire() {
       title: questionnaireTitle,
       company: companyName,
       questions,
-      points
+      qpoints // Using the renamed state
     };
 
     try {
       await axios.post('http://localhost:5000/create', newQuestionnaire);
       setCreationStatus('Questionnaire created successfully!');
       setQuestionnaireTitle('');
+      setCompanyName('');
       setQuestions([{ questionText: "", options: [{ text: "" }] }]);
+      setQPoints(''); // Resetting the points input field
     } catch (error) {
       setCreationStatus('Error creating questionnaire. Please try again.');
       console.error('Error creating questionnaire:', error);
@@ -135,9 +137,9 @@ function CreateQuestionnaire() {
         <TextField
           type="number"
           fullWidth
-          label="Points"
-          value={points}
-          onChange={(e) => setPoints(e.target.value)}
+          label="QPoints" // Label updated to reflect what this field represents
+          value={qpoints}
+          onChange={(e) => setQPoints(e.target.value)}
           variant="outlined"
           margin="normal"
         />
