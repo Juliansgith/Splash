@@ -31,14 +31,21 @@ function Home() {
 
   const handleStartClick = () => {
     if (questionnaires.length > 0) {
+
       navigate(`/answerstart/${questionnaires[0].id}`, { state: { questionnaires } });
+
     }
   };
 
   const handleArrowClick = (questionnaireId) => {
+
+
     const selectedQuestionnaire = questionnaires.find(q => q.id === questionnaireId);
+
     if (selectedQuestionnaire) {
-      navigate(`/answerstart/${questionnaireId}`, { state: { questionnaires: [selectedQuestionnaire] } });
+      navigate(`/answerstart/${questionnaireId}`, {
+        state: { questionnaires: [selectedQuestionnaire] },
+      });
     }
   };
 
