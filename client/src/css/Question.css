@@ -1,4 +1,4 @@
-@import url('../index.css');
+@import url("../index.css");
 
 .question-container {
   position: fixed;
@@ -21,7 +21,8 @@
   position: relative;
   background-color: var(--inputfield-background-color);
   margin: 5px 0;
-  padding: 0 0 0 30px;
+  padding: 10px;
+  padding-left: 30px;
   border-radius: 16px;
   width: 100%;
   height: 52px;
@@ -85,3 +86,87 @@
 .form p {
   margin: 0;
 }
+
+.company-info {
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  box-sizing: border-box;
+}
+
+/* header */
+
+.question-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  padding: 0px 24px 0px 24px;
+  align-items: center;
+  gap: 8px;
+  height: 13.5%;
+  align-items: end;
+  box-sizing: border-box;
+}
+
+.question-header-items {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.points-button-wrapper {
+  margin-left: auto;
+}
+
+/* header */
+
+/* resultspage little tweaks */
+.results-form-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.option-item-results {
+  display: flex;
+  position: relative;
+  background-color: var(--inputfield-background-color);
+  margin: 5px 0;
+  border-radius: 16px;
+  width: 100%;
+  height: 52px;
+  box-sizing: border-box;
+  cursor: pointer;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px;
+  padding-left: 52px;
+  display: flex;
+  justify-content: space-between;
+
+  background: linear-gradient(
+    to right,
+    #1bc82c33 30%,
+    var(--inputfield-background-color) 30%
+  );
+  background-size: 200% 100%;
+  animation: fillOption 1s ease-in-out forwards;
+  background-position: right bottom;
+}
+
+@keyframes fillOption {
+  to {
+    background-position: left bottom;
+  }
+}
+
+/* test css option checked */
+
+.chosen {
+  /* display: block !important; */
+  font-weight: bold;
+}
+
+/* resultspage little tweaks */
