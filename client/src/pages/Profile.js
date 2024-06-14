@@ -5,9 +5,9 @@ import NavBar from "../components/NavBar";
 import ChallengeBox from "../components/ChallengeBox";
 import PointsButton from "../components/PointsButton";
 import SettingsPopup from "../components/SettingsPopup";
-import "../css/Settings.css"
+import "../css/Settings.css";
 
-function Account() {
+function Profile() {
   const [userDetails, setUserDetails] = useState({});
   const token = localStorage.getItem("token");
   const userId = token ? jwt_decode(token).userId : null;
@@ -37,7 +37,7 @@ function Account() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const togglePopup = () => {
-      setIsPopupOpen(!isPopupOpen);
+    setIsPopupOpen(!isPopupOpen);
   };
 
   return (
@@ -46,7 +46,11 @@ function Account() {
         <div className="logo-points">
           <h2 className="logo">Splash</h2>
           <div className="settings-icon" onClick={togglePopup}>
-            <img className="cogwheel" src="/assets/settingcogwheel.svg" alt="settings"></img>
+            <img
+              className="cogwheel"
+              src="/assets/settingcogwheel.svg"
+              alt="settings"
+            ></img>
           </div>
         </div>
         <div className="profile-user-box">
@@ -90,9 +94,8 @@ function Account() {
 
       <div className="profile-wrapper">
         <div className="challengeboxes">
+          {/* import the challengebox  */}
           <ChallengeBox></ChallengeBox>
-          {/* <ChallengeBox></ChallengeBox>
-          <ChallengeBox></ChallengeBox> */}
         </div>
 
         <div className="infoboxes">
@@ -162,10 +165,13 @@ function Account() {
         </div>
       </div>
 
-      <SettingsPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)}></SettingsPopup>
+      <SettingsPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+      ></SettingsPopup>
       <NavBar />
     </>
   );
 }
 
-export default Account;
+export default Profile;

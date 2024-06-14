@@ -7,6 +7,7 @@ function ProgressBar({ token }) {
   const [score, setScore] = useState(0);
   let userId;
 
+  // Decode the token to get the userId
   if (token) {
     try {
       const decodedToken = jwt_decode(token);
@@ -17,6 +18,7 @@ function ProgressBar({ token }) {
     }
   }
 
+  // Fetch user data from the backend when userId changes
   useEffect(() => {
     if (userId) {
       console.log("Making request to backend with userId:", userId);
@@ -32,7 +34,10 @@ function ProgressBar({ token }) {
 
   return (
     <div className="progressbar">
+      {/* Set the width of the progress bar based on the score */}
       <div className="progress" style={{ width: `${score * 10}%` }}></div>
+
+      {/* Display the droplet icon indicating the current score */}
       <div className="droplet" style={{ left: `${score * 10}%` }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -45,6 +50,8 @@ function ProgressBar({ token }) {
         </svg>
         <span className="scoreText">{score}</span>
       </div>
+
+      {/* Display the goal droplet icon */}
       <div className={`dropletgoal ${score === 10 ? "goal-reached" : ""}`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
