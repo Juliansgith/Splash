@@ -31,16 +31,26 @@ function Home() {
 
   const handleStartClick = () => {
     if (questionnaires.length > 0) {
-      navigate(`/answerstart/${questionnaires[0].id}`, { state: { questionnaires } });
+      navigate(`/answerstart/${questionnaires[0].id}`, {
+        state: { questionnaires },
+      });
     }
   };
 
   const handleArrowClick = (questionnaireId) => {
-    const selectedQuestionnaire = questionnaires.find(q => q.id === questionnaireId);
+    const selectedQuestionnaire = questionnaires.find(
+      (q) => q.id === questionnaireId
+    );
     if (selectedQuestionnaire) {
-      navigate(`/answerstart/${questionnaireId}`, { state: { questionnaires: [selectedQuestionnaire] } });
+      navigate(`/answerstart/${questionnaireId}`, {
+        state: { questionnaires: [selectedQuestionnaire] },
+      });
     }
   };
+  const totalPoints = questionnaires.reduce(
+    (sum, questionnaire) => sum + questionnaire.qpoints,
+    0
+  );
 
   return (
     <>
@@ -56,8 +66,17 @@ function Home() {
       </header>
       <div className="recieve">
         <div className="recieve-pointstxt">
-          <img src="assets/Gift.svg" className="recieveimg" alt="Receive Gift" />
-          Receive <span className="pointsnmbr">+20</span> points
+          <img
+            src="assets/Gift.svg"
+            className="recieveimg"
+            alt="Receive Gift"
+          />
+
+          <div>
+            Receive
+            <span className="pointsnmbr">+ {totalPoints} </span>
+            points
+          </div>
         </div>
       </div>
       <div className="questionnaire-container">
@@ -85,7 +104,6 @@ function Home() {
                         alt="Company Logo"
                       />
                       <p className="txt medium">{questionnaire.company}</p>
-                      <p className="txt small">Earn {questionnaire.qpoints} points</p>
                     </div>
                     <img
                       src="assets/Arrowright.svg"

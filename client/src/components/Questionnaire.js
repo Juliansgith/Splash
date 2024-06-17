@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
-import { jwtDecode as jwt_decode } from 'jwt-decode';
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
+import { jwtDecode as jwt_decode } from "jwt-decode";
 import "../css/Question.css";
 
 function QuestionnaireDetail() {
@@ -12,17 +12,18 @@ function QuestionnaireDetail() {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true); // Add state for button disabled
   const { questionnaires = [] } = location.state || {}; // Ensures questionnaires is an array even if location.state is undefined or empty
 
-  const totalLength = questionnaires.length
-  const currentIndex = questionnaires.findIndex(q => q._id === id);
+  const totalLength = questionnaires.length;
+  const currentIndex = questionnaires.findIndex((q) => q._id === id);
   const nextQuestionnaireId = questionnaires[currentIndex + 1]?._id;
   const prevQuestionnaireId = questionnaires[currentIndex - 1]?._id;
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/answers2/${id}`)
-      .then(response => {
+    axios
+      .get(`http://localhost:5000/answers2/${id}`)
+      .then((response) => {
         setQuestionnaire(response.data);
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   }, [id]);
 
   useEffect(() => {
@@ -39,25 +40,30 @@ function QuestionnaireDetail() {
     const formData = new FormData(event.target);
     const answers = {};
     for (let [key, value] of formData.entries()) {
-      const questionIndex = key.split('-')[1];
+      const questionIndex = key.split("-")[1];
       answers[questionIndex] = value;
     }
-  
+
     try {
-      const token = localStorage.getItem('token'); 
+      const token = localStorage.getItem("token");
       const decodedToken = jwt_decode(token);
       const userId = decodedToken.userId;
 
-      await axios.post(`http://localhost:5000/answer/${id}`, { answers, userId });
-      alert('Answers submitted successfully');
+      await axios.post(`http://localhost:5000/answer/${id}`, {
+        answers,
+        userId,
+      });
+      alert("Answers submitted successfully");
       if (nextQuestionnaireId) {
-        navigate(`/questionnaire/${nextQuestionnaireId}`, { state: { questionnaires } });
+        navigate(`/questionnaire/${nextQuestionnaireId}`, {
+          state: { questionnaires },
+        });
       } else {
-        navigate('/home');
+        navigate("/answerfinish");
       }
     } catch (error) {
-      console.error('Error submitting answers:', error);
-      alert('Failed to submit answers');
+      console.error("Error submitting answers:", error);
+      alert("Failed to submit answers");
     }
   };
 
@@ -65,7 +71,9 @@ function QuestionnaireDetail() {
 
   return (
     <div className="question-container">
-      <p>{currentIndex} out of {totalLength} questions answered</p>
+      <p>
+        {currentIndex} out of {totalLength} questions answered
+      </p>
 
       <div className="tag green">
         <img src="/assets/tag.svg" alt="Tag" />
@@ -73,22 +81,39 @@ function QuestionnaireDetail() {
       </div>
 
       <form onSubmit={handleSubmit} className="form">
-        {questionnaire.Questions && questionnaire.Questions.map((q, index) => (
-          <div key={index}>
-            <h2>{q.questionText}</h2>
-            <p>Maak een keuze:</p>
-            <div className="options">
-              {q.Options && q.Options.map((option, oIndex) => (
-                <label key={oIndex} className="option-item">
-                  <input type="radio" name={`question-${index}`} value={option.text} /> {option.text}
-                  <span className="option-input"></span>
-                  <img className="check" src="/assets/checkmark.svg" alt="Checkmark" />
-                </label>
-              ))}
+        {questionnaire.Questions &&
+          questionnaire.Questions.map((q, index) => (
+            <div key={index}>
+              <h2>{q.questionText}</h2>
+              <p>Maak een keuze:</p>
+              <div className="options">
+                {q.Options &&
+                  q.Options.map((option, oIndex) => (
+                    <label key={oIndex} className="option-item">
+                      <input
+                        type="radio"
+                        name={`question-${index}`}
+                        value={option.text}
+                      />{" "}
+                      {option.text}
+                      <span className="option-input"></span>
+                      <img
+                        className="check"
+                        src="/assets/checkmark.svg"
+                        alt="Checkmark"
+                      />
+                    </label>
+                  ))}
+              </div>
             </div>
-          </div>
-        ))}
-        <button type="submit" className="enable-anim" disabled={isButtonDisabled}>Submit Answers</button>
+          ))}
+        <button
+          type="submit"
+          className="enable-anim"
+          disabled={isButtonDisabled}
+        >
+          Submit Answers
+        </button>
       </form>
     </div>
   );
