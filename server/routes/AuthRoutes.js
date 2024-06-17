@@ -46,5 +46,79 @@ router.get('/userdetails/:id', async (req, res) => {
     }
 });
 
-
+router.put('/update-email', async (req, res) => {
+    const { userId, newEmail } = req.body;
+  
+    if (!newEmail || !userId) {
+      return res.status(400).json({ error: 'New email and user ID are required.' });
+    }
+  
+    try {
+      const user = await User.findByPk(userId);
+      if (!user) {
+        return res.status(404).json({ error: 'User not found.' });
+      }
+  
+      user.email = newEmail;
+      await user.save();
+  
+      res.status(200).json({ message: 'Email updated successfully.' });
+    } catch (error) {
+      console.error('Error updating email:', error);
+      res.status(500).json({ error: 'Internal server error.' });
+    }
+  });
+  
+  router.put('/update-password', async (req, res) => {
+    const { userId, currentPassword, newPassword } = req.body;
+  
+    if (!currentPassword || !newPassword || !userId) {
+      return res.status(400).json({ error: 'Current password, new password, and user ID are required.' });
+    }
+  
+    try {
+      const user = await User.findByPk(userId);
+      if (!user) {
+        return res.status(404).json({ error: 'User not found.' });
+      }
+  
+      const isPasswordValid = await bcrypt.compare(currentPassword, user.password);
+      if (!isPasswordValid) {
+        return res.status(400).json({ error: 'Current password is incorrect.' });
+      }
+  
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      user.password = hashedPassword;
+      await user.save();
+  
+      res.status(200).json({ message: 'Password updated successfully.' });
+    } catch (error) {
+      console.error('Error updating password:', error);
+      res.status(500).json({ error: 'Internal server error.' });
+    }
+  });
+  
+  router.put('/update-name', async (req, res) => {
+    const { userId, newName } = req.body;
+  
+    if (!newName || !userId) {
+      return res.status(400).json({ error: 'New name and user ID are required.' });
+    }
+  
+    try {
+      const user = await User.findByPk(userId);
+      if (!user) {
+        return res.status(404).json({ error: 'User not found.' });
+      }
+  
+      user.name = newName;
+      await user.save();
+  
+      res.status(200).json({ message: 'Name updated successfully.' });
+    } catch (error) {
+      console.error('Error updating name:', error);
+      res.status(500).json({ error: 'Internal server error.' });
+    }
+  });
+  
 module.exports = router;

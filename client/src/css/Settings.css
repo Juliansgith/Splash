@@ -1,3 +1,5 @@
+/* Settings.css */
+
 @import url('../index.css');
 
 .overlay {
@@ -64,7 +66,6 @@
     margin-top: -10px;
     padding: 0;
 }
-
 
 /* opened setting */
 
@@ -220,4 +221,44 @@ input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
+}
+
+/* Additional styles for forms and messages */
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid var(--tertiary-text-color);
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: var(--button-hover-color);
+}
+
+.message {
+    margin-top: 20px;
+    color: red;
 }
