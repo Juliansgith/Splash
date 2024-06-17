@@ -18,11 +18,12 @@ function QuestionnaireDetail() {
   const nextQuestionnaireId = questionnaires[currentIndex + 1]?._id;
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/answers2/${id}`)
-      .then(response => {
+    axios
+      .get(`http://localhost:5000/answers2/${id}`)
+      .then((response) => {
         setQuestionnaire(response.data);
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   }, [id]);
 
   useEffect(() => {
@@ -52,6 +53,7 @@ function QuestionnaireDetail() {
         userId,
       });
       alert("Answers submitted successfully");
+      
       navigate(`/questionnaire/${nextQuestionnaireId}`, {
         state: { questionnaires, currentIndex }
       });
@@ -67,13 +69,15 @@ function QuestionnaireDetail() {
         state: { questionnaires },
       });
     } else {
-      navigate("/home");
+      navigate("/answerfinish");
+
     }
   };
 
   if (!questionnaire) return <div>Loading...</div>;
 
   return (
+
     <>
       <header className="question-header">
         <div className="question-header-items">
@@ -90,6 +94,7 @@ function QuestionnaireDetail() {
           </div>
         </div>
       </header>
+
 
       <div className="question-container">
         <div className="tag green">
@@ -136,6 +141,7 @@ function QuestionnaireDetail() {
         </form>
       </div>
     </>
+
   );
 }
 

@@ -9,9 +9,14 @@ function AnswerStart() {
   const location = useLocation();
   const { id } = useParams(); // Retrieve the questionnaire ID from the URL
   const [questionnaire, setQuestionnaire] = useState(null); // Store the questionnaire details
-
+  const { questionnaires = [] } = location.state || {};
+  const totalLength = questionnaires.length;
   const token = localStorage.getItem("token");
   const userId = token ? jwt_decode(token).userId : null;
+  const totalPoints = questionnaires.reduce(
+    (sum, questionnaire) => sum + questionnaire.qpoints,
+    0
+  );
 
   useEffect(() => {
     if (id) {
@@ -45,9 +50,13 @@ function AnswerStart() {
               alt="Question icon"
             />
           </div>
-          <h1 className="bold">Up next {questionnaire.Questions.length} questions.</h1>
-          <p className="custommarginv2">You will earn {questionnaire.qpoints} points!</p> {/* Updated to use qpoints */}
-          <button onClick={() => navigate(`/questionnaire/${id}`)}> {/* Use the ID from the URL */}
+          <h1 className="bold">
+            Up next {questionnaire.Questions.length} questions.
+          </h1>
+          <p className="custommarginv2">You will earn {totalPoints} points!</p>{" "}
+          <button onClick={() => navigate(`/questionnaire/${id}`)}>
+            {" "}
+            {/* Use the ID from the URL */}
             Continue
           </button>
         </>
