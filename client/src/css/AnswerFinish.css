@@ -1,0 +1,44 @@
+/* AnswerFinish.css */
+.answer-finish-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 0 20px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  .returndiv {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  
+  .return {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+  
+    p {
+      font-size: 1.25rem;
+    }
+  }
+  
