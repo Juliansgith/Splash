@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import "../css/Auth.css"
+import "../css/Auth.css";
 
 function RegisterPopup({ setUserRole }) {
   const [formData, setFormData] = useState({
@@ -20,6 +20,9 @@ function RegisterPopup({ setUserRole }) {
 
   const navigate = useNavigate();
 
+  // Log the environment variable to check if it's being read correctly
+  console.log('API URL:', process.env.REACT_APP_API_URL);
+
   function handleChange(event) {
     const { name, value } = event.target;
     setFormData(prevFormData => ({
@@ -34,7 +37,7 @@ function RegisterPopup({ setUserRole }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const apiUrl = 'http://localhost:5000';
+    const apiUrl = process.env.REACT_APP_API_URL;
     const endpoint = '/register';
     const data = {
       name: formData.name,

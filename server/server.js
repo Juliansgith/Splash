@@ -1,5 +1,6 @@
 const express = require("express");
-const app = express();
+const fs = require("fs");
+const https = require("https");
 const cors = require("cors");
 const questionnaireRoutes = require("./routes/questionnaires");
 const authRoutes = require("./routes/AuthRoutes");
@@ -17,19 +18,27 @@ const { applyAssociations } = require("./associate");
 applyAssociations();
 console.log("Associations applied");
 
+// Read SSL certificate and key
+const privateKey = fs.readFileSync('certs/key.pem', 'utf8');
+const certificate = fs.readFileSync('certs/cert.pem', 'utf8');
+const credentials = { key: privateKey, cert: certificate };
+
 // Sync the database
 sequelize
   .sync()
   .then(() => {
     console.log("Database & tables synced!");
-    // Start the server
-    app.listen(port, () => {
-      console.log(`Server is running on port: ${port}`);
+    // Start the HTTPS server
+    const httpsServer = https.createServer(credentials, app);
+    httpsServer.listen(port, '0.0.0.0', () => {
+      console.log(`Server running on https://0.0.0.0:${port}`);
     });
   })
   .catch((err) => {
     console.error("Failed to sync database and tables", err);
   });
+
+const app = express();
 
 app.use(cors());
 app.use(express.json());

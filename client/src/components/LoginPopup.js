@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import "../css/Auth.css"
+import "../css/Auth.css";
 
 function LoginPopup({ setUserRole }) {
   const [isLogin, setIsLogin] = useState(true);
@@ -21,6 +21,9 @@ function LoginPopup({ setUserRole }) {
 
   const navigate = useNavigate();
 
+  // Log the environment variable to check if it's being read correctly
+  console.log('API URL:', process.env.REACT_APP_API_URL);
+
   function handleChange(event) {
     const { name, value } = event.target;
     setFormData(prevFormData => ({
@@ -35,7 +38,7 @@ function LoginPopup({ setUserRole }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const apiUrl = 'http://localhost:5000';
+    const apiUrl = process.env.REACT_APP_API_URL;
     const endpoint = isLogin ? '/login' : '/register';
     const data = isLogin ? {
       email: formData.email,
@@ -83,16 +86,13 @@ function LoginPopup({ setUserRole }) {
           <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required className="form-input" />
           <p className="txt large medium nomargin">Password</p>
           <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required className="form-input" />
-          <Link className="toggle-form-text  forgotpass">Forgot password?</Link>
+          <Link className="toggle-form-text forgotpass">Forgot password?</Link>
 
           <div className="submit-container">
             <button type="submit" className="submit">Log in</button>
             <Link to="/register" className="toggle-form-text">No account? Create one here</Link>
           </div>
         </form>
-
-        
-
       </div>
     </div>
   );
