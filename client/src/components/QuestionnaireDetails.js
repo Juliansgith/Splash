@@ -12,7 +12,7 @@ function QuestionnaireDetails() {
 
   const fetchQuestionnaire = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:5000/answers2/${id}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/answers2/${id}`);
       setQuestionnaire(response.data);
     } catch (error) {
       console.error('Error fetching questionnaire:', error);
@@ -35,9 +35,9 @@ function QuestionnaireDetails() {
                   </li>
                 ))}
               </ul>
-          </div>
-        ))}
-      </div>
+            </div>
+          ))}
+        </div>
       ) : (
         <div>
           <h2>No questionnaire selected.</h2>

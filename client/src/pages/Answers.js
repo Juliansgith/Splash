@@ -1,4 +1,3 @@
-// Answers component with applied CSS classes for styling
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -13,7 +12,7 @@ function Answers() {
 
   const fetchQuestionnaires = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/answers');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/answers`);
       setQuestionnaires(response.data);
     } catch (error) {
       console.error('Error fetching questionnaires:', error);

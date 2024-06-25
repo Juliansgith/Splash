@@ -18,7 +18,7 @@ function Account() {
 
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/userdetails/${userId}`,
+          `${process.env.REACT_APP_API_URL}/userdetails/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

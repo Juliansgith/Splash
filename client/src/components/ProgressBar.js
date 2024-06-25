@@ -21,7 +21,7 @@ function ProgressBar({ token }) {
     if (userId) {
       console.log("Making request to backend with userId:", userId);
       axios
-        .get(`http://localhost:5000/getinformation?userId=${userId}`)
+        .get(`${process.env.REACT_APP_API_URL}/getinformation?userId=${userId}`)
         .then((response) => {
           console.log("Response data:", response.data);
           setScore(Math.min(response.data.score, 10));

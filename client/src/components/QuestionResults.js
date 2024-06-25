@@ -15,7 +15,7 @@ function QuestionResults() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/user/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/user/${id}`)
       .then((response) => {
         setQuestion(response.data);
         // console.log(response.data.questions[currentIndex]);

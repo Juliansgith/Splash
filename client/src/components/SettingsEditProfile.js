@@ -21,7 +21,7 @@ const SettingsEditProfile = ({ isSettingOpen, onSettingClose }) => {
     const handleEmailChange = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.put('http://localhost:5000/update-email', {
+            const response = await axios.put(`${process.env.REACT_APP_API_URL}/update-email`, {
                 userId,
                 newEmail
             });
@@ -34,7 +34,7 @@ const SettingsEditProfile = ({ isSettingOpen, onSettingClose }) => {
     const handlePasswordChange = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.put('http://localhost:5000/update-password', {
+            const response = await axios.put(`${process.env.REACT_APP_API_URL}/update-password`, {
                 userId,
                 currentPassword,
                 newPassword
@@ -48,7 +48,7 @@ const SettingsEditProfile = ({ isSettingOpen, onSettingClose }) => {
     const handleNameChange = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.put('http://localhost:5000/update-name', {
+            const response = await axios.put(`${process.env.REACT_APP_API_URL}/update-name`, {
                 userId,
                 newName
             });

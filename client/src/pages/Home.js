@@ -21,7 +21,7 @@ function Home() {
   useEffect(() => {
     if (userId) {
       axios
-        .get(`http://localhost:5000/all?userId=${userId}`)
+        .get(`${process.env.REACT_APP_API_URL}/all?userId=${userId}`)
         .then((response) => {
           setQuestionnaires(response.data);
         })
@@ -32,21 +32,18 @@ function Home() {
   const handleStartClick = () => {
     if (questionnaires.length > 0) {
       navigate(`/answerstart/${questionnaires[0].id}`, { state: { questionnaires } });
-
-
     }
   };
 
   const handleArrowClick = (questionnaireId) => {
     const selectedQuestionnaire = questionnaires.find(q => q.id === questionnaireId);
-
-
     if (selectedQuestionnaire) {
       navigate(`/answerstart/${questionnaireId}`, {
         state: { questionnaires: [selectedQuestionnaire] },
       });
     }
   };
+
   const totalPoints = questionnaires.reduce(
     (sum, questionnaire) => sum + questionnaire.qpoints,
     0
@@ -71,7 +68,6 @@ function Home() {
             className="recieveimg"
             alt="Receive Gift"
           />
-
           <div>
             Receive
             <span className="pointsnmbr">+ {totalPoints} </span>

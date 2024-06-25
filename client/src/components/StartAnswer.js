@@ -21,7 +21,7 @@ function AnswerStart() {
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://localhost:5000/answers2/${id}`) // Fetch the specific questionnaire details
+        .get(`${process.env.REACT_APP_API_URL}/answers2/${id}`) // Fetch the specific questionnaire details
         .then((response) => {
           setQuestionnaire(response.data);
           console.log(response.data);

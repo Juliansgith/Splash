@@ -24,7 +24,7 @@ const RewardsManager = () => {
     const fetchPoints = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/points-balance?userId=${userId}`
+          `${process.env.REACT_APP_API_URL}/points-balance?userId=${userId}`
         );
         setPoints(response.data.points);
       } catch (error) {
@@ -37,29 +37,6 @@ const RewardsManager = () => {
       fetchPoints();
     }
   }, [userId]);
-
-  // const handleRedeem = async () => {
-  //   if (pointsToRedeem > points) {
-  //     alert("You don't have enough points to redeem this amount.");
-  //     return;
-  //   }
-
-  //   try {
-  //     const response = await axios.post(
-  //       "http://localhost:5000/redeem-rewards",
-  //       {
-  //         userId,
-  //         pointsToRedeem: parseInt(pointsToRedeem, 10),
-  //       }
-  //     );
-  //     alert(response.data.message);
-  //     setPoints(response.data.newPointsBalance);
-  //     setPointsToRedeem("");
-  //   } catch (error) {
-  //     console.error("Error redeeming points:", error);
-  //     alert("Failed to redeem points");
-  //   }
-  // };
 
   const pointArray = points.toString().split("")
 
@@ -99,23 +76,6 @@ const RewardsManager = () => {
           </div>
         </header>
 
-        {/* <div className="rewards-manager">
-          <h2>Manage Your Rewards</h2>
-          <div className="points-display">
-            <p>Your Points: {points}</p>
-          </div>
-          <div className="redeem-rewards">
-            <input
-              type="number"
-              value={pointsToRedeem}
-              onChange={e => setPointsToRedeem(e.target.value)}
-              placeholder="Enter points to redeem"
-              className="redeem-input"
-            />
-            <button onClick={handleRedeem} className="redeem-button">Redeem Points</button>
-          </div>
-        </div> */}
-
         <div className="reward-container">
           <p className="txt medium">punten inwisselen:</p>
           <div><Coupon pointsNeeded={200} pointsCollected={200} /></div>
@@ -125,9 +85,6 @@ const RewardsManager = () => {
           <div><Coupon pointsNeeded={200} pointsCollected={150} /></div>
           <div><Coupon pointsNeeded={200} pointsCollected={150} /></div>
         </div>
-        
-
-        
         <NavBar />
       </div>
     </>

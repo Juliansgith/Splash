@@ -27,7 +27,7 @@ function PointsButton() {
     const fetchPoints = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/points-balance?userId=${userId}`
+          `${process.env.REACT_APP_API_URL}/points-balance?userId=${userId}`
         );
         setPoints(response.data.points);
       } catch (error) {

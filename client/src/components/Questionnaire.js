@@ -19,7 +19,7 @@ function QuestionnaireDetail() {
     console.log("Questionnaires: ", questionnaires); // Debugging output
 
     axios
-      .get(`http://localhost:5000/answers2/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/answers2/${id}`)
       .then((response) => {
         console.log("Fetched questionnaire: ", response.data); // Debugging output
         setQuestionnaire(response.data);
@@ -59,13 +59,13 @@ function QuestionnaireDetail() {
       const decodedToken = jwt_decode(token);
       const userId = decodedToken.userId;
   
-      await axios.post(`http://localhost:5000/answer/${id}`, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/answer/${id}`, {
         answers,
         userId,
       });
       alert("Answers submitted successfully");
 
-      const updatedQuestionnaire = await axios.get(`http://localhost:5000/answers2/${id}`);
+      const updatedQuestionnaire = await axios.get(`${process.env.REACT_APP_API_URL}/answers2/${id}`);
       setResults(calculateResults(updatedQuestionnaire.data.Questions));
       setShowResults(true);
 

@@ -31,16 +31,15 @@ function Coupon({ pointsNeeded, pointsCollected }) {
     };
 
     const handleActivate = async () => {
-        // Handle activation logic here
         console.log('Beloning geactiveerd!');
         if (pointsToRedeem > points) {
             alert("You don't have enough points to redeem this amount.");
             return;
-          }
+        }
       
-          try {
+        try {
             const response = await axios.post(
-              "http://localhost:5000/redeem-rewards",
+              `${process.env.REACT_APP_API_URL}/redeem-rewards`,
               {
                 userId,
                 pointsToRedeem: parseInt(pointsToRedeem, 10),
@@ -49,10 +48,10 @@ function Coupon({ pointsNeeded, pointsCollected }) {
             alert(response.data.message);
             setPoints(response.data.newPointsBalance);
             setPointsToRedeem("");
-          } catch (error) {
+        } catch (error) {
             console.error("Error redeeming points:", error);
             alert("Failed to redeem points");
-          }
+        }
     };
 
     return (
