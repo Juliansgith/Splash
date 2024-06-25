@@ -19,24 +19,10 @@ applyAssociations();
 console.log("Associations applied");
 
 // Read SSL certificate and key
-const privateKey = fs.readFileSync('certs/key.pem', 'utf8');
-const certificate = fs.readFileSync('certs/cert.pem', 'utf8');
-const credentials = { key: privateKey, cert: certificate };
-
-// Sync the database
-sequelize
-  .sync()
-  .then(() => {
-    console.log("Database & tables synced!");
-    // Start the HTTPS server
-    const httpsServer = https.createServer(credentials, app);
-    httpsServer.listen(port, '0.0.0.0', () => {
-      console.log(`Server running on https://0.0.0.0:${port}`);
-    });
-  })
-  .catch((err) => {
-    console.error("Failed to sync database and tables", err);
-  });
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/aetherflare.nl/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/aetherflare.nl/fullchain.pem', 'utf8');
+const ca = fs.readFileSync('/etc/letsencrypt/live/aetherflare.nl/chain.pem', 'utf8');
+const credentials = { key: privateKey, cert: certificate, ca: ca };
 
 const app = express();
 
@@ -60,3 +46,18 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+// Sync the database
+sequelize
+  .sync()
+  .then(() => {
+    console.log("Database & tables synced!");
+    // Start the HTTPS server
+    const httpsServer = https.createServer(credentials, app);
+    httpsServer.listen(port, '0.0.0.0', () => {
+      console.log(`Server running on https://0.0.0.0:${port}`);
+    });
+  })
+  .catch((err) => {
+    console.error("Failed to sync database and tables", err);
+  });
