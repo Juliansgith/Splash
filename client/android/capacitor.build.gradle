@@ -1,0 +1,1 @@
+apply from: new File(["node", "--print", "require.resolve('@capacitor/android/scripts/android/build.gradle')"].execute(null, rootDir).text.trim())
